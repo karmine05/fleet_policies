@@ -2,7 +2,7 @@
 
 This directory contains policies to audit macOS 15 devices for compliance with the Center for Internet Security (CIS) Benchmark v8.1.
 
-These policies provide a robust framework for securing your macOS fleet. Each policy is meticulously mapped and tagged with its corresponding CIS Safeguard number (e.g., `CIS 5.1`). This direct mapping simplifies compliance auditing and allows you to precisely track your organization's security posture against the CIS Benchmark. A set forward to your SOC2 complaince. 
+These policies provide a robust framework for securing your macOS. Each policy is meticulously mapped and tagged with its corresponding CIS Safeguard number (e.g., `CIS 5.1`). This direct mapping simplifies compliance auditing, allowing you to precisely track your organization's security posture against the CIS Benchmark. A step forward in your SOC 2 compliance. 
 
 ## Usage
 
@@ -11,7 +11,7 @@ These policies provide a robust framework for securing your macOS fleet. Each po
 Clone this repository to your local machine:
 
 ```sh
-git clone https://github.com/<your-username>/<your-repo-name>.git
+git clone https://github.com/karmine05/fleet_policies.git
 cd <your-repo-name>/macOS15
 ```
 
