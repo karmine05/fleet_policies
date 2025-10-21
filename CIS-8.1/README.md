@@ -10,21 +10,24 @@ This repository currently includes CIS Benchmark v8.1 policies for the following
 
 *   [macOS 15](macOS15/README.md)
 *   [Windows 11](win11/README.md)
+* [Ubuntu 24 (Desktop & Server)](ubuntu24/README.md)
 
 ## Usage
 
 To use these policies, follow the steps below:
 
-1.  **Clone the repository:**
+1. **Clone the repository:**
+
     ```sh
     git clone https://github.com/karmine05/fleet_policies.git
     cd fleet_policies
     ```
 
-2.  **Apply Policies:**
+2. **Apply Policies:**
     Navigate to the directory for your target operating system (e.g., `macOS15/`) and follow the instructions in its `README.md` file to apply the policies using `fleetctl`.
 
     For example, for macOS 15:
+    
     ```sh
     cd macOS15
     fleetctl apply -f cis-macOS15-policies.yaml
@@ -32,13 +35,19 @@ To use these policies, follow the steps below:
 
 ## Directory Structure
 
-```
+```text
 .
 ├── CIS Control CIS Safeguard Asset Type Sec.csv
 ├── LICENSE
 ├── macOS15
 │   ├── cis-macOS15-policies.yaml
 │   ├── cis-macos15-section-map.csv
+│   └── README.md
+├── ubuntu24
+│   ├── cis-ubuntu24-desktop-policies.yaml
+│   ├── cis-ubuntu24-desktop-section-map.csv
+│   ├── cis-ubuntu24-server-policies.yaml
+│   ├── cis-ubuntu24-server-section-map.csv
 │   └── README.md
 └── win11
     ├── cis-win11-policies.yaml
