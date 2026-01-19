@@ -15,7 +15,7 @@ spec:
       4. Select Update All
   query: SELECT 1 FROM software_update WHERE software_update_required = '0';
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:updates, requirement:fleetd, critical:false, control:apple-provided-software-current, cis_safeguard_id:CIS7.4
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:updates, requirement:fleetd, critical:false, control:apple-provided-software-current, cis_safeguard_id:CIS1.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -42,7 +42,7 @@ spec:
             value != 1
         );
   purpose: Optional
-  tags: framework:CISv8.1, benchmark:macos15, level:2, platform:darwin, category:browser, requirement:mdm, critical:false, control:safari-history-audited, cis_safeguard_id:CIS8.2
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:browser, requirement:mdm, critical:false, control:safari-history-audited, cis_safeguard_id:CIS6.3.2
   contributors: karmine05
 ---
 apiVersion: v1
@@ -69,7 +69,7 @@ spec:
             (value != 0 AND value != 'false')
         );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:browser, requirement:mdm, critical:false, control:safari-auto-open-safe-files-disabled, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:browser, requirement:mdm, critical:false, control:safari-auto-open-safe-files-disabled, cis_safeguard_id:CIS6.3.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -96,7 +96,7 @@ spec:
           AND (value!=1 AND value!='true')
       );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:browser, requirement:mdm, critical:false, control:safari-fraudulent-website-warning, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:browser, requirement:mdm, critical:false, control:safari-fraudulent-website-warning, cis_safeguard_id:CIS6.3.3
   contributors: karmine05
 ---
 apiVersion: v1
@@ -121,7 +121,7 @@ spec:
       p.value IS NULL
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:browser-privacy, requirement:fda, critical:false, control:safari-ad-privacy-protection, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:browser-privacy, requirement:fda, critical:false, control:safari-ad-privacy-protection, cis_safeguard_id:CIS6.3.6
   contributors: karmine05
 ---
 apiVersion: v1
@@ -148,7 +148,7 @@ spec:
             (value != 1 AND value != 'true')
         );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:browser, requirement:mdm, critical:false, control:safari-show-full-address, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:browser, requirement:mdm, critical:false, control:safari-show-full-address, cis_safeguard_id:CIS6.3.7
   contributors: karmine05
 ---
 apiVersion: v1
@@ -175,7 +175,7 @@ spec:
           AND (value!=1 AND value!='true')
       );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:browser, requirement:mdm, critical:false, control:safari-show-status-bar, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:browser, requirement:mdm, critical:false, control:safari-show-status-bar, cis_safeguard_id:CIS6.3.10
   contributors: karmine05
 ---
 apiVersion: v1
@@ -202,7 +202,7 @@ spec:
             (value != 1 AND value != 'true')
         );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:terminal, requirement:mdm, critical:false, control:terminal-secure-keyboard-entry, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:terminal, requirement:mdm, critical:false, control:terminal-secure-keyboard-entry, cis_safeguard_id:CIS6.4.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -240,7 +240,7 @@ spec:
         )
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:audit, requirement:standard, critical:false, control:audit-flags-user-events, cis_safeguard_id:CIS8.2
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:audit, requirement:standard, critical:false, control:audit-flags-user-events, cis_safeguard_id:CIS3.2
   contributors: karmine05
 ---
 apiVersion: v1
@@ -265,7 +265,7 @@ spec:
         p.value IS NULL
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:ui-awareness, requirement:standard, critical:false, control:show-all-filename-extensions, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:ui-awareness, requirement:standard, critical:false, control:show-all-filename-extensions, cis_safeguard_id:CIS6.1.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -278,12 +278,15 @@ spec:
   resolution: |
     In sudoers avoid timestamp_type=global; enforce tty_tickets (default) or explicitly set Defaults timestamp_type=tty.
   query: |
-    SELECT 1 WHERE EXISTS (
-      SELECT 1 FROM sudo_info
-      WHERE type_of_auth_timestamp_record='tty'
+    SELECT 1 WHERE EXISTS(
+      SELECT
+        COALESCE(JSON_EXTRACT(
+          json_result, '$.Type of authentication timestamp record'
+        ), '') AS type_of_auth_timestamp_record
+      FROM sudo_info WHERE type_of_auth_timestamp_record = 'tty'
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:authz, requirement:fleetd, critical:false, control:per-tty-sudo-timestamp, cis_safeguard_id:CIS6.3
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:authz, requirement:fleetd, critical:false, control:per-tty-sudo-timestamp, cis_safeguard_id:CIS5.5
   contributors: karmine05
 ---
 apiVersion: v1
@@ -302,7 +305,7 @@ spec:
         AND filevault != 1
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:encryption, requirement:fleetd, critical:false, control:apfs-user-volumes-encrypted, cis_safeguard_id:CIS3.6
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:encryption, requirement:fleetd, critical:false, control:apfs-user-volumes-encrypted, cis_safeguard_id:CIS5.3.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -320,7 +323,7 @@ spec:
       WHERE EncryptionType != 'AES-XTS'
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:encryption, requirement:fleetd, critical:false, control:corestorage-user-volumes-encrypted, cis_safeguard_id:CIS3.6
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:encryption, requirement:fleetd, critical:false, control:corestorage-user-volumes-encrypted, cis_safeguard_id:CIS5.3.2
   contributors: karmine05
 ---
 apiVersion: v1
@@ -340,7 +343,7 @@ spec:
       rule LIKE '%authenticate-session-owner%'
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:2, platform:darwin, category:authz, requirement:fleetd, critical:false, control:admin-cannot-takeover-locked-session, cis_safeguard_id:CIS6.3
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:authz, requirement:fleetd, critical:false, control:admin-cannot-takeover-locked-session, cis_safeguard_id:CIS5.7
   contributors: karmine05
 ---
 apiVersion: v1
@@ -354,7 +357,7 @@ spec:
     dsenableroot -d (verify root login disabled) or use Directory Utility.
   query: SELECT 1 from dscl WHERE command = 'read' AND path = '/Users/root' AND key = 'AuthenticationAuthority' AND value = '';
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:accounts, requirement:fleetd, critical:false, control:root-account-disabled, cis_safeguard_id:CIS5.4
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:accounts, requirement:fleetd, critical:false, control:root-account-disabled, cis_safeguard_id:CIS5.6
   contributors: karmine05
 ---
 apiVersion: v1
@@ -368,7 +371,7 @@ spec:
     Remove Guest home: sudo rm -rf /Users/Guest
   query: SELECT 1 WHERE NOT EXISTS (SELECT * FROM file WHERE path = '/Users/Guest');
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:accounts, requirement:standard, critical:false, control:guest-home-folder-removed, cis_safeguard_id:CIS5.4
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:accounts, requirement:standard, critical:false, control:guest-home-folder-removed, cis_safeguard_id:CIS5.9
   contributors: karmine05
 ---
 apiVersion: v1
@@ -396,7 +399,7 @@ spec:
       )
     );
   purpose: Optional
-  tags: framework:CISv8.1, benchmark:macos15, level:2, platform:darwin, category:browser-privacy, requirement:standard, critical:false, control:safari-hide-ip-enabled, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:browser-privacy, requirement:standard, critical:false, control:safari-hide-ip-enabled, cis_safeguard_id:CIS6.3.5
   contributors: karmine05
 ---
 apiVersion: v1
@@ -424,7 +427,7 @@ spec:
       )
     );
   purpose: Optional
-  tags: framework:CISv8.1, benchmark:macos15, level:2, platform:darwin, category:browser-privacy, requirement:standard, critical:false, control:safari-hide-ip-disabled, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:browser-privacy, requirement:standard, critical:false, control:safari-hide-ip-disabled, cis_safeguard_id:CIS6.3.5
   contributors: karmine05
 ---
 apiVersion: v1
@@ -441,7 +444,7 @@ spec:
       SELECT 1 FROM managed_policies WHERE domain='com.apple.IntelligencePlatform' AND name='ExternalIntelligenceExtensionsEnabled' AND (value=1 OR value='true')
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:2, platform:darwin, category:privacy, requirement:mdm, critical:false, control:external-intelligence-extensions-disabled, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:privacy, requirement:mdm, critical:false, control:external-intelligence-extensions-disabled, cis_safeguard_id:CIS2.5.1.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -458,7 +461,7 @@ spec:
       SELECT 1 FROM managed_policies WHERE domain='com.apple.mail' AND name='SummarizationEnabled' AND (value=1 OR value='true')
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:2, platform:darwin, category:privacy, requirement:mdm, critical:false, control:mail-summarization-disabled, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:privacy, requirement:mdm, critical:false, control:mail-summarization-disabled, cis_safeguard_id:CIS2.5.1.3
   contributors: karmine05
 ---
 apiVersion: v1
@@ -475,7 +478,7 @@ spec:
       SELECT 1 FROM managed_policies WHERE domain='com.apple.notes' AND name='SummarizationEnabled' AND (value=1 OR value='true')
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:2, platform:darwin, category:privacy, requirement:mdm, critical:false, control:notes-summarization-disabled, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:privacy, requirement:mdm, critical:false, control:notes-summarization-disabled, cis_safeguard_id:CIS2.5.1.4
   contributors: karmine05
 ---
 apiVersion: v1
@@ -492,7 +495,7 @@ spec:
       SELECT 1 FROM managed_policies WHERE domain='com.apple.writingtools' AND name='WritingToolsEnabled' AND (value=1 OR value='true')
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:2, platform:darwin, category:privacy, requirement:mdm, critical:false, control:writing-tools-disabled, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:privacy, requirement:mdm, critical:false, control:writing-tools-disabled, cis_safeguard_id:CIS2.5.1.2
   contributors: karmine05
 ---
 apiVersion: v1
@@ -519,7 +522,7 @@ spec:
             (value != 1 AND value != 'true')
         );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:authn, requirement:mdm, critical:false, control:password-requires-alpha-numeric, cis_safeguard_id:CIS5.2
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:authn, requirement:mdm, critical:false, control:password-requires-alpha-numeric, cis_safeguard_id:CIS5.2.3
   contributors: karmine05
 ---
 apiVersion: v1
@@ -546,7 +549,7 @@ spec:
             value < 1
         );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:authn, requirement:mdm, critical:false, control:password-requires-special, cis_safeguard_id:CIS5.2
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:authn, requirement:mdm, critical:false, control:password-requires-special, cis_safeguard_id:CIS5.2.5
   contributors: karmine05
 ---
 apiVersion: v1
@@ -560,7 +563,7 @@ spec:
     Configure password policy enforcing both uppercase and lowercase usage.
   query: SELECT 1 FROM  pwd_policy where min_mixed_case_characters >= 1;
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:authn, requirement:fleetd, critical:false, control:password-requires-mixed-case, cis_safeguard_id:CIS5.2
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:authn, requirement:fleetd, critical:false, control:password-requires-mixed-case, cis_safeguard_id:CIS5.2.6
   contributors: karmine05
 ---
 apiVersion: v1
@@ -574,7 +577,7 @@ spec:
     Set failed attempt threshold (e.g., 5) via password policy / security command.
   query: SELECT 1 FROM  pwd_policy where max_failed_attempts <= 5;
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:authn, requirement:fleetd, critical:false, control:password-lockout-threshold, cis_safeguard_id:CIS5.2
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:authn, requirement:fleetd, critical:false, control:password-lockout-threshold, cis_safeguard_id:CIS5.2.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -598,7 +601,7 @@ spec:
     WHERE policy_identifier LIKE '%minLength')) 
     WHERE minlength >= 15);
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:authn, requirement:standard, critical:false, control:password-min-length, cis_safeguard_id:CIS5.2
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:authn, requirement:standard, critical:false, control:password-min-length, cis_safeguard_id:CIS5.2.2
   contributors: karmine05
 ---
 apiVersion: v1
@@ -616,7 +619,7 @@ spec:
     OR
     EXISTS(SELECT 1 FROM pwd_policy WHERE days_to_expiration <= 365);
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:authn, requirement:fleetd, critical:false, control:password-max-age, cis_safeguard_id:CIS5.2
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:authn, requirement:fleetd, critical:false, control:password-max-age, cis_safeguard_id:CIS5.2.7
   contributors: karmine05
 ---
 apiVersion: v1
@@ -630,7 +633,7 @@ spec:
     Enforce password history length (24 or more) via MDM password payload.
   query: SELECT 1 FROM pwd_policy WHERE history_depth >= 24;
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:authn, requirement:mdm, critical:false, control:password-history-24, cis_safeguard_id:CIS5.2
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:authn, requirement:mdm, critical:false, control:password-history-24, cis_safeguard_id:CIS5.2.8
   contributors: karmine05
 ---
 apiVersion: v1
@@ -659,7 +662,7 @@ spec:
     ) AS matches
     LIMIT 1;
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:audit, requirement:fleetd, critical:false, control:sudo-logging-enabled, cis_safeguard_id:CIS8.2
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:audit, requirement:fleetd, critical:false, control:sudo-logging-enabled, cis_safeguard_id:CIS5.11
   contributors: karmine05
 ---
 apiVersion: v1
@@ -682,7 +685,7 @@ spec:
       FROM sudo_info WHERE authentication_timestamp_timeout = '0.0 minutes'
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:authz, requirement:fleetd, critical:false, control:sudo-timeout-zero, cis_safeguard_id:CIS6.3
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:authz, requirement:fleetd, critical:false, control:sudo-timeout-zero, cis_safeguard_id:CIS5.4
   contributors: karmine05
 ---
 apiVersion: v1
@@ -709,7 +712,7 @@ spec:
       )
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:audit, requirement:standard, critical:false, control:install-log-retained-365-days, cis_safeguard_id:CIS8.4
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:audit, requirement:standard, critical:false, control:install-log-retained-365-days, cis_safeguard_id:CIS3.3
   contributors: karmine05
 ---
 apiVersion: v1
@@ -729,7 +732,7 @@ spec:
         AND CAST(regex_match(line, 'expire-after:(\\d+)d OR (\\d+)G', 2) AS INTEGER) >= 5
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:audit, requirement:standard, critical:false, control:audit-retention-configured, cis_safeguard_id:CIS8.4
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:audit, requirement:standard, critical:false, control:audit-retention-configured, cis_safeguard_id:CIS3.4
   contributors: karmine05
 ---
 apiVersion: v1
@@ -750,7 +753,7 @@ spec:
       )
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:audit, requirement:standard, critical:false, control:access-to-audit-records-controlled, cis_safeguard_id:CIS8.3
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:audit, requirement:standard, critical:false, control:access-to-audit-records-controlled, cis_safeguard_id:CIS3.5
   contributors: karmine05
 ---
 apiVersion: v1
@@ -768,7 +771,7 @@ spec:
       AND NOT EXISTS (SELECT 1 FROM managed_policies WHERE domain='com.apple.mDNSResponder' AND name='NoMulticastAdvertisements' AND (value!=1 AND value!='true'))
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:network, requirement:mdm, critical:false, control:bonjour-advertising-disabled, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:network, requirement:mdm, critical:false, control:bonjour-advertising-disabled, cis_safeguard_id:CIS4.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -783,7 +786,7 @@ spec:
   query: |
     SELECT 1 WHERE NOT EXISTS (SELECT 1 FROM processes WHERE path='/usr/sbin/httpd');
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:network, requirement:standard, critical:false, control:http-server-disabled, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:network, requirement:standard, critical:false, control:http-server-disabled, cis_safeguard_id:CIS4.2
   contributors: karmine05
 ---
 apiVersion: v1
@@ -801,7 +804,7 @@ spec:
       AND NOT EXISTS(SELECT 1 FROM file WHERE path='/etc/exports')
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:network, requirement:standard, critical:false, control:nfs-server-disabled, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:network, requirement:standard, critical:false, control:nfs-server-disabled, cis_safeguard_id:CIS4.3
   contributors: karmine05
 ---
 apiVersion: v1
@@ -818,7 +821,7 @@ spec:
       SELECT 1 FROM file WHERE path LIKE '/Users/%' AND path != '/Users/Shared/' AND mode NOT IN ('0700','0701','0710','0711')
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:accounts, requirement:standard, critical:false, control:home-folders-secure, cis_safeguard_id:CIS3.3
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:accounts, requirement:standard, critical:false, control:home-folders-secure, cis_safeguard_id:CIS5.1.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -833,7 +836,7 @@ spec:
   query: |
     SELECT 1 WHERE EXISTS (SELECT 1 FROM sip_config WHERE config_flag='sip' AND enabled=1);
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:system-protection, requirement:standard, critical:false, control:sip-enabled, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:system-protection, requirement:standard, critical:false, control:sip-enabled, cis_safeguard_id:CIS5.1.2
   contributors: karmine05
 ---
 apiVersion: v1
@@ -851,7 +854,7 @@ spec:
       WHERE amfi_enabled='1'
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:system-protection, requirement:fleetd, critical:false, control:amfi-enabled, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:system-protection, requirement:fleetd, critical:false, control:amfi-enabled, cis_safeguard_id:CIS5.1.3
   contributors: karmine05
 ---
 apiVersion: v1
@@ -866,7 +869,7 @@ spec:
   query: |
     SELECT 1 WHERE EXISTS (SELECT 1 FROM csrutil_info WHERE ssv_enabled='1');
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:system-protection, requirement:fleetd, critical:false, control:ssv-enabled, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:system-protection, requirement:fleetd, critical:false, control:ssv-enabled, cis_safeguard_id:CIS5.1.4
   contributors: karmine05
 ---
 apiVersion: v1
@@ -884,7 +887,7 @@ spec:
       WHERE apps.path LIKE '/Applications/%' AND (CAST(SUBSTR(file.mode,-1) AS INTEGER) & 0x2) != 0
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:application-control, requirement:standard, critical:false, control:applications-not-world-writable, cis_safeguard_id:CIS2.6
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:application-control, requirement:standard, critical:false, control:applications-not-world-writable, cis_safeguard_id:CIS5.1.5
   contributors: karmine05
 ---
 apiVersion: v1
@@ -901,7 +904,7 @@ spec:
       SELECT 1 FROM find_cmd WHERE directory='/System/Volumes/Data/System' AND type='d' AND perm='-2' AND path NOT LIKE '%Drop Box%'
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:application-control, requirement:standard, critical:false, control:no-world-writable-system-dirs, cis_safeguard_id:CIS3.3
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:application-control, requirement:standard, critical:false, control:no-world-writable-system-dirs, cis_safeguard_id:CIS5.1.6
   contributors: karmine05
 ---
 apiVersion: v1
@@ -924,7 +927,7 @@ spec:
         )
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:application-control, requirement:fleetd, critical:false, control:no-world-writable-library-dirs, cis_safeguard_id:CIS3.3
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:application-control, requirement:fleetd, critical:false, control:no-world-writable-library-dirs, cis_safeguard_id:CIS5.1.7
   contributors: karmine05
 ---
 apiVersion: v1
@@ -941,7 +944,7 @@ spec:
       SELECT 1 FROM location_services WHERE enabled = 0
     );
   purpose: Optional
-  tags: framework:CISv8.1, benchmark:macos15, level:2, platform:darwin, category:privacy-location, requirement:standard, critical:false, control:location-services-disabled-all, cis_safeguard_id:CIS13.2
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:privacy-location, requirement:standard, critical:false, control:location-services-disabled-all, cis_safeguard_id:CIS2.6.1.3
   contributors: karmine05
 ---
 apiVersion: v1
@@ -969,7 +972,7 @@ spec:
       )
     );
   purpose: Optional
-  tags: framework:CISv8.1, benchmark:macos15, level:2, platform:darwin, category:privacy-location, requirement:standard, critical:false, control:location-services-allowlist, cis_safeguard_id:CIS13.2
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:privacy-location, requirement:standard, critical:false, control:location-services-allowlist, cis_safeguard_id:CIS2.6.1.3
   contributors: karmine05
 ---
 apiVersion: v1
@@ -987,7 +990,7 @@ spec:
       AND NOT EXISTS (SELECT 1 FROM managed_policies WHERE domain='com.apple.applicationaccess' AND name='allowApplePersonalizedAdvertising' AND (value!=0 AND value!='false'))
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:privacy-advertising, requirement:mdm, critical:false, control:limit-ad-tracking-enabled, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:privacy-advertising, requirement:mdm, critical:false, control:limit-ad-tracking-enabled, cis_safeguard_id:CIS2.6.4
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1004,7 +1007,7 @@ spec:
       SELECT 1 FROM authdb WHERE right_name = 'system.preferences' AND json_extract(json_result, '$.shared') == 0
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:authz, requirement:fleetd, critical:false, control:admin-password-for-prefs, cis_safeguard_id:CIS6.3
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:authz, requirement:fleetd, critical:false, control:admin-password-for-prefs, cis_safeguard_id:CIS2.6.8
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1021,7 +1024,7 @@ spec:
       SELECT 1 FROM plist WHERE path LIKE '/Users/%/Library/Preferences/com.apple.dock.plist' AND key IN ('wvous-br-corner','wvous-bl-corner','wvous-tr-corner','wvous-tl-corner') AND value = 6
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:screen-lock, requirement:fda, critical:false, control:secure-screen-corners, cis_safeguard_id:CIS4.3
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:screen-lock, requirement:fda, critical:false, control:secure-screen-corners, cis_safeguard_id:CIS2.7.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1039,7 +1042,7 @@ spec:
       AND NOT EXISTS (SELECT 1 FROM managed_policies WHERE domain='com.apple.universalcontrol' AND name='Disable' AND (value!=0 AND value!='false'))
     );
   purpose: Optional
-  tags: framework:CISv8.1, benchmark:macos15, level:2, platform:darwin, category:continuity, requirement:mdm, critical:false, control:universal-control-enabled, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:continuity, requirement:mdm, critical:false, control:universal-control-enabled, cis_safeguard_id:CIS2.8.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1057,7 +1060,7 @@ spec:
       AND NOT EXISTS (SELECT 1 FROM managed_policies WHERE domain='com.apple.universalcontrol' AND name='Disable' AND (value!=1 AND value!='true'))
     );
   purpose: Optional
-  tags: framework:CISv8.1, benchmark:macos15, level:2, platform:darwin, category:continuity, requirement:mdm, critical:false, control:universal-control-disabled, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:continuity, requirement:mdm, critical:false, control:universal-control-disabled, cis_safeguard_id:CIS2.8.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1078,7 +1081,7 @@ spec:
       ) WHERE powernap_battery != '1' AND powernap_ac != '1'
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:power, requirement:fleetd, critical:false, control:powernap-disabled, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:power, requirement:fleetd, critical:false, control:powernap-disabled, cis_safeguard_id:CIS2.10.2
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1102,7 +1105,7 @@ spec:
       )
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:power, requirement:fleetd, critical:false, control:sleep-settings-enforced, cis_safeguard_id:CIS4.3
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:power, requirement:fleetd, critical:false, control:sleep-settings-enforced, cis_safeguard_id:CIS2.10.1.2
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1123,7 +1126,7 @@ spec:
       ) WHERE womp_battery != '1' AND womp_ac != '1'
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:power, requirement:fleetd, critical:false, control:wake-on-network-disabled, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:power, requirement:fleetd, critical:false, control:wake-on-network-disabled, cis_safeguard_id:CIS2.10.3
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1162,7 +1165,7 @@ spec:
       )
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:power, requirement:fleetd+fda, critical:false, control:secure-sleep-hibernate, cis_safeguard_id:CIS3.6
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:power, requirement:fleetd+fda, critical:false, control:secure-sleep-hibernate, cis_safeguard_id:CIS2.10.1.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1182,7 +1185,7 @@ spec:
       AND NOT EXISTS (SELECT 1 FROM managed_policies WHERE domain='com.apple.screensaver' AND name='askForPasswordDelay' AND value > 5)
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:screen-lock, requirement:mdm, critical:false, control:password-on-wake, cis_safeguard_id:CIS4.3
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:screen-lock, requirement:mdm, critical:false, control:password-on-wake, cis_safeguard_id:CIS2.11.2
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1199,7 +1202,7 @@ spec:
       SELECT 1 FROM gatekeeper WHERE assessments_enabled = 1 AND dev_id_enabled = 1
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:application-control, requirement:standard, critical:false, control:gatekeeper-enabled, cis_safeguard_id:CIS2.6
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:application-control, requirement:standard, critical:false, control:gatekeeper-enabled, cis_safeguard_id:CIS2.6.5
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1219,7 +1222,7 @@ spec:
       AND EXISTS (SELECT 1 FROM managed_policies WHERE domain='com.apple.applicationaccess' AND name='Siri Data Sharing Opt-In Status' AND value=2)
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:privacy-telemetry, requirement:mdm, critical:false, control:diagnostics-disabled, cis_safeguard_id:CIS13.2
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:privacy-telemetry, requirement:mdm, critical:false, control:diagnostics-disabled, cis_safeguard_id:CIS2.6.3.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1237,7 +1240,7 @@ spec:
       AND NOT EXISTS (SELECT 1 FROM managed_policies WHERE domain='com.apple.screensaver' AND name='idleTime' AND CAST(value AS INT) > 1200)
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:screen-lock, requirement:mdm, critical:false, control:screen-saver-idle-time, cis_safeguard_id:CIS4.3
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:screen-lock, requirement:mdm, critical:false, control:screen-saver-idle-time, cis_safeguard_id:CIS2.11.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1254,7 +1257,7 @@ spec:
       SELECT 1 FROM plist WHERE path='/Library/Preferences/com.apple.loginwindow.plist' AND key='LoginwindowText' AND value != ''
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:login, requirement:standard, critical:false, control:login-banner-configured, cis_safeguard_id:CIS6.9
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:login, requirement:standard, critical:false, control:login-banner-configured, cis_safeguard_id:CIS2.11.3
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1272,7 +1275,7 @@ spec:
       AND EXISTS (SELECT 1 FROM disk_encryption WHERE user_uuid != '' AND filevault_status='on')
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:encryption, requirement:mdm, critical:false, control:filevault-enabled, cis_safeguard_id:CIS3.6
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:encryption, requirement:mdm, critical:false, control:filevault-enabled, cis_safeguard_id:CIS2.6.6
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1290,7 +1293,7 @@ spec:
       AND NOT EXISTS (SELECT 1 FROM managed_policies WHERE domain='com.apple.loginwindow' AND name='SHOWFULLNAME' AND (value!=1 AND value!='true'))
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:login, requirement:mdm, critical:false, control:login-window-name-password, cis_safeguard_id:CIS6.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:login, requirement:mdm, critical:false, control:login-window-name-password, cis_safeguard_id:CIS2.11.4
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1308,7 +1311,7 @@ spec:
       AND NOT EXISTS (SELECT 1 FROM managed_policies WHERE domain='com.apple.loginwindow' AND name='RetriesUntilHint' AND (value!=0 AND value!='false'))
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:login, requirement:mdm, critical:false, control:password-hints-disabled, cis_safeguard_id:CIS5.2
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:login, requirement:mdm, critical:false, control:password-hints-disabled, cis_safeguard_id:CIS2.11.5
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1325,7 +1328,7 @@ spec:
       SELECT 1 FROM user_login_settings WHERE password_hint_enabled = 0
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:login, requirement:fleetd, critical:false, control:no-user-password-hints, cis_safeguard_id:CIS5.2
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:login, requirement:fleetd, critical:false, control:no-user-password-hints, cis_safeguard_id:CIS2.12.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1342,7 +1345,7 @@ spec:
       SELECT 1 FROM plist WHERE path='/Library/Preferences/com.apple.loginwindow.plist' AND key='GuestEnabled' AND value = 0
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:accounts, requirement:standard, critical:false, control:guest-account-disabled, cis_safeguard_id:CIS5.4
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:accounts, requirement:standard, critical:false, control:guest-account-disabled, cis_safeguard_id:CIS2.13.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1359,7 +1362,7 @@ spec:
       SELECT 1 FROM plist WHERE path = '/Library/Preferences/SystemConfiguration/com.apple.smb.server.plist' AND key='AllowGuestAccess' AND value=0
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:sharing, requirement:standard, critical:false, control:guest-smb-access-disabled, cis_safeguard_id:CIS5.4
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:sharing, requirement:standard, critical:false, control:guest-smb-access-disabled, cis_safeguard_id:CIS2.13.2
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1377,7 +1380,7 @@ spec:
       AND NOT EXISTS (SELECT 1 FROM managed_policies WHERE domain='com.apple.loginwindow' AND name='com.apple.login.mcx.DisableAutoLoginClient' AND (value!=1 AND value!='true'))
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:login, requirement:mdm, critical:false, control:auto-login-disabled, cis_safeguard_id:CIS6.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:login, requirement:mdm, critical:false, control:auto-login-disabled, cis_safeguard_id:CIS2.13.3
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1395,7 +1398,7 @@ spec:
       AND NOT EXISTS (SELECT 1 FROM managed_policies WHERE domain='com.apple.applicationaccess' AND name='forceOnDeviceOnlyDictation' AND (value != 1 AND value != 'true'))
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:privacy, requirement:mdm, critical:false, control:on-device-dictation-enabled, cis_safeguard_id:CIS13.2
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:privacy, requirement:mdm, critical:false, control:on-device-dictation-enabled, cis_safeguard_id:CIS2.18.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1413,7 +1416,7 @@ spec:
       WHERE l.label='com.apple.auditd' AND l.program_arguments = p.cmdline
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:audit, requirement:standard, critical:false, control:auditd-enabled, cis_safeguard_id:CIS8.2
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:audit, requirement:standard, critical:false, control:auditd-enabled, cis_safeguard_id:CIS3.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1438,7 +1441,7 @@ spec:
       )
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:ui-awareness, requirement:mdm, critical:false, control:show-wifi-status, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:ui-awareness, requirement:mdm, critical:false, control:show-wifi-status, cis_safeguard_id:CIS2.4.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1464,7 +1467,7 @@ spec:
       )
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:ui-awareness, requirement:mdm, critical:false, control:show-bluetooth-status, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:ui-awareness, requirement:mdm, critical:false, control:show-bluetooth-status, cis_safeguard_id:CIS2.4.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1482,7 +1485,7 @@ spec:
       AND NOT EXISTS (SELECT 1 FROM managed_policies WHERE domain='com.apple.applicationaccess' AND name='allowAssistant' AND (value != 0 AND value!='false'))
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:2, platform:darwin, category:voice-assistant, requirement:mdm, critical:false, control:siri-disabled, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:voice-assistant, requirement:mdm, critical:false, control:siri-disabled, cis_safeguard_id:CIS2.5.2.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1503,7 +1506,7 @@ spec:
       WHERE u.directory LIKE '/Users/%' AND p.value IS NULL
     ) THEN 1 ELSE 0 END AS result;
   purpose: Optional
-  tags: framework:CISv8.1, benchmark:macos15, level:2, platform:darwin, category:voice-assistant, requirement:standard, critical:false, control:siri-type-to-true, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:voice-assistant, requirement:standard, critical:false, control:siri-type-to-true, cis_safeguard_id:CIS2.5.2.2
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1524,7 +1527,7 @@ spec:
       WHERE u.directory LIKE '/Users/%' AND p.value IS NULL
     ) THEN 1 ELSE 0 END AS result;
   purpose: Optional
-  tags: framework:CISv8.1, benchmark:macos15, level:2, platform:darwin, category:voice-assistant, requirement:standard, critical:false, control:siri-type-to-false, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:voice-assistant, requirement:standard, critical:false, control:siri-type-to-false, cis_safeguard_id:CIS2.5.2.2
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1544,7 +1547,7 @@ spec:
       WHERE u.directory LIKE '/Users/%' AND p.value IS NULL
     ) THEN 1 ELSE 0 END AS result;
   purpose: Optional
-  tags: framework:CISv8.1, benchmark:macos15, level:2, platform:darwin, category:voice-assistant, requirement:standard, critical:false, control:siri-statusmenu-true, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:voice-assistant, requirement:standard, critical:false, control:siri-statusmenu-true, cis_safeguard_id:CIS2.5.2.2
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1564,7 +1567,7 @@ spec:
       WHERE u.directory LIKE '/Users/%' AND p.value IS NULL
     ) THEN 1 ELSE 0 END AS result;
   purpose: Optional
-  tags: framework:CISv8.1, benchmark:macos15, level:2, platform:darwin, category:voice-assistant, requirement:standard, critical:false, control:siri-statusmenu-false, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:voice-assistant, requirement:standard, critical:false, control:siri-statusmenu-false, cis_safeguard_id:CIS2.5.2.2
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1584,7 +1587,7 @@ spec:
       WHERE u.directory LIKE '/Users/%' AND p.value IS NULL
     ) THEN 1 ELSE 0 END AS result;
   purpose: Optional
-  tags: framework:CISv8.1, benchmark:macos15, level:2, platform:darwin, category:voice-assistant, requirement:standard, critical:false, control:siri-voicetrigger-true, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:voice-assistant, requirement:standard, critical:false, control:siri-voicetrigger-true, cis_safeguard_id:CIS2.5.2.2
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1604,7 +1607,7 @@ spec:
       WHERE u.directory LIKE '/Users/%' AND p.value IS NULL
     ) THEN 1 ELSE 0 END AS result;
   purpose: Optional
-  tags: framework:CISv8.1, benchmark:macos15, level:2, platform:darwin, category:voice-assistant, requirement:standard, critical:false, control:siri-voicetrigger-false, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:voice-assistant, requirement:standard, critical:false, control:siri-voicetrigger-false, cis_safeguard_id:CIS2.5.2.2
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1624,7 +1627,7 @@ spec:
       WHERE u.directory LIKE '/Users/%' AND p.value IS NULL
     ) THEN 1 ELSE 0 END AS result;
   purpose: Optional
-  tags: framework:CISv8.1, benchmark:macos15, level:2, platform:darwin, category:voice-assistant, requirement:standard, critical:false, control:siri-lockscreen-true, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:voice-assistant, requirement:standard, critical:false, control:siri-lockscreen-true, cis_safeguard_id:CIS2.5.2.2
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1644,7 +1647,7 @@ spec:
       WHERE u.directory LIKE '/Users/%' AND p.value IS NULL
     ) THEN 1 ELSE 0 END AS result;
   purpose: Optional
-  tags: framework:CISv8.1, benchmark:macos15, level:2, platform:darwin, category:voice-assistant, requirement:standard, critical:false, control:siri-lockscreen-false, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:voice-assistant, requirement:standard, critical:false, control:siri-lockscreen-false, cis_safeguard_id:CIS2.5.2.2
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1659,7 +1662,7 @@ spec:
   query: |
     SELECT 1 WHERE EXISTS (SELECT 1 FROM location_services WHERE enabled=1);
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:2, platform:darwin, category:privacy-location, requirement:standard, critical:false, control:location-services-enabled, cis_safeguard_id:CIS13.2
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:privacy-location, requirement:standard, critical:false, control:location-services-enabled, cis_safeguard_id:CIS2.6.1.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1676,7 +1679,7 @@ spec:
       SELECT 1 FROM plist WHERE path='/Library/Preferences/com.apple.locationmenu.plist' AND key='ShowSystemServices' AND value=1
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:2, platform:darwin, category:privacy-location, requirement:standard, critical:false, control:show-location-icon, cis_safeguard_id:CIS13.2
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:privacy-location, requirement:standard, critical:false, control:show-location-icon, cis_safeguard_id:CIS2.6.1.2
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1699,7 +1702,7 @@ spec:
         line LIKE '%Allow @LOCAL%'
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:sharing, requirement:standard, critical:false, control:printer-sharing-disabled, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:sharing, requirement:standard, critical:false, control:printer-sharing-disabled, cis_safeguard_id:CIS2.3.3.3
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1723,7 +1726,7 @@ spec:
         value = '0'
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:remote-access, requirement:standard, critical:false, control:remote-login-disabled, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:remote-access, requirement:standard, critical:false, control:remote-login-disabled, cis_safeguard_id:CIS2.3.3.4
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1745,7 +1748,7 @@ spec:
         path = '/System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/MacOS/ARDAgent'
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:remote-access, requirement:standard, critical:false, control:remote-management-disabled, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:remote-access, requirement:standard, critical:false, control:remote-management-disabled, cis_safeguard_id:CIS2.3.3.5
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1769,7 +1772,7 @@ spec:
         value = '0'
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:remote-access, requirement:standard, critical:false, control:remote-apple-events-disabled, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:remote-access, requirement:standard, critical:false, control:remote-apple-events-disabled, cis_safeguard_id:CIS2.3.3.6
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1794,7 +1797,7 @@ spec:
         value = '1'
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:network, requirement:standard, critical:false, control:internet-sharing-disabled, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:network, requirement:standard, critical:false, control:internet-sharing-disabled, cis_safeguard_id:CIS2.3.3.7
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1829,7 +1832,7 @@ spec:
       )
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:caching, requirement:mdm, critical:false, control:content-caching-disabled, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:caching, requirement:mdm, critical:false, control:content-caching-disabled, cis_safeguard_id:CIS2.3.3.8
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1853,7 +1856,7 @@ spec:
         value = '1'
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:sharing, requirement:standard, critical:false, control:bluetooth-sharing-disabled, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:sharing, requirement:standard, critical:false, control:bluetooth-sharing-disabled, cis_safeguard_id:CIS2.3.3.10
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1892,7 +1895,7 @@ spec:
       )
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:sharing, requirement:mdm, critical:false, control:media-sharing-disabled, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:sharing, requirement:mdm, critical:false, control:media-sharing-disabled, cis_safeguard_id:CIS2.3.3.9
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1914,7 +1917,7 @@ spec:
       ) OR NOT EXISTS (SELECT 1 FROM time_machine_backups)
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:backup, requirement:fda, critical:false, control:time-machine-autobackup-enabled, cis_safeguard_id:CIS10.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:backup, requirement:fda, critical:false, control:time-machine-autobackup-enabled, cis_safeguard_id:CIS2.3.4.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1934,7 +1937,7 @@ spec:
       )
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:backup, requirement:fda, critical:false, control:time-machine-encrypted, cis_safeguard_id:CIS10.3
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:backup, requirement:fda, critical:false, control:time-machine-encrypted, cis_safeguard_id:CIS2.3.4.2
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1962,7 +1965,7 @@ spec:
       )
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:updates, requirement:mdm, critical:false, control:auto-download-updates, cis_safeguard_id:CIS7.4
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:updates, requirement:mdm, critical:false, control:auto-download-updates, cis_safeguard_id:CIS1.2
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1990,7 +1993,7 @@ spec:
       )
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:updates, requirement:mdm, critical:false, control:auto-install-macos-updates, cis_safeguard_id:CIS7.3
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:updates, requirement:mdm, critical:false, control:auto-install-macos-updates, cis_safeguard_id:CIS1.3
   contributors: karmine05
 ---
 apiVersion: v1
@@ -2018,7 +2021,7 @@ spec:
       )
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:updates, requirement:mdm, critical:false, control:auto-install-app-updates, cis_safeguard_id:CIS7.4
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:updates, requirement:mdm, critical:false, control:auto-install-app-updates, cis_safeguard_id:CIS1.4
   contributors: karmine05
 ---
 apiVersion: v1
@@ -2043,7 +2046,7 @@ spec:
       )
     ) = 2 THEN 1 ELSE 0 END AS result;
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:malware-protection, requirement:standard, critical:false, control:xprotect-running-updated, cis_safeguard_id:CIS9.2
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:malware-protection, requirement:standard, critical:false, control:xprotect-running-updated, cis_safeguard_id:CIS5.10
   contributors: karmine05
 ---
 apiVersion: v1
@@ -2071,7 +2074,7 @@ spec:
       )
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:updates, requirement:mdm, critical:false, control:install-security-responses, cis_safeguard_id:CIS7.3
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:updates, requirement:mdm, critical:false, control:install-security-responses, cis_safeguard_id:CIS1.5
   contributors: karmine05
 ---
 apiVersion: v1
@@ -2099,7 +2102,7 @@ spec:
       )
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:updates, requirement:mdm, critical:false, control:software-update-deferment-<=30d, cis_safeguard_id:CIS7.2
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:updates, requirement:mdm, critical:false, control:software-update-deferment-<=30d, cis_safeguard_id:CIS1.6
   contributors: karmine05
 ---
 apiVersion: v1
@@ -2131,7 +2134,7 @@ spec:
       )
     );
   purpose: Optional
-  tags: framework:CISv8.1, benchmark:macos15, level:2, platform:darwin, category:cloud-storage, requirement:mdm, critical:false, control:icloud-drive-disabled, cis_safeguard_id:CIS3.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:cloud-storage, requirement:mdm, critical:false, control:icloud-drive-disabled, cis_safeguard_id:CIS2.1.1.2
   contributors: karmine05
 ---
 apiVersion: v1
@@ -2163,7 +2166,7 @@ spec:
       )
     );
   purpose: Optional
-  tags: framework:CISv8.1, benchmark:macos15, level:2, platform:darwin, category:cloud-storage, requirement:mdm, critical:false, control:icloud-drive-enabled, cis_safeguard_id:CIS3.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:cloud-storage, requirement:mdm, critical:false, control:icloud-drive-enabled, cis_safeguard_id:CIS2.1.1.2
   contributors: karmine05
 ---
 apiVersion: v1
@@ -2195,7 +2198,7 @@ spec:
       )
     );
   purpose: Optional
-  tags: framework:CISv8.1, benchmark:macos15, level:2, platform:darwin, category:credentials, requirement:mdm, critical:false, control:icloud-keychain-disabled, cis_safeguard_id:CIS3.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:credentials, requirement:mdm, critical:false, control:icloud-keychain-disabled, cis_safeguard_id:CIS2.1.1.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -2227,7 +2230,7 @@ spec:
       )
     );
   purpose: Optional
-  tags: framework:CISv8.1, benchmark:macos15, level:2, platform:darwin, category:credentials, requirement:mdm, critical:false, control:icloud-keychain-enabled, cis_safeguard_id:CIS3.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:credentials, requirement:mdm, critical:false, control:icloud-keychain-enabled, cis_safeguard_id:CIS2.1.1.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -2259,7 +2262,7 @@ spec:
       )
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:2, platform:darwin, category:cloud-storage, requirement:mdm, critical:false, control:icloud-desktop-documents-disabled, cis_safeguard_id:CIS3.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:cloud-storage, requirement:mdm, critical:false, control:icloud-desktop-documents-disabled, cis_safeguard_id:CIS2.1.1.3
   contributors: karmine05
 ---
 apiVersion: v1
@@ -2276,7 +2279,7 @@ spec:
       SELECT 1 FROM alf WHERE global_state >= 1
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:firewall, requirement:standard, critical:false, control:firewall-enabled, cis_safeguard_id:CIS4.5
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:firewall, requirement:standard, critical:false, control:firewall-enabled, cis_safeguard_id:CIS2.2.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -2298,7 +2301,7 @@ spec:
       SELECT 1 FROM alf WHERE global_state >= 1 AND stealth_enabled = 1
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:firewall, requirement:standard, critical:false, control:firewall-stealth-mode, cis_safeguard_id:CIS4.5
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:firewall, requirement:standard, critical:false, control:firewall-stealth-mode, cis_safeguard_id:CIS2.2.2
   contributors: karmine05
 ---
 apiVersion: v1
@@ -2330,7 +2333,7 @@ spec:
       )
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:sharing, requirement:mdm, critical:false, control:airdrop-disabled, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:sharing, requirement:mdm, critical:false, control:airdrop-disabled, cis_safeguard_id:CIS2.3.1.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -2362,7 +2365,7 @@ spec:
       )
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:sharing, requirement:mdm, critical:false, control:airplay-receiver-disabled, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:sharing, requirement:mdm, critical:false, control:airplay-receiver-disabled, cis_safeguard_id:CIS2.3.1.2
   contributors: karmine05
 ---
 apiVersion: v1
@@ -2394,7 +2397,7 @@ spec:
       )
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:time-sync, requirement:mdm, critical:false, control:auto-time-enabled, cis_safeguard_id:CIS8.5
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:time-sync, requirement:mdm, critical:false, control:auto-time-enabled, cis_safeguard_id:CIS2.3.2.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -2412,7 +2415,7 @@ spec:
       SELECT 1 FROM processes WHERE path = '/usr/libexec/timed'
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:time-sync, requirement:standard, critical:false, control:timed-service-enabled, cis_safeguard_id:CIS8.5
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:time-sync, requirement:standard, critical:false, control:timed-service-enabled, cis_safeguard_id:CIS2.3.2.2
   contributors: karmine05
 ---
 apiVersion: v1
@@ -2436,7 +2439,7 @@ spec:
         value = '0'
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:remote-access, requirement:standard, critical:false, control:screen-sharing-disabled, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:remote-access, requirement:standard, critical:false, control:screen-sharing-disabled, cis_safeguard_id:CIS2.3.3.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -2460,5 +2463,531 @@ spec:
         value = '0'
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macos15, level:1, platform:darwin, category:sharing, requirement:standard, critical:false, control:file-sharing-disabled, cis_safeguard_id:CIS4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:sharing, requirement:standard, critical:false, control:file-sharing-disabled, cis_safeguard_id:CIS2.3.3.2
   contributors: karmine05
+---
+apiVersion: v1
+kind: policy
+spec:
+  name: CIS - Audit Security Keys Used With Apple Accounts (Manual)
+  platform: darwin
+  description: |
+    Verifies whether Security Keys are configured for Apple Account authentication. Security Keys provide phishing-resistant two-factor authentication. Organizations should audit and document the use of Security Keys for Apple Accounts.
+  resolution: |
+    Graphical Method:
+    1. Open System Settings
+    2. Select your Apple Account at the top
+    3. Select Sign-In & Security
+    4. Review Security Keys configuration
+    Document findings per organizational policy.
+  query: SELECT 1;
+  purpose: Informational
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:apple-account, requirement:manual, critical:false, control:security-keys-apple-account-audit, cis_safeguard_id:CIS2.1.1.4
+  contributors: augment-agent
+---
+apiVersion: v1
+kind: policy
+spec:
+  name: CIS - Audit Freeform Sync to iCloud (Manual)
+  platform: darwin
+  description: |
+    Audits whether Freeform app syncs data to iCloud. Organizations should assess if Freeform sync aligns with data handling policies, as collaborative whiteboard content may contain sensitive information.
+  resolution: |
+    Graphical Method:
+    1. Open System Settings
+    2. Select your Apple Account
+    3. Select iCloud
+    4. Review Freeform sync status under Apps Using iCloud
+    Document findings per organizational policy.
+  query: SELECT 1;
+  purpose: Informational
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:cloud-storage, requirement:manual, critical:false, control:freeform-icloud-sync-audit, cis_safeguard_id:CIS2.1.1.5
+  contributors: augment-agent
+---
+apiVersion: v1
+kind: policy
+spec:
+  name: CIS - Audit Find My Mac (Manual)
+  platform: darwin
+  description: |
+    Audits Find My Mac configuration. Find My Mac enables device location and remote wipe capabilities. Organizations should document whether this feature is enabled and assess alignment with asset management policies.
+  resolution: |
+    Graphical Method:
+    1. Open System Settings
+    2. Select your Apple Account
+    3. Select iCloud
+    4. Review Find My Mac status
+    Document findings per organizational policy.
+  query: SELECT 1;
+  purpose: Informational
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:device-tracking, requirement:manual, critical:false, control:find-my-mac-audit, cis_safeguard_id:CIS2.1.1.6
+  contributors: augment-agent
+---
+apiVersion: v1
+kind: policy
+spec:
+  name: CIS - Audit App Store Password Settings (Manual)
+  platform: darwin
+  description: |
+    Audits App Store password requirements for purchases and downloads. Organizations should verify that password requirements align with security policies to prevent unauthorized software installation.
+  resolution: |
+    Graphical Method:
+    1. Open System Settings
+    2. Select your Apple Account
+    3. Select Media & Purchases
+    4. Review password settings for purchases and free downloads
+    Document findings per organizational policy.
+  query: SELECT 1;
+  purpose: Informational
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:app-store, requirement:manual, critical:false, control:app-store-password-settings-audit, cis_safeguard_id:CIS2.1.2
+  contributors: augment-agent
+---
+apiVersion: v1
+kind: policy
+spec:
+  name: CIS - Ensure Computer Name Does Not Contain PII or Protected Organizational Information (Manual)
+  platform: darwin
+  description: |
+    Verifies the computer name does not contain personally identifiable information (PII) or sensitive organizational data. Computer names are broadcast on networks and could expose sensitive information.
+  resolution: |
+    Graphical Method:
+    1. Open System Settings
+    2. Select General
+    3. Select About
+    4. Review and modify the computer Name to remove any PII or sensitive information
+    Terminal Method:
+    sudo scutil --set ComputerName "appropriate-name"
+    sudo scutil --set LocalHostName "appropriate-name"
+  query: SELECT 1;
+  purpose: Informational
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:privacy, requirement:manual, critical:false, control:computer-name-no-pii, cis_safeguard_id:CIS2.3.3.11
+  contributors: augment-agent
+---
+apiVersion: v1
+kind: policy
+spec:
+  name: CIS - Audit Full Disk Access for Applications (Manual)
+  platform: darwin
+  description: |
+    Audits which applications have been granted Full Disk Access. Full Disk Access allows apps to access all files including protected system areas. Organizations should regularly review and document these permissions.
+  resolution: |
+    Graphical Method:
+    1. Open System Settings
+    2. Select Privacy & Security
+    3. Select Full Disk Access
+    4. Review the list of applications with Full Disk Access
+    Document findings and remove unnecessary permissions per organizational policy.
+  query: SELECT 1;
+  purpose: Informational
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:privacy, requirement:manual, critical:false, control:full-disk-access-audit, cis_safeguard_id:CIS2.6.2.1
+  contributors: augment-agent
+---
+apiVersion: v1
+kind: policy
+spec:
+  name: CIS - Ensure Improve Siri & Dictation Is Disabled (MDM Required)
+  platform: darwin
+  description: |
+    Disables sharing of Siri and Dictation audio recordings with Apple to improve their products. This prevents voice data from being transmitted to Apple for analysis.
+  resolution: |
+    Deploy MDM profile with com.apple.assistant.support 'Siri Data Sharing Opt-In Status' set to 0.
+    Graphical Method:
+    1. Open System Settings
+    2. Select Privacy & Security
+    3. Select Analytics & Improvements
+    4. Disable Improve Siri & Dictation
+  query: |
+    SELECT 1 WHERE
+      EXISTS (
+        SELECT 1 FROM managed_policies WHERE
+            domain='com.apple.assistant.support' AND
+            name='Siri Data Sharing Opt-In Status' AND
+            value = 0
+        )
+      AND NOT EXISTS (
+        SELECT 1 FROM managed_policies WHERE
+            domain='com.apple.assistant.support' AND
+            name='Siri Data Sharing Opt-In Status' AND
+            value != 0
+        );
+  purpose: Enforcement
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:privacy-telemetry, requirement:mdm, critical:false, control:improve-siri-dictation-disabled, cis_safeguard_id:CIS2.6.3.2
+  contributors: augment-agent
+---
+apiVersion: v1
+kind: policy
+spec:
+  name: CIS - Ensure Improve Assistive Voice Features Is Disabled (MDM Required)
+  platform: darwin
+  description: |
+    Disables sharing of assistive voice feature audio with Apple to improve accessibility features. This prevents voice data used for accessibility from being transmitted to Apple.
+  resolution: |
+    Deploy MDM profile to disable assistive voice improvements sharing.
+    Graphical Method:
+    1. Open System Settings
+    2. Select Privacy & Security
+    3. Select Analytics & Improvements
+    4. Disable Improve Assistive Voice Features
+  query: |
+    SELECT 1 WHERE
+      EXISTS (
+        SELECT 1 FROM managed_policies WHERE
+            domain='com.apple.Accessibility' AND
+            name='AXSAudioDonationSiriImprovementEnabled' AND
+            (value = 0 OR value = 'false')
+        )
+      AND NOT EXISTS (
+        SELECT 1 FROM managed_policies WHERE
+            domain='com.apple.Accessibility' AND
+            name='AXSAudioDonationSiriImprovementEnabled' AND
+            (value != 0 AND value != 'false')
+        );
+  purpose: Enforcement
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:privacy-telemetry, requirement:mdm, critical:false, control:improve-assistive-voice-disabled, cis_safeguard_id:CIS2.6.3.3
+  contributors: augment-agent
+---
+apiVersion: v1
+kind: policy
+spec:
+  name: CIS - Ensure Share with App Developers Is Disabled (MDM Required)
+  platform: darwin
+  description: |
+    Disables sharing of crash data and usage statistics with third-party app developers. This reduces data exposure to external parties.
+  resolution: |
+    Deploy MDM profile with com.apple.applicationaccess allowDiagnosticSubmission set to false.
+    Graphical Method:
+    1. Open System Settings
+    2. Select Privacy & Security
+    3. Select Analytics & Improvements
+    4. Disable Share with App Developers
+  query: |
+    SELECT 1 WHERE
+      EXISTS (
+        SELECT 1 FROM managed_policies WHERE
+            domain='com.apple.applicationaccess' AND
+            name='allowDiagnosticSubmission' AND
+            (value = 0 OR value = 'false')
+        )
+      AND NOT EXISTS (
+        SELECT 1 FROM managed_policies WHERE
+            domain='com.apple.applicationaccess' AND
+            name='allowDiagnosticSubmission' AND
+            (value != 0 AND value != 'false')
+        );
+  purpose: Enforcement
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:privacy-telemetry, requirement:mdm, critical:false, control:share-with-app-developers-disabled, cis_safeguard_id:CIS2.6.3.4
+  contributors: augment-agent
+---
+apiVersion: v1
+kind: policy
+spec:
+  name: CIS - Ensure Share iCloud Analytics Is Disabled (Manual)
+  platform: darwin
+  description: |
+    Verifies that iCloud Analytics sharing is disabled. iCloud Analytics shares usage data with Apple to improve iCloud services. Organizations should assess this setting against privacy requirements.
+  resolution: |
+    Graphical Method:
+    1. Open System Settings
+    2. Select Privacy & Security
+    3. Select Analytics & Improvements
+    4. Disable Share iCloud Analytics
+    Document findings per organizational policy.
+  query: SELECT 1;
+  purpose: Informational
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:privacy-telemetry, requirement:manual, critical:false, control:share-icloud-analytics-disabled, cis_safeguard_id:CIS2.6.3.5
+  contributors: augment-agent
+---
+apiVersion: v1
+kind: policy
+spec:
+  name: CIS - Audit Lockdown Mode (Manual)
+  platform: darwin
+  description: |
+    Audits Lockdown Mode status. Lockdown Mode provides extreme protection for users who may be targeted by sophisticated attacks. Organizations should document whether this feature is appropriate for high-risk users.
+  resolution: |
+    Graphical Method:
+    1. Open System Settings
+    2. Select Privacy & Security
+    3. Scroll to bottom and review Lockdown Mode status
+    Document findings and enable for high-risk users per organizational policy.
+  query: SELECT 1;
+  purpose: Informational
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:security, requirement:manual, critical:false, control:lockdown-mode-audit, cis_safeguard_id:CIS2.6.7
+  contributors: augment-agent
+---
+apiVersion: v1
+kind: policy
+spec:
+  name: CIS - Audit iPhone Mirroring (Manual)
+  platform: darwin
+  description: |
+    Audits iPhone Mirroring configuration. iPhone Mirroring allows users to access their iPhone from their Mac. Organizations should assess whether this feature aligns with security policies regarding device separation.
+  resolution: |
+    Graphical Method:
+    1. Open System Settings
+    2. Select Desktop & Dock
+    3. Review iPhone Mirroring settings
+    Document findings per organizational policy.
+  query: SELECT 1;
+  purpose: Informational
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:continuity, requirement:manual, critical:false, control:iphone-mirroring-audit, cis_safeguard_id:CIS2.7.2
+  contributors: augment-agent
+---
+apiVersion: v1
+kind: policy
+spec:
+  name: CIS - Ensure Help Apple Improve Search Is Disabled (MDM Required)
+  platform: darwin
+  description: |
+    Disables sharing of Spotlight search queries with Apple to improve search suggestions. This prevents search terms from being transmitted to Apple servers.
+  resolution: |
+    Deploy MDM profile with com.apple.Spotlight orderedItems configured to disable Spotlight Suggestions.
+    Graphical Method:
+    1. Open System Settings
+    2. Select Siri & Spotlight
+    3. Disable Help Apple Improve Search
+  query: |
+    SELECT 1 WHERE
+      EXISTS (
+        SELECT 1 FROM managed_policies WHERE
+            domain='com.apple.Spotlight' AND
+            name='SuppressSpotlightInternetResults' AND
+            (value = 1 OR value = 'true')
+        )
+      AND NOT EXISTS (
+        SELECT 1 FROM managed_policies WHERE
+            domain='com.apple.Spotlight' AND
+            name='SuppressSpotlightInternetResults' AND
+            (value != 1 AND value != 'true')
+        );
+  purpose: Enforcement
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:privacy-telemetry, requirement:mdm, critical:false, control:help-apple-improve-search-disabled, cis_safeguard_id:CIS2.9.1
+  contributors: augment-agent
+---
+apiVersion: v1
+kind: policy
+spec:
+  name: CIS - Audit Touch ID (Manual)
+  platform: darwin
+  description: |
+    Audits Touch ID configuration on the device. Organizations should document which fingers are enrolled and ensure Touch ID usage aligns with authentication policies.
+  resolution: |
+    Graphical Method:
+    1. Open System Settings
+    2. Select Touch ID & Password
+    3. Review enrolled fingerprints and Touch ID usage settings
+    Document findings per organizational policy.
+  query: SELECT 1;
+  purpose: Informational
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:authentication, requirement:manual, critical:false, control:touch-id-audit, cis_safeguard_id:CIS2.12.2
+  contributors: augment-agent
+---
+apiVersion: v1
+kind: policy
+spec:
+  name: CIS - Audit Game Center Settings (Manual)
+  platform: darwin
+  description: |
+    Audits Game Center configuration and account settings. Organizations should verify Game Center usage aligns with acceptable use policies and assess any privacy implications.
+  resolution: |
+    Graphical Method:
+    1. Open System Settings
+    2. Select Game Center
+    3. Review Game Center account and settings
+    Document findings per organizational policy.
+  query: SELECT 1;
+  purpose: Informational
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:applications, requirement:manual, critical:false, control:game-center-audit, cis_safeguard_id:CIS2.14.1
+  contributors: augment-agent
+---
+apiVersion: v1
+kind: policy
+spec:
+  name: CIS - Audit Notification Settings (Manual)
+  platform: darwin
+  description: |
+    Audits notification settings across applications. Organizations should verify that notification settings do not expose sensitive information on locked screens or in notification center.
+  resolution: |
+    Graphical Method:
+    1. Open System Settings
+    2. Select Notifications
+    3. Review notification settings for each application
+    4. Ensure sensitive apps do not show previews on lock screen
+    Document findings per organizational policy.
+  query: SELECT 1;
+  purpose: Informational
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:privacy, requirement:manual, critical:false, control:notification-settings-audit, cis_safeguard_id:CIS2.15.1
+  contributors: augment-agent
+---
+apiVersion: v1
+kind: policy
+spec:
+  name: CIS - Audit Wallet & Apple Pay Settings (Manual)
+  platform: darwin
+  description: |
+    Audits Wallet and Apple Pay configuration. Organizations should document payment methods and assess whether Apple Pay usage aligns with financial and security policies.
+  resolution: |
+    Graphical Method:
+    1. Open System Settings
+    2. Select Wallet & Apple Pay
+    3. Review configured payment cards and settings
+    Document findings per organizational policy.
+  query: SELECT 1;
+  purpose: Informational
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:applications, requirement:manual, critical:false, control:wallet-apple-pay-audit, cis_safeguard_id:CIS2.16.1
+  contributors: augment-agent
+---
+apiVersion: v1
+kind: policy
+spec:
+  name: CIS - Audit Internet Accounts for Authorized Use (Manual)
+  platform: darwin
+  description: |
+    Audits configured Internet Accounts (email, calendar, contacts providers). Organizations should verify that only authorized accounts are configured and that they align with data handling policies.
+  resolution: |
+    Graphical Method:
+    1. Open System Settings
+    2. Select Internet Accounts
+    3. Review all configured accounts
+    4. Remove unauthorized accounts
+    Document findings per organizational policy.
+  query: SELECT 1;
+  purpose: Informational
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:accounts, requirement:manual, critical:false, control:internet-accounts-audit, cis_safeguard_id:CIS2.17.1
+  contributors: augment-agent
+---
+apiVersion: v1
+kind: policy
+spec:
+  name: CIS - Audit Software Inventory (Manual)
+  platform: darwin
+  description: |
+    Audits installed software inventory. Organizations should maintain an accurate inventory of installed applications and verify they are authorized and properly licensed.
+  resolution: |
+    Graphical Method:
+    1. Open Finder
+    2. Navigate to Applications folder
+    3. Review installed applications
+    Terminal Method:
+    ls -la /Applications
+    system_profiler SPApplicationsDataType
+    Document findings per organizational policy.
+  query: SELECT 1;
+  purpose: Informational
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:audit, requirement:manual, critical:false, control:software-inventory-audit, cis_safeguard_id:CIS3.6
+  contributors: augment-agent
+---
+apiVersion: v1
+kind: policy
+spec:
+  name: CIS - Ensure Complex Password Must Contain Numeric Character Is Configured (Manual)
+  platform: darwin
+  description: |
+    Verifies that password policy requires at least one numeric character. This increases password complexity and resistance to dictionary attacks.
+  resolution: |
+    Configure via MDM profile or pwpolicy:
+    pwpolicy -n /Local/Default -setglobalpolicy "requiresNumeric=1"
+    Document findings per organizational policy.
+  query: SELECT 1;
+  purpose: Informational
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:authn, requirement:manual, critical:false, control:password-requires-numeric, cis_safeguard_id:CIS5.2.4
+  contributors: augment-agent
+---
+apiVersion: v1
+kind: policy
+spec:
+  name: CIS - Ensure a Login Window Banner Exists (Fleetd Required)
+  platform: darwin
+  description: |
+    Verifies that a login window banner is configured. A login banner provides legal notice to users before authentication and can deter unauthorized access.
+  resolution: |
+    Create the banner file:
+    sudo nano /Library/Security/PolicyBanner.txt
+    Add your organization's legal notice text.
+    Or deploy via MDM profile.
+  query: |
+    SELECT 1 WHERE EXISTS (
+      SELECT 1 FROM file WHERE
+        path = '/Library/Security/PolicyBanner.txt' OR
+        path = '/Library/Security/PolicyBanner.rtf' OR
+        path = '/Library/Security/PolicyBanner.rtfd'
+    );
+  purpose: Enforcement
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:login, requirement:fleetd, critical:false, control:login-window-banner-exists, cis_safeguard_id:CIS5.8
+  contributors: augment-agent
+---
+apiVersion: v1
+kind: policy
+spec:
+  name: CIS - Ensure Protect Mail Activity in Mail Is Enabled (Manual)
+  platform: darwin
+  description: |
+    Verifies that Mail Privacy Protection is enabled in the Mail app. This feature hides IP address and prevents senders from knowing when emails are opened.
+  resolution: |
+    Graphical Method:
+    1. Open Mail app
+    2. Select Mail > Settings (or Preferences)
+    3. Select Privacy tab
+    4. Enable Protect Mail Activity
+    Document findings per organizational policy.
+  query: SELECT 1;
+  purpose: Informational
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:privacy, requirement:manual, critical:false, control:mail-protect-activity-enabled, cis_safeguard_id:CIS6.2.1
+  contributors: augment-agent
+---
+apiVersion: v1
+kind: policy
+spec:
+  name: CIS - Audit AutoFill in Safari (Manual)
+  platform: darwin
+  description: |
+    Audits Safari AutoFill settings. AutoFill can store sensitive information including passwords, credit cards, and contact info. Organizations should assess AutoFill usage against security policies.
+  resolution: |
+    Graphical Method:
+    1. Open Safari
+    2. Select Safari > Settings (or Preferences)
+    3. Select AutoFill tab
+    4. Review AutoFill settings for contacts, credit cards, usernames/passwords
+    Document findings per organizational policy.
+  query: SELECT 1;
+  purpose: Informational
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:browser, requirement:manual, critical:false, control:safari-autofill-audit, cis_safeguard_id:CIS6.3.8
+  contributors: augment-agent
+---
+apiVersion: v1
+kind: policy
+spec:
+  name: CIS - Audit Pop-up Windows in Safari (Manual)
+  platform: darwin
+  description: |
+    Audits Safari pop-up window blocking settings. Pop-up blockers help prevent unwanted content and potential malicious pop-ups. Organizations should verify appropriate pop-up blocking is configured.
+  resolution: |
+    Graphical Method:
+    1. Open Safari
+    2. Select Safari > Settings (or Preferences)
+    3. Select Websites tab
+    4. Select Pop-up Windows
+    5. Review pop-up blocking settings per website
+    Document findings per organizational policy.
+  query: SELECT 1;
+  purpose: Informational
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:browser, requirement:manual, critical:false, control:safari-popup-windows-audit, cis_safeguard_id:CIS6.3.9
+  contributors: augment-agent
+---
+apiVersion: v1
+kind: policy
+spec:
+  name: CIS - Audit Passwords App (Manual)
+  platform: darwin
+  description: |
+    Audits the Passwords app (formerly part of Keychain). Organizations should verify password management practices align with security policies and assess whether the built-in Passwords app is appropriate for credential storage.
+  resolution: |
+    Graphical Method:
+    1. Open the Passwords app
+    2. Review stored passwords and security recommendations
+    3. Address any weak or compromised passwords flagged by the app
+    Document findings per organizational policy.
+  query: SELECT 1;
+  purpose: Informational
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:credentials, requirement:manual, critical:false, control:passwords-app-audit, cis_safeguard_id:CIS6.5.1
+  contributors: augment-agent
