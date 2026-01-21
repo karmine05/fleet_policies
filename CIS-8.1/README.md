@@ -8,7 +8,7 @@ Each policy is mapped to its corresponding CIS Safeguard number (e.g., `CIS 5.1`
 
 This repository currently includes CIS Benchmark v8.1 policies for the following operating systems:
 
-*   [macOS 15](macOS15/README.md)
+*   [macOS 26](macOS26/README.md)
 *   [Windows 11](win11/README.md)
 * [Ubuntu 24 (Desktop & Server)](ubuntu24/README.md)
 
@@ -24,13 +24,13 @@ To use these policies, follow the steps below:
     ```
 
 2. **Apply Policies:**
-    Navigate to the directory for your target operating system (e.g., `macOS15/`) and follow the instructions in its `README.md` file to apply the policies using `fleetctl`.
+    Navigate to the directory for your target operating system (e.g., `macOS26/`) and follow the instructions in its `README.md` file to apply the policies using `fleetctl`.
 
-    For example, for macOS 15:
+    For example, for macOS 26:
     
     ```sh
-    cd macOS15
-    fleetctl apply -f cis-macOS15-policies.yaml
+    cd macOS26
+    fleetctl apply -f cis-macOSTahoe-policies.yaml
     ```
 
 ## Directory Structure
@@ -39,9 +39,9 @@ To use these policies, follow the steps below:
 .
 ├── CIS Control CIS Safeguard Asset Type Sec.csv
 ├── LICENSE
-├── macOS15
-│   ├── cis-macOS15-policies.yaml
-│   ├── cis-macos15-section-map.csv
+├── macOS26
+│   ├── cis-macOSTahoe-policies.yaml
+│   ├── cis-macostahoe-section-map.csv
 │   └── README.md
 ├── ubuntu24
 │   ├── cis-ubuntu24-desktop-policies.yaml
