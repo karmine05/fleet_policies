@@ -15,13 +15,13 @@ spec:
       4. Select Update All
   query: SELECT 1 FROM software_update WHERE software_update_required = '0';
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:updates, requirement:fleetd, critical:false, control:apple-provided-software-current, cis_category:Install Updates, Patches and Additional Security Software, cis_subcategory:Install Updates, Patches and Additional Security Software, cis_safeguard_ids:CIS1.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:updates, requirement:fleetd, critical:false, control:apple-provided-software-current, cis_category:Install Updates, Patches and Additional Security Software, cis_subcategory:Ensure Apple-provided Software Updates Are Installed, cis_safeguard_ids:CIS1.1
   contributors: karmine05
 ---
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 6.3.1 (L1) Audit History and Remove History Items (Manual)
+  name: CIS 6.3.2 (L2) Audit History and Remove History Items (Manual)
   platform: darwin
   description: |
     Audits retention of Safari browsing history; organizations may require periodic removal to reduce data exposure and privacy risk.
@@ -42,7 +42,7 @@ spec:
             value != 1
         );
   purpose: Optional
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:browser, requirement:mdm, critical:false, control:safari-history-audited, cis_category:Finder, cis_subcategory:Finder, cis_safeguard_ids:CIS6.3.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:browser, requirement:mdm, critical:false, control:safari-history-audited, cis_category:Applications, cis_subcategory:Safari, cis_safeguard_ids:CIS6.3.2
   contributors: karmine05
 ---
 apiVersion: v1
@@ -75,7 +75,7 @@ spec:
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 6.3.2 (L1) Ensure Warn When Visiting A Fraudulent Website in Safari Is Enabled (Automated)
+  name: CIS 6.3.3 (L1) Ensure Warn When Visiting A Fraudulent Website in Safari Is Enabled ..371 (Automated)
   platform: darwin
   description: |
     Ensures phishing/malware warning feature active to alert users of known fraudulent sites.
@@ -96,7 +96,7 @@ spec:
           AND (value!=1 AND value!='true')
       );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:browser, requirement:mdm, critical:false, control:safari-fraudulent-website-warning, cis_category:Finder, cis_subcategory:Finder, cis_safeguard_ids:CIS6.3.2
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:browser, requirement:mdm, critical:false, control:safari-fraudulent-website-warning, cis_category:Applications, cis_subcategory:Safari, cis_safeguard_ids:CIS6.3.3
   contributors: karmine05
 ---
 apiVersion: v1
@@ -286,7 +286,7 @@ spec:
       FROM sudo_info WHERE type_of_auth_timestamp_record = 'tty'
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:authz, requirement:fleetd, critical:false, control:per-tty-sudo-timestamp, cis_category:System Access, Authentication and Authorization, cis_subcategory:Encryption, cis_safeguard_ids:CIS5.5
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:authz, requirement:fleetd, critical:false, control:per-tty-sudo-timestamp, cis_category:System Access, Authentication and Authorization, cis_subcategory:Ensure a Separate Timestamp Is Enabled for Each User/tty Combo, cis_safeguard_ids:CIS5.5
   contributors: karmine05
 ---
 apiVersion: v1
@@ -311,7 +311,7 @@ spec:
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 5.3.2 (L1) Ensure all user storage CoreStorage volumes are encrypted (Manual)
+  name: CIS 5.3.1 (L1) Ensure all user storage APFS volumes are encrypted (Manual) [corestorage-user-volumes-encrypted]
   platform: darwin
   description: |
     Ensures legacy CoreStorage logical volumes (if present) are encrypted to maintain confidentiality of residual deployments.
@@ -323,7 +323,7 @@ spec:
       WHERE EncryptionType != 'AES-XTS'
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:encryption, requirement:fleetd, critical:false, control:corestorage-user-volumes-encrypted, cis_category:System Access, Authentication and Authorization, cis_subcategory:Encryption, cis_safeguard_ids:CIS5.3.2
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:encryption, requirement:fleetd, critical:false, control:corestorage-user-volumes-encrypted, cis_category:System Access, Authentication and Authorization, cis_subcategory:Encryption, cis_safeguard_ids:CIS5.3.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -343,7 +343,7 @@ spec:
       rule LIKE '%authenticate-session-owner%'
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:authz, requirement:fleetd, critical:false, control:admin-cannot-takeover-locked-session, cis_category:System Access, Authentication and Authorization, cis_subcategory:Encryption, cis_safeguard_ids:CIS5.7
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:authz, requirement:fleetd, critical:false, control:admin-cannot-takeover-locked-session, cis_category:System Access, Authentication and Authorization, cis_subcategory:Ensure an Administrator Account Cannot Login to Another User's Active and Locked Session, cis_safeguard_ids:CIS5.7
   contributors: karmine05
 ---
 apiVersion: v1
@@ -357,7 +357,7 @@ spec:
     dsenableroot -d (verify root login disabled) or use Directory Utility.
   query: SELECT 1 from dscl WHERE command = 'read' AND path = '/Users/root' AND key = 'AuthenticationAuthority' AND value = '';
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:accounts, requirement:fleetd, critical:false, control:root-account-disabled, cis_category:System Access, Authentication and Authorization, cis_subcategory:Encryption, cis_safeguard_ids:CIS5.6
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:accounts, requirement:fleetd, critical:false, control:root-account-disabled, cis_category:System Access, Authentication and Authorization, cis_subcategory:Ensure the "root" Account Is Disabled, cis_safeguard_ids:CIS5.6
   contributors: karmine05
 ---
 apiVersion: v1
@@ -371,7 +371,7 @@ spec:
     Remove Guest home: sudo rm -rf /Users/Guest
   query: SELECT 1 WHERE NOT EXISTS (SELECT * FROM file WHERE path = '/Users/Guest');
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:accounts, requirement:standard, critical:false, control:guest-home-folder-removed, cis_category:System Access, Authentication and Authorization, cis_subcategory:Encryption, cis_safeguard_ids:CIS5.9
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:accounts, requirement:standard, critical:false, control:guest-home-folder-removed, cis_category:System Access, Authentication and Authorization, cis_subcategory:Ensure the Guest Home Folder Does Not Exist, cis_safeguard_ids:CIS5.9
   contributors: karmine05
 ---
 apiVersion: v1
@@ -405,7 +405,7 @@ spec:
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 6.3.5 (L2) Audit Hide IP Address in Safari Setting (Manual)
+  name: CIS 6.3.5 (L2) Audit Hide IP Address in Safari Setting (Manual) [safari-hide-ip-disabled]
   platform: darwin
   description: |
     Disables IP hiding where inspection, legal logging, or region-specific access is required. Organizational choice.
@@ -467,7 +467,7 @@ spec:
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 2.5.1.3 (L1) Ensure Mail Summarization Is Disabled (Automated)
+  name: CIS 2.5.1.4 (L1) Ensure Notes Summarization Is Disabled (Automated)
   platform: darwin
   description: |
     Disables notes summarization preventing analysis or display of sensitive note contents in summaries.
@@ -478,7 +478,7 @@ spec:
       SELECT 1 FROM managed_policies WHERE domain='com.apple.notes' AND name='SummarizationEnabled' AND (value=1 OR value='true')
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:privacy, requirement:mdm, critical:false, control:notes-summarization-disabled, cis_category:System Settings, cis_subcategory:Apple Intelligence & Siri, cis_safeguard_ids:CIS2.5.1.3
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:privacy, requirement:mdm, critical:false, control:notes-summarization-disabled, cis_category:System Settings, cis_subcategory:Apple Intelligence & Siri, cis_safeguard_ids:CIS2.5.1.4
   contributors: karmine05
 ---
 apiVersion: v1
@@ -528,7 +528,7 @@ spec:
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 5.2.3 (L2) Ensure Complex Password Must Contain Alphabetic Characters Is Configured (Manual)
+  name: CIS 5.2.3 (L2) Ensure Complex Password Must Contain Alphabetic Characters Is Configured (Manual) [password-requires-special]
   platform: darwin
   description: |
     Ensures password policy mandates inclusion of at least one non-alphanumeric (symbol) character increasing complexity against dictionary attacks.
@@ -662,7 +662,7 @@ spec:
     ) AS matches
     LIMIT 1;
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:audit, requirement:fleetd, critical:false, control:sudo-logging-enabled, cis_category:System Access, Authentication and Authorization, cis_subcategory:Encryption, cis_safeguard_ids:CIS5.11
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:audit, requirement:fleetd, critical:false, control:sudo-logging-enabled, cis_category:System Access, Authentication and Authorization, cis_subcategory:Ensure Logging Is Enabled for Sudo, cis_safeguard_ids:CIS5.11
   contributors: karmine05
 ---
 apiVersion: v1
@@ -685,7 +685,7 @@ spec:
       FROM sudo_info WHERE authentication_timestamp_timeout = '0.0 minutes'
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:authz, requirement:fleetd, critical:false, control:sudo-timeout-zero, cis_category:System Access, Authentication and Authorization, cis_subcategory:Encryption, cis_safeguard_ids:CIS5.4
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:authz, requirement:fleetd, critical:false, control:sudo-timeout-zero, cis_category:System Access, Authentication and Authorization, cis_subcategory:Ensure the Sudo Timeout Period Is Set to Zero, cis_safeguard_ids:CIS5.4
   contributors: karmine05
 ---
 apiVersion: v1
@@ -712,13 +712,13 @@ spec:
       )
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:audit, requirement:standard, critical:false, control:install-log-retained-365-days, cis_category:Logging and Auditing, cis_subcategory:Logging and Auditing, cis_safeguard_ids:CIS3.4
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:audit, requirement:standard, critical:false, control:install-log-retained-365-days, cis_category:Logging and Auditing, cis_subcategory:Ensure install.log Is Retained for 365 or More Days and No Maximum Size, cis_safeguard_ids:CIS3.4
   contributors: karmine05
 ---
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 3.4 (L1) Ensure Security Auditing Retention Is Enabled (Automated)
+  name: CIS 3.4 (L1) Ensure Security Auditing Retention Is Enabled (Automated) [expire-after:60d OR 5G]
   platform: darwin
   description: |
     Verifies audit_control expire-after retains at least 60 days or 5G so audit trail is sufficient for investigations.
@@ -732,7 +732,7 @@ spec:
         AND CAST(regex_match(line, 'expire-after:(\\d+)d OR (\\d+)G', 2) AS INTEGER) >= 5
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:audit, requirement:standard, critical:false, control:audit-retention-configured, cis_category:Logging and Auditing, cis_subcategory:Logging and Auditing, cis_safeguard_ids:CIS3.4
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:audit, requirement:standard, critical:false, control:audit-retention-configured, cis_category:Logging and Auditing, cis_subcategory:Ensure install.log Is Retained for 365 or More Days and No Maximum Size, cis_safeguard_ids:CIS3.4
   contributors: karmine05
 ---
 apiVersion: v1
@@ -753,13 +753,13 @@ spec:
       )
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:audit, requirement:standard, critical:false, control:access-to-audit-records-controlled, cis_category:Logging and Auditing, cis_subcategory:Logging and Auditing, cis_safeguard_ids:CIS3.5
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:audit, requirement:standard, critical:false, control:access-to-audit-records-controlled, cis_category:Logging and Auditing, cis_subcategory:Ensure install.log Is Retained for 365 or More Days and No Maximum Size, cis_safeguard_ids:CIS3.5
   contributors: karmine05
 ---
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 4.2 (L1) Ensure HTTP Server Is Disabled (Automated)
+  name: CIS 4.1 (L2) Ensure Bonjour Advertising Services Is Disabled (Automated)
   platform: darwin
   description: |
     Disables multicast advertisement to reduce unnecessary service exposure on local networks.
@@ -771,7 +771,7 @@ spec:
       AND NOT EXISTS (SELECT 1 FROM managed_policies WHERE domain='com.apple.mDNSResponder' AND name='NoMulticastAdvertisements' AND (value!=1 AND value!='true'))
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:network, requirement:mdm, critical:false, control:bonjour-advertising-disabled, cis_category:Network Configurations, cis_subcategory:Network Configurations, cis_safeguard_ids:CIS4.2
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:network, requirement:mdm, critical:false, control:bonjour-advertising-disabled, cis_category:Network Configurations, cis_subcategory:Ensure Bonjour Advertising Services Is Disabled, cis_safeguard_ids:CIS4.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -786,7 +786,7 @@ spec:
   query: |
     SELECT 1 WHERE NOT EXISTS (SELECT 1 FROM processes WHERE path='/usr/sbin/httpd');
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:network, requirement:standard, critical:false, control:http-server-disabled, cis_category:Network Configurations, cis_subcategory:Network Configurations, cis_safeguard_ids:CIS4.2
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:network, requirement:standard, critical:false, control:http-server-disabled, cis_category:Network Configurations, cis_subcategory:Ensure HTTP Server Is Disabled, cis_safeguard_ids:CIS4.2
   contributors: karmine05
 ---
 apiVersion: v1
@@ -804,7 +804,7 @@ spec:
       AND NOT EXISTS(SELECT 1 FROM file WHERE path='/etc/exports')
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:network, requirement:standard, critical:false, control:nfs-server-disabled, cis_category:Network Configurations, cis_subcategory:Network Configurations, cis_safeguard_ids:CIS4.3
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:network, requirement:standard, critical:false, control:nfs-server-disabled, cis_category:Network Configurations, cis_subcategory:Ensure NFS Server Is Disabled, cis_safeguard_ids:CIS4.3
   contributors: karmine05
 ---
 apiVersion: v1
@@ -827,7 +827,7 @@ spec:
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 5.1.2 (L1) Ensure System Integrity Protection Status (SIP) Is Enabled (Automated)
+  name: CIS 5.1.2 (L1) Ensure System Integrity Protection Status (SIP) Is Enabled (Automated) [sip-enabled]
   platform: darwin
   description: |
     Confirms SIP is active preventing modification of protected system locations and runtime attachment to system processes.
@@ -933,7 +933,7 @@ spec:
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 2.6.1.3 (L2) Audit Location Services Access (Manual)
+  name: CIS 2.6.1.1 (L2) Ensure Location Services Is Enabled (Automated)
   platform: darwin
   description: |
     Disables location services globally where organizational policy dictates no application may access location data.
@@ -944,13 +944,13 @@ spec:
       SELECT 1 FROM location_services WHERE enabled = 0
     );
   purpose: Optional
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:privacy-location, requirement:standard, critical:false, control:location-services-disabled-all, cis_category:System Settings, cis_subcategory:Privacy & Security, cis_safeguard_ids:CIS2.6.1.3
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:privacy-location, requirement:standard, critical:false, control:location-services-disabled-all, cis_category:System Settings, cis_subcategory:Privacy & Security, cis_safeguard_ids:CIS2.6.1.1
   contributors: karmine05
 ---
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 2.6.1.3 (L2) Audit Location Services Access (Manual)
+  name: CIS 2.6.1 (L2) Location Services (Manual)
   platform: darwin
   description: |
     Ensures only an approved allowlist of applications have location access when location services are enabled.
@@ -972,7 +972,7 @@ spec:
       )
     );
   purpose: Optional
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:privacy-location, requirement:standard, critical:false, control:location-services-allowlist, cis_category:System Settings, cis_subcategory:Privacy & Security, cis_safeguard_ids:CIS2.6.1.3
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:privacy-location, requirement:standard, critical:false, control:location-services-allowlist, cis_category:System Settings, cis_subcategory:Privacy & Security, cis_safeguard_ids:CIS2.6.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1048,7 +1048,7 @@ spec:
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 2.8.1 (L1) Audit Universal Control Settings (Manual)
+  name: CIS 2.8.1 (L1) Audit Universal Control Settings (Manual) [universal-control-disabled]
   platform: darwin
   description: |
     Ensures Universal Control disabled where data segregation or device isolation is required.
@@ -1386,7 +1386,7 @@ spec:
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 3.4 (L1) Ensure Security Auditing Retention Is Enabled (Automated)
+  name: CIS 2.18.1 (L1) Ensure On-Device Dictation Is Enabled (Automated)
   platform: darwin
   description: |
     Forces dictation processing on-device reducing data sent to external services.
@@ -1398,13 +1398,13 @@ spec:
       AND NOT EXISTS (SELECT 1 FROM managed_policies WHERE domain='com.apple.applicationaccess' AND name='forceOnDeviceOnlyDictation' AND (value != 1 AND value != 'true'))
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:privacy, requirement:mdm, critical:false, control:on-device-dictation-enabled, cis_category:Logging and Auditing, cis_subcategory:Logging and Auditing, cis_safeguard_ids:CIS3.4
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:privacy, requirement:mdm, critical:false, control:on-device-dictation-enabled, cis_category:System Settings, cis_subcategory:Keyboard, cis_safeguard_ids:CIS2.18.1
   contributors: karmine05
 ---
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 3.4 (L1) Ensure Security Auditing Retention Is Enabled (Automated)
+  name: CIS 3.4 (L1) Ensure Security Auditing Retention Is Enabled (Automated) [auditd-enabled]
   platform: darwin
   description: |
     Ensures legacy auditd active capturing security-relevant events where still required.
@@ -1416,7 +1416,7 @@ spec:
       WHERE l.label='com.apple.auditd' AND l.program_arguments = p.cmdline
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:audit, requirement:standard, critical:false, control:auditd-enabled, cis_category:Logging and Auditing, cis_subcategory:Logging and Auditing, cis_safeguard_ids:CIS3.4
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:audit, requirement:standard, critical:false, control:auditd-enabled, cis_category:Logging and Auditing, cis_subcategory:Ensure install.log Is Retained for 365 or More Days and No Maximum Size, cis_safeguard_ids:CIS3.4
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1447,7 +1447,7 @@ spec:
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 2.4.1 (L1) Audit Menu Bar and Control Center Icons (Manual)
+  name: CIS 2.4.1 (L1) Audit Menu Bar and Control Center Icons (Manual) [show-bluetooth-status]
   platform: darwin
   description: |
     Showing Bluetooth status helps users recognize enabled radios and potential exposure surface for wireless attacks.
@@ -1512,7 +1512,7 @@ spec:
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 2.5.2.2 (L1) Ensure Listen for (Siri) Is Disabled (Manual)
+  name: CIS 2.5.2.2 (L1) Ensure Listen for (Siri) Is Disabled (Manual) [siri-type-to-false]
   platform: darwin
   description: |
     Ensures Type to Siri feature is disabled where policy forbids voice assistant use paths.
@@ -1533,7 +1533,7 @@ spec:
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 2.5.2.2 (L1) Ensure Listen for (Siri) Is Disabled (Manual)
+  name: CIS 2.5.2.2 (L1) Ensure Listen for (Siri) Is Disabled (Manual) [siri-statusmenu-true]
   platform: darwin
   description: |
     Ensures Siri status menu icon visible if required for monitoring state by users/admins.
@@ -1553,7 +1553,7 @@ spec:
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 2.5.2.2 (L1) Ensure Listen for (Siri) Is Disabled (Manual)
+  name: CIS 2.5.2.2 (L1) Ensure Listen for (Siri) Is Disabled (Manual) [siri-statusmenu-false]
   platform: darwin
   description: |
     Ensures Siri status menu icon hidden where minimizing assistant footprint is preferred.
@@ -1573,7 +1573,7 @@ spec:
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 2.5.2.2 (L1) Ensure Listen for (Siri) Is Disabled (Manual)
+  name: CIS 2.5.2.2 (L1) Ensure Listen for (Siri) Is Disabled (Manual) [siri-voicetrigger-true]
   platform: darwin
   description: |
     Ensures Hey Siri voice trigger is enabled when allowed.
@@ -1593,7 +1593,7 @@ spec:
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 2.5.2.2 (L1) Ensure Listen for (Siri) Is Disabled (Manual)
+  name: CIS 2.5.2.2 (L1) Ensure Listen for (Siri) Is Disabled (Manual) [siri-voicetrigger-false]
   platform: darwin
   description: |
     Ensures voice trigger disabled for reduced inadvertent capture in sensitive areas.
@@ -1613,7 +1613,7 @@ spec:
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 2.5.2.2 (L1) Ensure Listen for (Siri) Is Disabled (Manual)
+  name: CIS 2.5.2.2 (L1) Ensure Listen for (Siri) Is Disabled (Manual) [siri-lockscreen-true]
   platform: darwin
   description: |
     Ensures Siri permitted at lock screen where convenience outweighs potential exposure.
@@ -1633,7 +1633,7 @@ spec:
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 2.5.2.2 (L1) Ensure Listen for (Siri) Is Disabled (Manual)
+  name: CIS 2.5.2.2 (L1) Ensure Listen for (Siri) Is Disabled (Manual) [siri-lockscreen-false]
   platform: darwin
   description: |
     Ensures Siri not accessible from lock screen, limiting potential unauthorized access to assistant data.
@@ -1653,7 +1653,7 @@ spec:
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 2.3.2.2 (L1) Ensure the Time Service Is Enabled (Automated)
+  name: CIS 2.6.1.1 (L2) Ensure Location Services Is Enabled (Automated) [location-services-enabled]
   platform: darwin
   description: |
     Ensures location services master switch enabled (some controls depend on accurate location data for user awareness or restrictions).
@@ -1662,7 +1662,7 @@ spec:
   query: |
     SELECT 1 WHERE EXISTS (SELECT 1 FROM location_services WHERE enabled=1);
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:privacy-location, requirement:standard, critical:false, control:location-services-enabled, cis_category:System Settings, cis_subcategory:General, cis_safeguard_ids:CIS2.3.2.2
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:privacy-location, requirement:standard, critical:false, control:location-services-enabled, cis_category:System Settings, cis_subcategory:Privacy & Security, cis_safeguard_ids:CIS2.6.1.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1862,7 +1862,7 @@ spec:
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 2.3.3.2 (L1) Ensure File Sharing Is Disabled (Automated)
+  name: CIS 2.3.3.9 (L2) Ensure Media Sharing Is Disabled (Automated)
   platform: darwin
   description: |
     Disabling Media Sharing reduces remote attack surface and prevents uncontrolled content distribution across Apple devices.
@@ -1895,13 +1895,13 @@ spec:
       )
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:sharing, requirement:mdm, critical:false, control:media-sharing-disabled, cis_category:System Settings, cis_subcategory:General, cis_safeguard_ids:CIS2.3.3.2
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:sharing, requirement:mdm, critical:false, control:media-sharing-disabled, cis_category:System Settings, cis_subcategory:General, cis_safeguard_ids:CIS2.3.3.9
   contributors: karmine05
 ---
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 2.3.4.1 (L2) Ensure Backup Automatically is Enabled If Time Machine Is Enabled (Automated)
+  name: CIS 2.3.4.1 (L1) Ensure Backup Automatically is Enabled If Time Machine Is Enabled .118 (Automated)
   platform: darwin
   description: |
     Ensures Time Machine automatic backups are enabled when destinations configured; supports resilience and data protection.
@@ -1917,13 +1917,13 @@ spec:
       ) OR NOT EXISTS (SELECT 1 FROM time_machine_backups)
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:backup, requirement:fda, critical:false, control:time-machine-autobackup-enabled, cis_category:System Settings, cis_subcategory:General, cis_safeguard_ids:CIS2.3.4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:backup, requirement:fda, critical:false, control:time-machine-autobackup-enabled, cis_category:System Settings, cis_subcategory:General, cis_safeguard_ids:CIS2.3.4.1
   contributors: karmine05
 ---
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 2.3.4.2 (L1) Ensure Time Machine Volumes Are Encrypted If Time Machine Is Enabled (Automated)
+  name: CIS 2.3.4 (L1) Time Machine (Manual)
   platform: darwin
   description: |
     Ensures Time Machine destinations are encrypted protecting backup confidentiality.
@@ -1937,7 +1937,7 @@ spec:
       )
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:backup, requirement:fda, critical:false, control:time-machine-encrypted, cis_category:System Settings, cis_subcategory:General, cis_safeguard_ids:CIS2.3.4.2
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:backup, requirement:fda, critical:false, control:time-machine-encrypted, cis_category:System Settings, cis_subcategory:General, cis_safeguard_ids:CIS2.3.4
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1965,7 +1965,7 @@ spec:
       )
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:updates, requirement:mdm, critical:false, control:auto-download-updates, cis_category:Install Updates, Patches and Additional Security Software, cis_subcategory:Install Updates, Patches and Additional Security Software, cis_safeguard_ids:CIS1.2
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:updates, requirement:mdm, critical:false, control:auto-download-updates, cis_category:Install Updates, Patches and Additional Security Software, cis_subcategory:Ensure Download New Updates When Available Is Enabled, cis_safeguard_ids:CIS1.2
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1993,7 +1993,7 @@ spec:
       )
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:updates, requirement:mdm, critical:false, control:auto-install-macos-updates, cis_category:Install Updates, Patches and Additional Security Software, cis_subcategory:Install Updates, Patches and Additional Security Software, cis_safeguard_ids:CIS1.3
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:updates, requirement:mdm, critical:false, control:auto-install-macos-updates, cis_category:Install Updates, Patches and Additional Security Software, cis_subcategory:Ensure Install of macOS Updates Is Enabled, cis_safeguard_ids:CIS1.3
   contributors: karmine05
 ---
 apiVersion: v1
@@ -2021,7 +2021,7 @@ spec:
       )
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:updates, requirement:mdm, critical:false, control:auto-install-app-updates, cis_category:Install Updates, Patches and Additional Security Software, cis_subcategory:Install Updates, Patches and Additional Security Software, cis_safeguard_ids:CIS1.4
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:updates, requirement:mdm, critical:false, control:auto-install-app-updates, cis_category:Install Updates, Patches and Additional Security Software, cis_subcategory:Ensure Install Application Updates from the App Store Is Enabled, cis_safeguard_ids:CIS1.4
   contributors: karmine05
 ---
 apiVersion: v1
@@ -2046,7 +2046,7 @@ spec:
       )
     ) = 2 THEN 1 ELSE 0 END AS result;
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:malware-protection, requirement:standard, critical:false, control:xprotect-running-updated, cis_category:System Access, Authentication and Authorization, cis_subcategory:Encryption, cis_safeguard_ids:CIS5.10
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:malware-protection, requirement:standard, critical:false, control:xprotect-running-updated, cis_category:System Access, Authentication and Authorization, cis_subcategory:Ensure XProtect Is Running and Updated, cis_safeguard_ids:CIS5.10
   contributors: karmine05
 ---
 apiVersion: v1
@@ -2074,7 +2074,7 @@ spec:
       )
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:updates, requirement:mdm, critical:false, control:install-security-responses, cis_category:Install Updates, Patches and Additional Security Software, cis_subcategory:Install Updates, Patches and Additional Security Software, cis_safeguard_ids:CIS1.5
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:updates, requirement:mdm, critical:false, control:install-security-responses, cis_category:Install Updates, Patches and Additional Security Software, cis_subcategory:Ensure Install Security Responses and System Files Is Enabled, cis_safeguard_ids:CIS1.5
   contributors: karmine05
 ---
 apiVersion: v1
@@ -2102,7 +2102,7 @@ spec:
       )
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:updates, requirement:mdm, critical:false, control:software-update-deferment-<=30d, cis_category:Install Updates, Patches and Additional Security Software, cis_subcategory:Install Updates, Patches and Additional Security Software, cis_safeguard_ids:CIS1.6
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:updates, requirement:mdm, critical:false, control:software-update-deferment-<=30d, cis_category:Install Updates, Patches and Additional Security Software, cis_subcategory:Ensure Software Update Deferment Is Less Than or Equal to 30 Days, cis_safeguard_ids:CIS1.6
   contributors: karmine05
 ---
 apiVersion: v1
@@ -2140,7 +2140,7 @@ spec:
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 2.1.1.2 (L2) Audit iCloud Drive (Manual)
+  name: CIS 2.1.1.2 (L2) Audit iCloud Drive (Manual) [icloud-drive-enabled]
   platform: darwin
   description: |
     iCloud Drive is Apple's storage solution for applications on both macOS and iOS to use the same files that are resident in Apple's cloud storage. This is the counterpart policy when organizational policy is to allow iCloud Drive document sync.
@@ -2204,7 +2204,7 @@ spec:
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 2.1.1.1 (L2) Audit iCloud Passwords & Keychain (Manual)
+  name: CIS 2.1.1.1 (L2) Audit iCloud Passwords & Keychain (Manual) [icloud-keychain-enabled]
   platform: darwin
   description: |
     The iCloud keychain is Apple's password manager that works with macOS and iOS. It allows password synchronization. This counterpart policy applies when organizational policy permits iCloud Keychain usage.
@@ -2507,7 +2507,7 @@ spec:
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 2.1.1.6 (L1) Audit Find My Mac Page 403 Internal Only - General CIS Benchmark Recommendation Set Correctly Yes No (Manual)
+  name: CIS 2.1.1.6 (L2) Audit Find My Mac (Manual)
   platform: darwin
   description: |
     Audits Find My Mac configuration. Find My Mac enables device location and remote wipe capabilities. Organizations should document whether this feature is enabled and assess alignment with asset management policies.
@@ -2520,7 +2520,7 @@ spec:
     Document findings per organizational policy.
   query: SELECT 1;
   purpose: Informational
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:device-tracking, requirement:manual, critical:false, control:find-my-mac-audit, cis_category:System Settings, cis_subcategory:Apple Account, cis_safeguard_ids:CIS2.1.1.6
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:device-tracking, requirement:manual, critical:false, control:find-my-mac-audit, cis_category:System Settings, cis_subcategory:Apple Account, cis_safeguard_ids:CIS2.1.1.6
   contributors: augment-agent
 ---
 apiVersion: v1
@@ -2566,7 +2566,7 @@ spec:
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 2.6.2.1 (L2) Audit Full Disk Access for Applications (Manual)
+  name: CIS 2.6.2 (L2) Full Disk Access (Manual)
   platform: darwin
   description: |
     Audits which applications have been granted Full Disk Access. Full Disk Access allows apps to access all files including protected system areas. Organizations should regularly review and document these permissions.
@@ -2579,7 +2579,7 @@ spec:
     Document findings and remove unnecessary permissions per organizational policy.
   query: SELECT 1;
   purpose: Informational
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:privacy, requirement:manual, critical:false, control:full-disk-access-audit, cis_category:System Settings, cis_subcategory:Privacy & Security, cis_safeguard_ids:CIS2.6.2.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:privacy, requirement:manual, critical:false, control:full-disk-access-audit, cis_category:System Settings, cis_subcategory:Privacy & Security, cis_safeguard_ids:CIS2.6.2
   contributors: augment-agent
 ---
 apiVersion: v1
@@ -2767,7 +2767,7 @@ spec:
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 2.12.2 (L1) Audit Touch ID (Manual)
+  name: CIS 2.12.2 (L1) Audit Touch ID (Manual) [touch-id-audit]
   platform: darwin
   description: |
     Audits Touch ID configuration on the device. Organizations should document which fingers are enrolled and ensure Touch ID usage aligns with authentication policies.
@@ -2785,7 +2785,7 @@ spec:
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 2.14.1 (L2) Audit Game Center Settings (Manual)
+  name: CIS 2.14 (L2) Game Center (Manual)
   platform: darwin
   description: |
     Audits Game Center configuration and account settings. Organizations should verify Game Center usage aligns with acceptable use policies and assess any privacy implications.
@@ -2797,7 +2797,7 @@ spec:
     Document findings per organizational policy.
   query: SELECT 1;
   purpose: Informational
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:applications, requirement:manual, critical:false, control:game-center-audit, cis_category:System Settings, cis_subcategory:Game Center, cis_safeguard_ids:CIS2.14.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:applications, requirement:manual, critical:false, control:game-center-audit, cis_category:System Settings, cis_subcategory:Game Center, cis_safeguard_ids:CIS2.14
   contributors: augment-agent
 ---
 apiVersion: v1
@@ -2822,7 +2822,7 @@ spec:
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 2.16.1 (L2) Audit Wallet & Apple Pay Settings (Manual)
+  name: CIS 2.16 (L2) Wallet & Apple Pay (Manual)
   platform: darwin
   description: |
     Audits Wallet and Apple Pay configuration. Organizations should document payment methods and assess whether Apple Pay usage aligns with financial and security policies.
@@ -2834,13 +2834,13 @@ spec:
     Document findings per organizational policy.
   query: SELECT 1;
   purpose: Informational
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:applications, requirement:manual, critical:false, control:wallet-apple-pay-audit, cis_category:System Settings, cis_subcategory:Wallet & Apple Pay, cis_safeguard_ids:CIS2.16.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:applications, requirement:manual, critical:false, control:wallet-apple-pay-audit, cis_category:System Settings, cis_subcategory:Wallet & Apple Pay, cis_safeguard_ids:CIS2.16
   contributors: augment-agent
 ---
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 2.17.1 (L1) Audit Internet Accounts for Authorized Use (Manual)
+  name: CIS 2.17 (L1) Internet Accounts (Manual)
   platform: darwin
   description: |
     Audits configured Internet Accounts (email, calendar, contacts providers). Organizations should verify that only authorized accounts are configured and that they align with data handling policies.
@@ -2853,7 +2853,7 @@ spec:
     Document findings per organizational policy.
   query: SELECT 1;
   purpose: Informational
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:accounts, requirement:manual, critical:false, control:internet-accounts-audit, cis_category:System Settings, cis_subcategory:Internet Accounts, cis_safeguard_ids:CIS2.17.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:accounts, requirement:manual, critical:false, control:internet-accounts-audit, cis_category:System Settings, cis_subcategory:Internet Accounts, cis_safeguard_ids:CIS2.17
   contributors: augment-agent
 ---
 apiVersion: v1
@@ -2874,13 +2874,13 @@ spec:
     Document findings per organizational policy.
   query: SELECT 1;
   purpose: Informational
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:audit, requirement:manual, critical:false, control:software-inventory-audit, cis_category:Logging and Auditing, cis_subcategory:Logging and Auditing, cis_safeguard_ids:CIS3.6
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:audit, requirement:manual, critical:false, control:software-inventory-audit, cis_category:Logging and Auditing, cis_subcategory:Ensure install.log Is Retained for 365 or More Days and No Maximum Size, cis_safeguard_ids:CIS3.6
   contributors: augment-agent
 ---
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 5.2.3 (L2) Ensure Complex Password Must Contain Alphabetic Characters Is Configured (Manual)
+  name: CIS 5.2.3 (L2) Ensure Complex Password Must Contain Alphabetic Characters Is Configured (Manual) [password-requires-numeric]
   platform: darwin
   description: |
     Verifies that password policy requires at least one numeric character. This increases password complexity and resistance to dictionary attacks.
@@ -2896,7 +2896,7 @@ spec:
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 5.9 (L1) Ensure the Guest Home Folder Does Not Exist (Automated)
+  name: CIS 5.8 (L2) Ensure a Login Window Banner Exists (Automated)
   platform: darwin
   description: |
     Verifies that a login window banner is configured. A login banner provides legal notice to users before authentication and can deter unauthorized access.
@@ -2913,7 +2913,7 @@ spec:
         path = '/Library/Security/PolicyBanner.rtfd'
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:login, requirement:fleetd, critical:false, control:login-window-banner-exists, cis_category:System Access, Authentication and Authorization, cis_subcategory:Encryption, cis_safeguard_ids:CIS5.9
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:login, requirement:fleetd, critical:false, control:login-window-banner-exists, cis_category:System Access, Authentication and Authorization, cis_subcategory:Ensure a Login Window Banner Exists, cis_safeguard_ids:CIS5.8
   contributors: augment-agent
 ---
 apiVersion: v1
@@ -2957,7 +2957,7 @@ spec:
 apiVersion: v1
 kind: policy
 spec:
-  name: CIS 6.3.10 (L1) Ensure Show Status Bar Is Enabled (Automated)
+  name: CIS 6.3.10 (L1) Ensure Show Status Bar Is Enabled (Automated) [safari-popup-windows-audit]
   platform: darwin
   description: |
     Audits Safari pop-up window blocking settings. Pop-up blockers help prevent unwanted content and potential malicious pop-ups. Organizations should verify appropriate pop-up blocking is configured.
