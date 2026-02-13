@@ -20,5 +20,5 @@ cd <your-repo-name>/win11
 Use `fleetctl` to apply the Win 11 security policies to your Fleet instance.
 
 ```sh
-fleetctl apply -f cis-win11-policies.yaml
+fleetctl apply -f intune/l1_win11_intune.yaml
 ```
