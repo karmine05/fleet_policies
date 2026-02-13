@@ -8478,7 +8478,7 @@ spec:
   name: 'CIS 49.32 (L1) Ensure ''User Account Control: Use Admin Approval Mode'' is set to ''Enabled'' (Automated)'
   platform: windows
   purpose: Informational
-  query: SELECT 1 FROM registry WHERE path = 'HKEY_LOCAL_MACHINE\Microsoft\Windows\CurrentVersion\Policies\System\FilterAdministratorToken
+  query: SELECT 1 FROM registry WHERE path = 'HKEY_LOCAL_MACHINE\Microsoft\Windows\CurrentVersion\Policies\System\FilterAdministratorToken'
     AND data = '1';
   resolution: 'To establish the recommended configuration via configuration profiles,
     set the following
