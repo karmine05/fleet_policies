@@ -52,7 +52,7 @@ CIS2.8.1, universal-control-disabled               , CIS - Ensure Universal Cont
 CIS2.10.2, powernap-disabled                        , CIS - Ensure Power Nap Is Disabled for Intel Macs (Fleetd Required)                                                   ,     1, power              , true
 CIS2.10.1.2, sleep-settings-enforced                  , CIS - Ensure sleep and display sleep is enabled on Apple Silicon devices (Fleetd required)                            ,     1, power              , true
 CIS2.10.3, wake-on-network-disabled                 , CIS - Ensure Wake for Network Access Is Disabled (Fleetd Required)                                                    ,     1, power              , true
-CIS2.10.1.1, secure-sleep-hibernate                   , "CIS - Ensure the OS is not Activate When Resuming from Sleep (Fleetd, FDA Required)"                                 ,     1, power              , true
+CIS2.10.1.1, secure-sleep-hibernate                   , CIS - Ensure the OS is not Activate When Resuming from Sleep (Fleetd - FDA Required)                                 ,     1, power              , true
 CIS2.11.2, password-on-wake                         , CIS - Ensure a Password is Required to Wake the Computer From Sleep or Screen Saver Is Enabled (MDM Required)         ,     1, screen-lock        , true
 CIS2.6.5, gatekeeper-enabled                       , CIS - Ensure Gatekeeper Is Enabled                                                                                    ,     1, application-control, true
 CIS2.6.3.1, diagnostics-disabled                     , CIS - Ensure Sending Diagnostic and Usage Data to Apple Is Disabled (MDM Required)                                    ,     1, privacy-telemetry  , true
@@ -103,7 +103,7 @@ CIS5.5, per-tty-sudo-timestamp                   , CIS - Ensure a Separate Times
 CIS5.3.1, apfs-user-volumes-encrypted              , CIS - Ensure all user storage APFS volumes are encrypted (Fleetd Required)                                            ,     1, encryption         , true
 CIS5.3.2, corestorage-user-volumes-encrypted       , CIS - Ensure all user storage CoreStorage volumes are encrypted (Fleetd Required)                                     ,     1, encryption         , true
 CIS5.7, admin-cannot-takeover-locked-session     , CIS - Ensure an Administrator Account Cannot Login to Another User's Active and Locked Session (Fleetd Required)      ,     2, authz              , true
-CIS5.6, root-account-disabled                    , "CIS - Ensure the ""root"" Account Is Disabled (Fleetd Required)"                                                     ,     1, accounts           , true
+CIS5.6, root-account-disabled                    , CIS - Ensure the 'root' Account Is Disabled (Fleetd Required)                                                     ,     1, accounts           , true
 CIS5.9, guest-home-folder-removed                , CIS - Ensure the Guest Home Folder Does Not Exist                                                                     ,     1, accounts           , true
 CIS6.3.5, safari-hide-ip-enabled                   , CIS - Ensure the Hide IP Address in Safari is Enabled (Based on organization's policy)                                ,     2, browser-privacy    , true
 CIS6.3.5, safari-hide-ip-disabled                  , CIS - Ensure the Hide IP Address in Safari is Disabled (Based on organization's policy)                               ,     2, browser-privacy    , true
