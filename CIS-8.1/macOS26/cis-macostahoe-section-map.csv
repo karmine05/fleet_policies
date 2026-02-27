@@ -52,7 +52,7 @@ CIS2.8.1, universal-control-disabled               , CIS - Ensure Universal Cont
 CIS2.10.2, powernap-disabled                        , CIS - Ensure Power Nap Is Disabled for Intel Macs (Fleetd Required)                                                   ,     1, power              , true
 CIS2.10.1.2, sleep-settings-enforced                  , CIS - Ensure sleep and display sleep is enabled on Apple Silicon devices (Fleetd required)                            ,     1, power              , true
 CIS2.10.3, wake-on-network-disabled                 , CIS - Ensure Wake for Network Access Is Disabled (Fleetd Required)                                                    ,     1, power              , true
-CIS2.10.1.1, secure-sleep-hibernate                   , CIS - Ensure the OS is not Activate When Resuming from Sleep (Fleetd, FDA Required)                                 ,     1, power              , true
+CIS2.10.1.1, secure-sleep-hibernate                   , CIS - Ensure the OS is not Activate When Resuming from Sleep (Fleetd - FDA Required)                                 ,     1, power              , true
 CIS2.11.2, password-on-wake                         , CIS - Ensure a Password is Required to Wake the Computer From Sleep or Screen Saver Is Enabled (MDM Required)         ,     1, screen-lock        , true
 CIS2.6.5, gatekeeper-enabled                       , CIS - Ensure Gatekeeper Is Enabled                                                                                    ,     1, application-control, true
 CIS2.6.3.1, diagnostics-disabled                     , CIS - Ensure Sending Diagnostic and Usage Data to Apple Is Disabled (MDM Required)                                    ,     1, privacy-telemetry  , true
