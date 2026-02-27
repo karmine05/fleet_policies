@@ -1,0 +1,188 @@
+cis_safeguard_id,control,name,level,category,provisional
+CIS1.1,ubtu_24_90890,CIS - Ensure Use cryptographic mechanisms to protect the integrity of audit tools.,2,general,true
+CIS1.2,ubtu_24_100010,"CIS - Ensure Not have the ""systemd-timesyncd"" package installed.",3,time-sync,true
+CIS1.3,ubtu_24_100020,"CIS - Ensure Not have the ""ntp"" package installed.",3,time-sync,true
+CIS1.4,ubtu_24_100030,"CIS - Ensure Not have the ""telnet"" package installed.",1,services,true
+CIS1.5,ubtu_24_100040,"CIS - Ensure Not have the ""rsh-server"" package installed.",1,services,true
+CIS1.6,ubtu_24_100100,CIS - Ensure Use a file integrity tool to verify correct operation of all security functions.,2,data-protection,true
+CIS1.7,ubtu_24_100110,CIS - Ensure Configure AIDE to perform file integrity checking on the file system.,2,data-protection,true
+CIS1.8,ubtu_24_100120,CIS - Ensure Be configured so that the script that runs each 30 days or less to check file integrity is the default.,2,secure-config,true
+CIS1.9,ubtu_24_100130,CIS - Ensure Notify designated personnel if baseline configurations are changed in an unauthorized manner. The file integrity tool must notify the system administrator when changes to the baseline configuration or anomalies in the operation of any security functions are discovered.,2,audit-log,true
+CIS1.10,ubtu_24_100200,CIS - Ensure Be configured to preserve log records from failure events.,2,audit-log,true
+CIS1.11,ubtu_24_100300,CIS - Ensure Have an application firewall installed in order to control remote access methods.,2,firewall,true
+CIS1.12,ubtu_24_100310,CIS - Ensure Enable and run the Uncomplicated Firewall (ufw).,2,firewall,true
+CIS1.13,ubtu_24_100400,"CIS - Ensure Have the ""auditd"" package installed.",2,audit-log,true
+CIS1.14,ubtu_24_100410,"CIS - Ensure Produce audit records and reports containing information to establish when, where, what type, the source, and the outcome for all DOD-defined auditable events and actions in near real time.",2,audit-log,true
+CIS1.15,ubtu_24_100450,CIS - Ensure The operating system audit event multiplexor must be configured to offload audit logs onto a different system from the system being audited.,3,audit-log,true
+CIS1.16,ubtu_24_100500,"CIS - Ensure Have the ""apparmor"" package installed.",2,data-protection,true
+CIS1.17,ubtu_24_100510,CIS - Ensure Be configured to use AppArmor.,2,access-control,true
+CIS1.18,ubtu_24_100600,"CIS - Ensure Have the ""libpam-pwquality"" package installed.",2,general,true
+CIS1.19,ubtu_24_100650,"CIS - Ensure Have the ""SSSD"" package installed.",2,general,true
+CIS1.20,ubtu_24_100660,"CIS - Ensure Use the ""SSSD"" package for multifactor authentication services.",2,general,true
+CIS1.21,ubtu_24_100700,"CIS - Ensure Have the ""chrony"" package installed.",3,time-sync,true
+CIS1.22,ubtu_24_100800,CIS - Ensure Have SSH installed.,1,data-protection,true
+CIS1.23,ubtu_24_100810,CIS - Ensure Use SSH to protect the confidentiality and integrity of transmitted information.,1,data-protection,true
+CIS1.24,ubtu_24_100820,CIS - Ensure Configure the SSH daemon to use FIPS 140-3-approved ciphers to prevent the unauthorized disclosure of information and/or detect changes to information during transmission.,2,data-protection,true
+CIS1.25,ubtu_24_100830,CIS - Ensure Configure the SSH daemon to use Message Authentication Codes (MACs) employing FIPS 140-3-approved cryptographic hashes to prevent the unauthorized disclosure of information and/or detect changes to information during transmission.,2,data-protection,true
+CIS1.26,ubtu_24_100840,CIS - Ensure The operating system SSH server must be configured to use only FIPS-validated key exchange algorithms.,2,data-protection,true
+CIS1.27,ubtu_24_100850,CIS - Ensure Configure the SSH client to use FIPS 140-3 approved ciphers to prevent the unauthorized disclosure of information and/or detect changes to information during transmission.,2,general,true
+CIS1.28,ubtu_24_100860,CIS - Ensure The operating system's SSH client must be configured to use only Message Authentication Codes (MACs) employing FIPS 140-3 validated cryptographic hash algorithms.,2,data-protection,true
+CIS1.29,ubtu_24_100900,CIS - Ensure Accept personal identity verification (PIV) credentials.,2,access-control,true
+CIS1.30,ubtu_24_100910,CIS - Ensure Accept Personal Identity Verification (PIV) credentials managed through the Privileged Access Management (PAM) framework.,2,access-control,true
+CIS1.31,ubtu_24_101000,CIS - Ensure Allow users to directly initiate a session lock for all connection types.,2,secure-config,true
+CIS1.32,ubtu_24_102000,"CIS - Ensure The operating system, when booted, must require authentication upon booting into single-user and maintenance modes.",1,accounts,true
+CIS1.33,ubtu_24_102010,CIS - Ensure Initiate session audits at system startup.,2,access-control,true
+CIS1.34,ubtu_24_200000,CIS - Ensure Limit the number of concurrent sessions to ten for all accounts and/or account types.,3,secure-config,true
+CIS1.35,ubtu_24_200020,CIS - Ensure Initiate a graphical session lock after 15 minutes of inactivity.,2,secure-config,true
+CIS1.36,ubtu_24_200040,CIS - Ensure Retain a user's session lock until that user reestablishes access using established identification and authentication procedures.,2,secure-config,true
+CIS1.37,ubtu_24_200060,CIS - Ensure Automatically terminate a user session after inactivity timeouts have expired.,2,secure-config,true
+CIS1.38,ubtu_24_200090,CIS - Ensure Monitor remote access methods.,2,secure-config,true
+CIS1.39,ubtu_24_200250,CIS - Ensure Automatically expire temporary accounts within 72 hours.,2,secure-config,true
+CIS1.40,ubtu_24_200260,"CIS - Ensure Disable account identifiers (individuals, groups, roles, and devices) after 35 days of inactivity.",2,accounts,true
+CIS1.41,ubtu_24_200280,"CIS - Ensure Generate audit records for all account creations, modifications, disabling, and termination events that affect /etc/passwd.",2,audit-log,true
+CIS1.42,ubtu_24_200290,"CIS - Ensure Generate audit records for all account creations, modifications, disabling, and termination events that affect /etc/group.",2,audit-log,true
+CIS1.43,ubtu_24_200300,"CIS - Ensure Generate audit records for all account creations, modifications, disabling, and termination events that affect /etc/shadow.",2,audit-log,true
+CIS1.44,ubtu_24_200310,"CIS - Ensure Generate audit records for all account creations, modifications, disabling, and termination events that affect /etc/gshadow.",2,audit-log,true
+CIS1.45,ubtu_24_200320,"CIS - Ensure Generate audit records for all account creations, modifications, disabling, and termination events that affect /etc/opasswd.",2,audit-log,true
+CIS1.46,ubtu_24_200580,CIS - Ensure Prevent all software from executing at higher privilege levels than users executing the software and the audit system must be configured to audit the execution of privileged functions.,2,audit-log,true
+CIS1.47,ubtu_24_200610,CIS - Ensure Automatically lock an account until the locked account is released by an administrator when three unsuccessful logon attempts have been made.,3,access-control,true
+CIS1.48,ubtu_24_200640,CIS - Ensure Display the Standard Mandatory DOD Notice and Consent Banner before granting local access to the system via a graphical user logon.,2,secure-config,true
+CIS1.49,ubtu_24_200650,CIS - Ensure Enable the graphical user logon banner to display the Standard Mandatory DOD Notice and Consent Banner before granting local access to the system via a graphical user logon.,2,secure-config,true
+CIS1.50,ubtu_24_200660,CIS - Ensure Display the Standard Mandatory DOD Notice and Consent Banner before granting local access to the system via a graphical user logon.,2,general,true
+CIS1.51,ubtu_24_200680,CIS - Ensure Configured to enforce the acknowledgement of the Standard Mandatory DOD Notice and Consent Banner for all SSH connections.,2,general,true
+CIS1.52,ubtu_24_300001,"CIS - Ensure Be configured so that the Advance Package Tool (APT) prevents the installation of patches, service packs, device drivers, or operating system components without verification they have been digitally signed using a certificate that is recognized and approved by the organization.",3,updates,true
+CIS1.53,ubtu_24_300006,"CIS - Ensure The operating system library files must have mode ""755"" or less permissive.",2,data-protection,true
+CIS1.54,ubtu_24_300007,"CIS - Ensure The operating system library files must be owned by ""root"".",2,data-protection,true
+CIS1.55,ubtu_24_300008,"CIS - Ensure The operating system library directories must be owned by ""root"".",2,data-protection,true
+CIS1.56,ubtu_24_300009,"CIS - Ensure The operating system library files must be group-owned by ""root"".",2,data-protection,true
+CIS1.57,ubtu_24_300010,"CIS - Ensure The operating system library directories must be group-owned by ""root"".",2,data-protection,true
+CIS1.58,ubtu_24_300011,"CIS - Ensure Have system commands set to a mode of ""755"" or less permissive.",2,data-protection,true
+CIS1.59,ubtu_24_300012,"CIS - Ensure Have system commands owned by ""root"" or a system account.",2,data-protection,true
+CIS1.60,ubtu_24_300013,"CIS - Ensure Have system commands group-owned by ""root"" or a system account.",2,data-protection,true
+CIS1.61,ubtu_24_300014,CIS - Ensure Prevent the use of dictionary words for passwords.,2,accounts,true
+CIS1.62,ubtu_24_300016,"CIS - Ensure Be configured so that when passwords are changed or new passwords are established, pwquality must be used.",2,accounts,true
+CIS1.63,ubtu_24_300017,CIS - Ensure Enforce a delay of at least four seconds between logon prompts following a failed logon attempt.,3,secure-config,true
+CIS1.64,ubtu_24_300021,CIS - Ensure Require users to reauthenticate for privilege escalation or when changing roles.,2,accounts,true
+CIS1.65,ubtu_24_300022,"CIS - Ensure Be configured so that remote X connections are disabled, unless to fulfill documented and validated mission requirements.",1,services,true
+CIS1.66,ubtu_24_300023,CIS - Ensure The operating system SSH daemon must prevent remote hosts from connecting to the proxy display.,2,services,true
+CIS1.67,ubtu_24_300024,CIS - Ensure Ubuntu 24.04 LTS must display the date and time of the last successful account logon upon logon.,3,general,true
+CIS1.68,ubtu_24_300025,CIS - Ensure Disable the x86 Ctrl-Alt-Delete key sequence if a graphical user interface is installed.,1,secure-config,true
+CIS1.69,ubtu_24_300026,CIS - Ensure Disable the x86 Ctrl-Alt-Delete key sequence.,1,secure-config,true
+CIS1.70,ubtu_24_300027,CIS - Ensure Not have accounts configured with blank or null passwords.,1,accounts,true
+CIS1.71,ubtu_24_300028,CIS - Ensure Not allow accounts configured in Pluggable Authentication Modules (PAM) with blank or null passwords.,1,accounts,true
+CIS1.72,ubtu_24_300029,CIS - Ensure Generate audit records for all events that affect the systemd journal files.,2,audit-log,true
+CIS1.73,ubtu_24_300030,CIS - Ensure The operating system default filesystem permissions must be defined in such a way that all authenticated users can read and modify only their own files.,2,data-protection,true
+CIS1.74,ubtu_24_300031,CIS - Ensure Not allow unattended or automatic login via SSH.,1,accounts,true
+CIS1.75,ubtu_24_300039,CIS - Ensure Disable automatic mounting of Universal Serial Bus (USB) mass storage driver.,2,usb,true
+CIS1.76,ubtu_24_300041,"CIS - Ensure Be configured to prohibit or restrict the use of functions, ports, protocols, and/or services, as defined in the PPSM CAL and vulnerability assessments.",2,firewall,true
+CIS1.77,ubtu_24_400000,CIS - Ensure Uniquely identify interactive users.,2,general,true
+CIS1.78,ubtu_24_400020,CIS - Ensure Ubuntu 24.04 LTS must implement smart card logins for multifactor authentication for local and network access to privileged and nonprivileged accounts.,2,general,true
+CIS1.79,ubtu_24_400030,CIS - Ensure Implement smart card logins for multifactor authentication for local and network access to privileged and nonprivileged accounts over SSH.,2,general,true
+CIS1.80,ubtu_24_400060,CIS - Ensure Electronically verify personal identity verification (PIV) credentials.,2,access-control,true
+CIS1.81,ubtu_24_400110,CIS - Ensure Prevent direct login into the root account.,2,secure-config,true
+CIS1.82,ubtu_24_400220,CIS - Ensure Store only encrypted representations of passwords.,2,accounts,true
+CIS1.83,ubtu_24_400260,CIS - Ensure Enforce password complexity by requiring at least one uppercase character be used.,2,accounts,true
+CIS1.84,ubtu_24_400270,CIS - Ensure Enforce password complexity by requiring at least one lowercase character be used.,2,accounts,true
+CIS1.85,ubtu_24_400280,CIS - Ensure Enforce password complexity by requiring that at least one numeric character be used.,2,accounts,true
+CIS1.86,ubtu_24_400290,CIS - Ensure Require the change of at least eight characters when passwords are changed.,2,accounts,true
+CIS1.87,ubtu_24_400300,CIS - Ensure Enforce 24 hours/one day as the minimum password lifetime. Passwords for new users must have a 24 hours/one day minimum password lifetime restriction.,2,accounts,true
+CIS1.88,ubtu_24_400310,CIS - Ensure Enforce a 60-day maximum password lifetime restriction. Passwords for new users must have a 60-day maximum password lifetime restriction.,2,accounts,true
+CIS1.89,ubtu_24_400320,CIS - Ensure Enforce a minimum 15-character password length.,2,accounts,true
+CIS1.90,ubtu_24_400330,CIS - Ensure Enforce password complexity by requiring that at least one special character be used.,2,accounts,true
+CIS1.91,ubtu_24_400340,CIS - Ensure Be configured such that Pluggable Authentication Module (PAM) prohibits the use of cached authentications after one day.,3,secure-config,true
+CIS1.92,ubtu_24_400360,"CIS - Ensure Ubuntu 24.04 LTS, for PKI-based authentication, SSSD must validate certificates by constructing a certification path (which includes status information) to an accepted trust anchor.",2,general,true
+CIS1.93,ubtu_24_400370,CIS - Ensure Map the authenticated identity to the user or group account for PKI-based authentication.,1,access-control,true
+CIS1.94,ubtu_24_400375,"CIS - Ensure The operating system, for PKI-based authentication, Privileged Access Management (PAM) must validate certificates by constructing a certification path (which includes status information) to an accepted trust anchor.",2,access-control,true
+CIS1.95,ubtu_24_400380,"CIS - Ensure The operating system for PKI-based authentication, must implement a local cache of revocation data in case of the inability to access revocation information via the network.",2,access-control,true
+CIS1.96,ubtu_24_400400,CIS - Ensure Encrypt all stored passwords with a FIPS 140-3-approved cryptographic hashing algorithm.,2,general,true
+CIS1.97,ubtu_24_500010,"CIS - Ensure Generate audit records for privileged activities, nonlocal maintenance, diagnostic sessions and other system-level access.",2,audit-log,true
+CIS1.98,ubtu_24_500050,CIS - Ensure Use strong authenticators in establishing nonlocal maintenance and diagnostic sessions.,2,accounts,true
+CIS1.99,ubtu_24_600000,CIS - Ensure Immediately terminate all network connections associated with SSH traffic after a period of inactivity.,2,general,true
+CIS1.100,ubtu_24_600010,CIS - Ensure Immediately terminate all network connections associated with SSH traffic at the end of the session or after 10 minutes of inactivity.,2,general,true
+CIS1.101,ubtu_24_600030,"CIS - Ensure Implement NIST FIPS-validated cryptography to protect classified information and for the following: To provision digital signatures, to generate cryptographic hashes, and to protect unclassified information requiring confidentiality and cryptographic protection in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards.",1,audit-log,true
+CIS1.102,ubtu_24_600060,CIS - Ensure Use DOD PKI-established certificate authorities for verification of the establishment of protected sessions.,2,secure-config,true
+CIS1.103,ubtu_24_600070,"CIS - Ensure Disable kernel core dumps so that it can fail to a secure state if system initialization fails, shutdown fails or aborts fail.",2,services,true
+CIS1.104,ubtu_24_600090,CIS - Ensure Implement cryptographic mechanisms to prevent unauthorized disclosure and modification of all information that requires protection at rest.,2,general,true
+CIS1.105,ubtu_24_600130,CIS - Ensure Ensure only users who need access to security functions are part of sudo group.,1,accounts,true
+CIS1.106,ubtu_24_600140,CIS - Ensure Restrict access to the kernel message buffer.,3,services,true
+CIS1.107,ubtu_24_600150,CIS - Ensure Set a sticky bit on all public directories to prevent unauthorized and unintended information transferred via shared system resources.,2,secure-config,true
+CIS1.108,ubtu_24_600160,CIS - Ensure Compare internal information system clocks at least every 24 hours with an authoritative time server.,3,time-sync,true
+CIS1.109,ubtu_24_600180,CIS - Ensure Synchronize internal information system clocks to the authoritative time source when the time difference is greater than one second.,3,time-sync,true
+CIS1.110,ubtu_24_600190,CIS - Ensure Be configured to use TCP syncookies.,2,services,true
+CIS1.112,ubtu_24_600230,CIS - Ensure Disable all wireless network adapters.,2,services,true
+CIS1.113,ubtu_24_700010,CIS - Ensure Generate error messages that provide information necessary for corrective actions without revealing information that could be exploited by adversaries.,2,data-protection,true
+CIS1.114,ubtu_24_700020,CIS - Ensure Generate system journal entries without revealing information that could be exploited by adversaries.,2,data-protection,true
+CIS1.115,ubtu_24_700030,"CIS - Ensure Be configured so that the ""journalctl"" command is not accessible by unauthorized users.",2,data-protection,true
+CIS1.116,ubtu_24_700040,"CIS - Ensure Be configured so that the ""journalctl"" command is owned by ""root"".",2,data-protection,true
+CIS1.117,ubtu_24_700050,"CIS - Ensure Be configured so that the ""journalctl"" command is group- owned by ""root"".",2,data-protection,true
+CIS1.118,ubtu_24_700060,"CIS - Ensure Configure the directories used by the system journal to be group-owned by ""systemd-journal"".",2,data-protection,true
+CIS1.119,ubtu_24_700070,"CIS - Ensure Configure the files used by the system journal to be group- owned by ""systemd-journal"".",2,data-protection,true
+CIS1.120,ubtu_24_700080,"CIS - Ensure Configure the directories used by the system journal to be owned by ""root"".",2,data-protection,true
+CIS1.121,ubtu_24_700090,"CIS - Ensure Configure the files used by the system journal to be owned by ""root"".",2,data-protection,true
+CIS1.122,ubtu_24_700100,"CIS - Ensure Configure the ""/var/log"" directory to be group-owned by ""syslog"".",2,data-protection,true
+CIS1.123,ubtu_24_700110,"CIS - Ensure Configure the ""/var/log"" directory to be owned by ""root"".",2,data-protection,true
+CIS1.124,ubtu_24_700120,"CIS - Ensure Configure the ""/var/log"" directory to have mode ""755"" or less permissive. ROUP ID: V-270767 RULE ID: SV-270767r1066790",2,data-protection,true
+CIS1.125,ubtu_24_700130,"CIS - Ensure Configure the ""/var/log/syslog"" file to be group-owned by ""adm"".",2,data-protection,true
+CIS1.126,ubtu_24_700140,"CIS - Ensure Configure ""/var/log/syslog"" file to be owned by ""syslog"".",2,data-protection,true
+CIS1.127,ubtu_24_700150,"CIS - Ensure Configure ""/var/log/syslog"" file with mode ""640"" or less permissive.",2,data-protection,true
+CIS1.128,ubtu_24_700300,CIS - Ensure Implement nonexecutable data to protect its memory from unauthorized code execution.,2,malware,true
+CIS1.129,ubtu_24_700310,CIS - Ensure Implement address space layout randomization to protect its memory from unauthorized code execution.,2,malware,true
+CIS1.130,ubtu_24_700320,CIS - Ensure Be configured so that the Advance Package Tool (APT) removes all software components after updated versions have been installed.,2,general,true
+CIS1.131,ubtu_24_700400,CIS - Ensure A vendor-supported release.,2,general,true
+CIS1.132,ubtu_24_900040,CIS - Ensure Be configured so that audit configuration files are not write- accessible by unauthorized users.,2,data-protection,true
+CIS1.133,ubtu_24_900050,CIS - Ensure Permit only authorized accounts to own the audit configuration files.,2,data-protection,true
+CIS1.134,ubtu_24_900060,CIS - Ensure Permit only authorized groups to own the audit configuration files.,2,data-protection,true
+CIS1.135,ubtu_24_900070,CIS - Ensure Generate audit records for successful/unsuccessful uses of the su command.,2,audit-log,true
+CIS1.136,ubtu_24_900080,CIS - Ensure Generate audit records for successful/unsuccessful uses of the chfn command.,2,audit-log,true
+CIS1.137,ubtu_24_900090,CIS - Ensure Generate audit records for successful/unsuccessful uses of the mount command.,2,audit-log,true
+CIS1.138,ubtu_24_900100,CIS - Ensure Generate audit records for successful/unsuccessful uses of the umount command.,2,audit-log,true
+CIS1.139,ubtu_24_900110,CIS - Ensure Generate audit records for successful/unsuccessful uses of the ssh-agent command.,2,audit-log,true
+CIS1.140,ubtu_24_900120,CIS - Ensure Generate audit records for successful/unsuccessful uses of the ssh-keysign command.,2,audit-log,true
+CIS1.141,ubtu_24_900130,"CIS - Ensure Generate audit records for any use of the setxattr, fsetxattr, lsetxattr, removexattr, fremovexattr, and lremovexattr system calls.",2,audit-log,true
+CIS1.142,ubtu_24_900140,"CIS - Ensure Generate audit records for successful/unsuccessful uses of the chown, fchown, fchownat, and lchown system calls.",2,audit-log,true
+CIS1.143,ubtu_24_900150,"CIS - Ensure Generate audit records for successful/unsuccessful uses of the chmod, fchmod, and fchmodat system calls.",2,audit-log,true
+CIS1.144,ubtu_24_900160,"CIS - Ensure Generate audit records for successful/unsuccessful uses of the creat, open, openat, open_by_handle_at, truncate, and ftruncate system calls.",2,audit-log,true
+CIS1.145,ubtu_24_900170,CIS - Ensure The operating system LTS must generate audit records for successful/unsuccessful uses of the sudo command.,2,audit-log,true
+CIS1.146,ubtu_24_900180,CIS - Ensure Generate audit records for successful/unsuccessful uses of the sudoedit command.,2,audit-log,true
+CIS1.147,ubtu_24_900190,CIS - Ensure Generate audit records for successful/unsuccessful uses of the chsh command.,2,audit-log,true
+CIS1.148,ubtu_24_900200,CIS - Ensure Generate audit records for successful/unsuccessful uses of the newgrp command.,2,audit-log,true
+CIS1.149,ubtu_24_900210,CIS - Ensure Generate audit records for successful/unsuccessful uses of the chcon command.,2,audit-log,true
+CIS1.150,ubtu_24_900220,CIS - Ensure Generate audit records for successful/unsuccessful uses of the apparmor_parser command.,2,audit-log,true
+CIS1.151,ubtu_24_900230,CIS - Ensure Generate audit records for successful/unsuccessful uses of the setfacl command.,2,audit-log,true
+CIS1.152,ubtu_24_900240,CIS - Ensure Generate audit records for successful/unsuccessful uses of the chacl command.,2,audit-log,true
+CIS1.153,ubtu_24_900250,CIS - Ensure Generate audit records for the use and modification of faillog file.,2,audit-log,true
+CIS1.154,ubtu_24_900260,CIS - Ensure Generate audit records for the use and modification of the lastlog file.,2,audit-log,true
+CIS1.155,ubtu_24_900270,CIS - Ensure Generate audit records for successful/unsuccessful uses of the passwd command.,2,audit-log,true
+CIS1.156,ubtu_24_900280,CIS - Ensure Generate audit records for successful/unsuccessful uses of the unix_update command.,2,audit-log,true
+CIS1.157,ubtu_24_900290,CIS - Ensure Generate audit records for successful/unsuccessful uses of the gpasswd command.,2,audit-log,true
+CIS1.158,ubtu_24_900300,CIS - Ensure Generate audit records for successful/unsuccessful uses of the chage command.,2,audit-log,true
+CIS1.159,ubtu_24_900310,CIS - Ensure Generate audit records for successful/unsuccessful uses of the usermod command.,2,audit-log,true
+CIS1.160,ubtu_24_900320,CIS - Ensure Generate audit records for successful/unsuccessful uses of the crontab command.,2,audit-log,true
+CIS1.161,ubtu_24_900330,CIS - Ensure Generate audit records for successful/unsuccessful uses of the pam_timestamp_check command.,2,audit-log,true
+CIS1.162,ubtu_24_900340,CIS - Ensure Generate audit records for successful/unsuccessful uses of the init_module and finit_module system calls.,2,audit-log,true
+CIS1.163,ubtu_24_900350,CIS - Ensure Generate audit records for successful/unsuccessful uses of the delete_module system call.,2,audit-log,true
+CIS1.164,ubtu_24_900510,CIS - Ensure Generate audit records when successful/unsuccessful attempts to modify the /etc/sudoers file occur.,2,audit-log,true
+CIS1.165,ubtu_24_900520,CIS - Ensure Generate audit records when successful/unsuccessful attempts to modify the /etc/sudoers.d directory occur.,2,audit-log,true
+CIS1.166,ubtu_24_900540,"CIS - Ensure Generate audit records for any successful/unsuccessful use of unlink, unlinkat, rename, renameat, and rmdir system calls.",2,audit-log,true
+CIS1.167,ubtu_24_900590,CIS - Ensure Generate audit records for the /var/log/wtmp file.,2,audit-log,true
+CIS1.168,ubtu_24_900600,CIS - Ensure Generate audit records for the /var/run/utmp file.,2,audit-log,true
+CIS1.169,ubtu_24_900610,CIS - Ensure Generate audit records for the /var/log/btmp file.,2,audit-log,true
+CIS1.170,ubtu_24_900730,CIS - Ensure Generate audit records for successful/unsuccessful attempts to use modprobe command.,2,audit-log,true
+CIS1.171,ubtu_24_900740,CIS - Ensure Generate audit records for successful/unsuccessful attempts to use the kmod command.,2,audit-log,true
+CIS1.172,ubtu_24_900750,CIS - Ensure Generate audit records for successful/unsuccessful attempts to use the fdisk command.,2,audit-log,true
+CIS1.173,ubtu_24_900920,"CIS - Ensure Allocate audit record storage capacity to store at least one weeks' worth of audit records, when audit records are not immediately sent to a central audit record storage facility.",3,general,true
+CIS1.174,ubtu_24_900950,CIS - Ensure Have a crontab script running weekly to offload audit events of standalone systems.,3,general,true
+CIS1.175,ubtu_24_900960,CIS - Ensure Immediately notify the system administrator (SA) and information system security officer (ISSO) (at a minimum) when allocated audit record storage volume reaches 75 percent of the repository maximum audit record storage capacity.,3,audit-log,true
+CIS1.176,ubtu_24_900980,CIS - Ensure Alert the information system security officer (ISSO) and system administrator (SA) in the event of an audit processing failure.,3,audit-log,true
+CIS1.177,ubtu_24_901220,CIS - Ensure Record time stamps for audit records that can be mapped to Coordinated Universal Time (UTC).,3,time-sync,true
+CIS1.178,ubtu_24_901230,"CIS - Ensure Configure audit tools with a mode of ""755"" or less permissive.",2,data-protection,true
+CIS1.179,ubtu_24_901240,"CIS - Ensure Configure audit tools to be owned by ""root"".",2,data-protection,true
+CIS1.180,ubtu_24_901250,CIS - Ensure Configure the audit tools to be group-owned by root.,2,data-protection,true
+CIS1.181,ubtu_24_901260,"CIS - Ensure Have directories that contain system commands set to a mode of ""755"" or less permissive.",2,data-protection,true
+CIS1.182,ubtu_24_901270,"CIS - Ensure Have directories that contain system commands owned by ""root"".",2,data-protection,true
+CIS1.183,ubtu_24_901280,"CIS - Ensure Have directories that contain system commands group- owned by ""root"".",2,data-protection,true
+CIS1.184,ubtu_24_901300,CIS - Ensure Be configured so that audit log files are not read- or write- accessible by unauthorized users.,2,data-protection,true
+CIS1.185,ubtu_24_901310,CIS - Ensure Be configured to permit only authorized users ownership of the audit log files.,2,data-protection,true
+CIS1.186,ubtu_24_901350,CIS - Ensure Permit only authorized groups ownership of the audit log files.,2,data-protection,true
+CIS1.187,ubtu_24_901380,CIS - Ensure Be configured so that the audit log directory is not write- accessible by unauthorized users.,2,data-protection,true
+CIS1.188,ubtu_24_909000,CIS - Ensure The operating system's audit system must protect auditing rules from unauthorized change.,2,data-protection,true
