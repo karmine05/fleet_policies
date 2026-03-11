@@ -2480,7 +2480,15 @@ spec:
     3. Select Sign-In & Security
     4. Review Security Keys configuration
     Document findings per organizational policy.
-  query: SELECT 1;
+  query: |
+    SELECT 1 WHERE (
+      EXISTS (
+        SELECT 1 FROM managed_policies WHERE 
+            domain='com.apple.applicationaccess' AND 
+            name='allowSecurityKeys' AND 
+            value=1
+      )
+    );
   purpose: Informational
   tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:apple-account, requirement:manual, critical:false, control:security-keys-apple-account-audit, cis_category:System Settings, cis_subcategory:Apple Account, cis_safeguard_ids:CIS2.1.1.4
   contributors: augment-agent
@@ -2499,7 +2507,15 @@ spec:
     3. Select iCloud
     4. Review Freeform sync status under Apps Using iCloud
     Document findings per organizational policy.
-  query: SELECT 1;
+  query: |
+    SELECT 1 WHERE (
+      EXISTS (
+        SELECT 1 FROM managed_policies WHERE 
+            domain='com.apple.applicationaccess' AND 
+            name='allowCloudFreeform' AND 
+            (value=0 OR value='false')
+      )
+    );
   purpose: Informational
   tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:cloud-storage, requirement:manual, critical:false, control:freeform-icloud-sync-audit, cis_category:System Settings, cis_subcategory:Apple Account, cis_safeguard_ids:CIS2.1.1.5
   contributors: augment-agent
@@ -2518,7 +2534,10 @@ spec:
     3. Select iCloud
     4. Review Find My Mac status
     Document findings per organizational policy.
-  query: SELECT 1;
+  query: |
+    SELECT 1 WHERE EXISTS (
+      SELECT 1 FROM nvram WHERE name = 'fmm-mobileme-token-FMM'
+    );
   purpose: Informational
   tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:device-tracking, requirement:manual, critical:false, control:find-my-mac-audit, cis_category:System Settings, cis_subcategory:Apple Account, cis_safeguard_ids:CIS2.1.1.6
   contributors: augment-agent
@@ -2537,7 +2556,15 @@ spec:
     3. Select Media & Purchases
     4. Review password settings for purchases and free downloads
     Document findings per organizational policy.
-  query: SELECT 1;
+  query: |
+    SELECT 1 WHERE (
+      EXISTS (
+        SELECT 1 FROM managed_policies WHERE 
+            domain='com.apple.appstore' AND 
+            name='restrict-store-require-admin-to-install' AND 
+            (value=1 OR value='true')
+      )
+    );
   purpose: Informational
   tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:app-store, requirement:manual, critical:false, control:app-store-password-settings-audit, cis_category:System Settings, cis_subcategory:Apple Account, cis_safeguard_ids:CIS2.1.2
   contributors: augment-agent
@@ -2558,7 +2585,10 @@ spec:
     Terminal Method:
     sudo scutil --set ComputerName "appropriate-name"
     sudo scutil --set LocalHostName "appropriate-name"
-  query: SELECT 1;
+  query: |
+    SELECT 1 WHERE EXISTS (
+      SELECT 1 FROM system_info WHERE hostname NOT LIKE '%MacBook%'
+    );
   purpose: Informational
   tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:privacy, requirement:manual, critical:false, control:computer-name-no-pii, cis_category:System Settings, cis_subcategory:General, cis_safeguard_ids:CIS2.3.3.11
   contributors: augment-agent
@@ -2577,7 +2607,10 @@ spec:
     3. Select Full Disk Access
     4. Review the list of applications with Full Disk Access
     Document findings and remove unnecessary permissions per organizational policy.
-  query: SELECT 1;
+  query: |
+    SELECT 1 WHERE EXISTS (
+      SELECT 1 FROM privacy_preferences WHERE service = 'kTCCServiceSystemPolicyAllFiles'
+    );
   purpose: Informational
   tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:privacy, requirement:manual, critical:false, control:full-disk-access-audit, cis_category:System Settings, cis_subcategory:Privacy & Security, cis_safeguard_ids:CIS2.6.2
   contributors: augment-agent
@@ -2692,7 +2725,15 @@ spec:
     3. Select Analytics & Improvements
     4. Disable Share iCloud Analytics
     Document findings per organizational policy.
-  query: SELECT 1;
+  query: |
+    SELECT 1 WHERE (
+      EXISTS (
+        SELECT 1 FROM managed_policies WHERE 
+            domain='com.apple.applicationaccess' AND 
+            name='allowCloudAnalytics' AND 
+            (value=0 OR value='false')
+      )
+    );
   purpose: Informational
   tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:privacy-telemetry, requirement:manual, critical:false, control:share-icloud-analytics-disabled, cis_category:System Settings, cis_subcategory:Privacy & Security, cis_safeguard_ids:CIS2.6.3.5
   contributors: augment-agent
@@ -2710,7 +2751,15 @@ spec:
     2. Select Privacy & Security
     3. Scroll to bottom and review Lockdown Mode status
     Document findings and enable for high-risk users per organizational policy.
-  query: SELECT 1;
+  query: |
+    SELECT 1 WHERE (
+      EXISTS (
+        SELECT 1 FROM managed_policies WHERE 
+            domain='com.apple.applicationaccess' AND 
+            name='allowLockdownMode' AND 
+            (value=1 OR value='true')
+      )
+    );
   purpose: Informational
   tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:security, requirement:manual, critical:false, control:lockdown-mode-audit, cis_category:System Settings, cis_subcategory:Privacy & Security, cis_safeguard_ids:CIS2.6.7
   contributors: augment-agent
@@ -2728,7 +2777,15 @@ spec:
     2. Select Desktop & Dock
     3. Review iPhone Mirroring settings
     Document findings per organizational policy.
-  query: SELECT 1;
+  query: |
+    SELECT 1 WHERE (
+      EXISTS (
+        SELECT 1 FROM managed_policies WHERE 
+            domain='com.apple.applicationaccess' AND 
+            name='allowiPhoneMirroring' AND 
+            (value=0 OR value='false')
+      )
+    );
   purpose: Informational
   tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:continuity, requirement:manual, critical:false, control:iphone-mirroring-audit, cis_category:System Settings, cis_subcategory:Desktop & Dock, cis_safeguard_ids:CIS2.7.2
   contributors: augment-agent
@@ -2777,7 +2834,15 @@ spec:
     2. Select Touch ID & Password
     3. Review enrolled fingerprints and Touch ID usage settings
     Document findings per organizational policy.
-  query: SELECT 1;
+  query: |
+    SELECT 1 WHERE (
+      EXISTS (
+        SELECT 1 FROM managed_policies WHERE 
+            domain='com.apple.applicationaccess' AND 
+            name='allowTouchID' AND 
+            (value=1 OR value='true')
+      )
+    );
   purpose: Informational
   tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:authentication, requirement:manual, critical:false, control:touch-id-audit, cis_category:System Settings, cis_subcategory:Touch ID & Password (Login Password), cis_safeguard_ids:CIS2.12.2
   contributors: augment-agent
@@ -2795,7 +2860,15 @@ spec:
     2. Select Game Center
     3. Review Game Center account and settings
     Document findings per organizational policy.
-  query: SELECT 1;
+  query: |
+    SELECT 1 WHERE (
+      EXISTS (
+        SELECT 1 FROM managed_policies WHERE 
+            domain='com.apple.applicationaccess' AND 
+            name='allowGameCenter' AND 
+            (value=0 OR value='false')
+      )
+    );
   purpose: Informational
   tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:applications, requirement:manual, critical:false, control:game-center-audit, cis_category:System Settings, cis_subcategory:Game Center, cis_safeguard_ids:CIS2.14
   contributors: augment-agent
@@ -2814,7 +2887,15 @@ spec:
     3. Review notification settings for each application
     4. Ensure sensitive apps do not show previews on lock screen
     Document findings per organizational policy.
-  query: SELECT 1;
+  query: |
+    SELECT 1 WHERE (
+      EXISTS (
+        SELECT 1 FROM managed_policies WHERE 
+            domain='com.apple.applicationaccess' AND 
+            name='allowNotificationSettingsModification' AND 
+            (value=0 OR value='false')
+      )
+    );
   purpose: Informational
   tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:privacy, requirement:manual, critical:false, control:notification-settings-audit, cis_category:System Settings, cis_subcategory:Notifications, cis_safeguard_ids:CIS2.15.1
   contributors: augment-agent
@@ -2832,7 +2913,15 @@ spec:
     2. Select Wallet & Apple Pay
     3. Review configured payment cards and settings
     Document findings per organizational policy.
-  query: SELECT 1;
+  query: |
+    SELECT 1 WHERE (
+      EXISTS (
+        SELECT 1 FROM managed_policies WHERE 
+            domain='com.apple.applicationaccess' AND 
+            name='allowApplePay' AND 
+            (value=0 OR value='false')
+      )
+    );
   purpose: Informational
   tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:applications, requirement:manual, critical:false, control:wallet-apple-pay-audit, cis_category:System Settings, cis_subcategory:Wallet & Apple Pay, cis_safeguard_ids:CIS2.16
   contributors: augment-agent
@@ -2851,7 +2940,15 @@ spec:
     3. Review all configured accounts
     4. Remove unauthorized accounts
     Document findings per organizational policy.
-  query: SELECT 1;
+  query: |
+    SELECT 1 WHERE (
+      EXISTS (
+        SELECT 1 FROM managed_policies WHERE 
+            domain='com.apple.applicationaccess' AND 
+            name='allowAccountModification' AND 
+            (value=0 OR value='false')
+      )
+    );
   purpose: Informational
   tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:accounts, requirement:manual, critical:false, control:internet-accounts-audit, cis_category:System Settings, cis_subcategory:Internet Accounts, cis_safeguard_ids:CIS2.17
   contributors: augment-agent
@@ -2872,7 +2969,10 @@ spec:
     ls -la /Applications
     system_profiler SPApplicationsDataType
     Document findings per organizational policy.
-  query: SELECT 1;
+  query: |
+    SELECT 1 WHERE EXISTS (
+      SELECT 1 FROM apps LIMIT 1
+    );
   purpose: Informational
   tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:audit, requirement:manual, critical:false, control:software-inventory-audit, cis_category:Logging and Auditing, cis_subcategory:Ensure install.log Is Retained for 365 or More Days and No Maximum Size, cis_safeguard_ids:CIS3.6
   contributors: augment-agent
@@ -2888,7 +2988,10 @@ spec:
     Configure via MDM profile or pwpolicy:
     pwpolicy -n /Local/Default -setglobalpolicy "requiresNumeric=1"
     Document findings per organizational policy.
-  query: SELECT 1;
+  query: |
+    SELECT 1 WHERE EXISTS (
+      SELECT 1 FROM password_policy WHERE require_numeric = 1
+    );
   purpose: Informational
   tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:authn, requirement:manual, critical:false, control:password-requires-numeric, cis_category:System Access, Authentication and Authorization, cis_subcategory:Account and Password Policy Management, cis_safeguard_ids:CIS5.2.3
   contributors: augment-agent
@@ -2930,7 +3033,15 @@ spec:
     3. Select Privacy tab
     4. Enable Protect Mail Activity
     Document findings per organizational policy.
-  query: SELECT 1;
+  query: |
+    SELECT 1 WHERE (
+      EXISTS (
+        SELECT 1 FROM managed_policies WHERE 
+            domain='com.apple.mail' AND 
+            name='ProtectActivity' AND 
+            (value=1 OR value='true')
+      )
+    );
   purpose: Informational
   tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:privacy, requirement:manual, critical:false, control:mail-protect-activity-enabled, cis_category:Applications, cis_subcategory:Mail, cis_safeguard_ids:CIS6.2.1
   contributors: augment-agent
@@ -2949,7 +3060,15 @@ spec:
     3. Select AutoFill tab
     4. Review AutoFill settings for contacts, credit cards, usernames/passwords
     Document findings per organizational policy.
-  query: SELECT 1;
+  query: |
+    SELECT 1 WHERE (
+      EXISTS (
+        SELECT 1 FROM managed_policies WHERE 
+            domain='com.apple.Safari' AND 
+            name='AutoFillCreditCardData' AND 
+            (value=0 OR value='false')
+      )
+    );
   purpose: Informational
   tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:browser, requirement:manual, critical:false, control:safari-autofill-audit, cis_category:Applications, cis_subcategory:Safari, cis_safeguard_ids:CIS6.3.8
   contributors: augment-agent
@@ -2969,7 +3088,15 @@ spec:
     4. Select Pop-up Windows
     5. Review pop-up blocking settings per website
     Document findings per organizational policy.
-  query: SELECT 1;
+  query: |
+    SELECT 1 WHERE (
+      EXISTS (
+        SELECT 1 FROM managed_policies WHERE 
+            domain='com.apple.Safari' AND 
+            name='WebKitJavaScriptCanOpenWindowsAutomatically' AND 
+            (value=0 OR value='false')
+      )
+    );
   purpose: Informational
   tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:browser, requirement:manual, critical:false, control:safari-popup-windows-audit, cis_category:Applications, cis_subcategory:Safari, cis_safeguard_ids:CIS6.3.10
   contributors: augment-agent
@@ -2987,7 +3114,15 @@ spec:
     2. Review stored passwords and security recommendations
     3. Address any weak or compromised passwords flagged by the app
     Document findings per organizational policy.
-  query: SELECT 1;
+  query: |
+    SELECT 1 WHERE (
+      EXISTS (
+        SELECT 1 FROM managed_policies WHERE 
+            domain='com.apple.applicationaccess' AND 
+            name='allowPasswordAutoFill' AND 
+            (value=0 OR value='false')
+      )
+    );
   purpose: Informational
   tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:credentials, requirement:manual, critical:false, control:passwords-app-audit, cis_category:Applications, cis_subcategory:Passwords, cis_safeguard_ids:CIS6.5.1
   contributors: augment-agent
