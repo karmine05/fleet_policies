@@ -2608,9 +2608,12 @@ spec:
     4. Review the list of applications with Full Disk Access
     Document findings and remove unnecessary permissions per organizational policy.
   query: |
-    SELECT 1 WHERE EXISTS (
-      SELECT 1 FROM privacy_preferences WHERE service = 'kTCCServiceSystemPolicyAllFiles'
-    );
+    SELECT 'no time machine backups' as output
+    FROM (SELECT COUNT(*) as c FROM time_machine_backups) t1 WHERE t1.c = 0
+    UNION
+    SELECT 'time machine automatic backup set to true' as output
+    FROM plist WHERE path='/Library/Preferences/com.apple.TimeMachine.plist'
+    AND key='AutoBackup' AND (value = 1 OR value = 'true');
   purpose: Informational
   tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:privacy, requirement:manual, critical:false, control:full-disk-access-audit, cis_category:System Settings, cis_subcategory:Privacy & Security, cis_safeguard_ids:CIS2.6.2
   contributors: augment-agent
