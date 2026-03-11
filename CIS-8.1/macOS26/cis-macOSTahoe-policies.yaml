@@ -2976,25 +2976,7 @@ spec:
   purpose: Informational
   tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:audit, requirement:manual, critical:false, control:software-inventory-audit, cis_category:Logging and Auditing, cis_subcategory:Ensure install.log Is Retained for 365 or More Days and No Maximum Size, cis_safeguard_ids:CIS3.6
   contributors: augment-agent
----
-apiVersion: v1
-kind: policy
-spec:
-  name: CIS 5.2.3 (L2) Ensure Complex Password Must Contain Alphabetic Characters Is Configured (Manual) [password-requires-numeric]
-  platform: darwin
-  description: |
-    Verifies that password policy requires at least one numeric character. This increases password complexity and resistance to dictionary attacks.
-  resolution: |
-    Configure via MDM profile or pwpolicy:
-    pwpolicy -n /Local/Default -setglobalpolicy "requiresNumeric=1"
-    Document findings per organizational policy.
-  query: |
-    SELECT 1 WHERE EXISTS (
-      SELECT 1 FROM password_policy WHERE require_numeric = 1
-    );
-  purpose: Informational
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:authn, requirement:manual, critical:false, control:password-requires-numeric, cis_category:System Access, Authentication and Authorization, cis_subcategory:Account and Password Policy Management, cis_safeguard_ids:CIS5.2.3
-  contributors: augment-agent
+
 ---
 apiVersion: v1
 kind: policy
