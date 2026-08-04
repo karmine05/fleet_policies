@@ -15,10 +15,7 @@ spec:
   resolution: To establish the recommended configuration via configuration profiles,
     set the following Settings Catalog path to Block all (most restrictive). Dma Guard\Device
     Enumeration Policy
-  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:dma-guard,
-    requirement:standard, critical:false, control:device-enumeration-policy-is-block-all,
-    cis_safeguard_ids:CIS28.1, cis_category:Dma Guard, cis_subcategory:Dma Guard
-
+  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:dma-guard, requirement:standard, critical:false, control:device-enumeration-policy-is-block-all, cis_category:Dma Guard, cis_subcategory:Dma Guard, cis_safeguard_ids:CIS4.1, benchmark_section:28.1
 ---
 apiVersion: v1
 kind: policy
@@ -46,10 +43,7 @@ spec:
     set the following Settings Catalog path to Enabled. Administrative Templates\System\Device
     Installation\Device Installation Restrictions\Prevent installation of devices
     using drivers that match these device setup classes
-  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:device-installation,
-    requirement:standard, critical:false, control:prevent-installation-of-devices-using-drivers-that-match-device-setup-classes-is-enabled,
-    cis_safeguard_ids:CIS4.10.9.1.1, cis_category:Administrative Templates, cis_subcategory:System
-
+  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:device-installation, requirement:standard, critical:false, control:prevent-installation-of-devices-using-drivers-that-match-device-setup-classes-is-enabled, cis_category:Administrative Templates, cis_subcategory:System, cis_safeguard_ids:CIS4.1, benchmark_section:4.10.9.1.1
 ---
 apiVersion: v1
 kind: policy
@@ -78,10 +72,7 @@ spec:
     matching devices that are already installed. button. Administrative Templates\System\Device
     Installation\Device Installation Restrictions\Prevent installation of devices
     using drivers that match these device setup classes
-  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:device-installation,
-    requirement:standard, critical:false, control:prevent-installation-of-devices-also-apply-to-matching-devices-already-installed-is-true,
-    cis_safeguard_ids:CIS4.10.9.1.2, cis_category:Administrative Templates, cis_subcategory:System
-
+  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:device-installation, requirement:standard, critical:false, control:prevent-installation-of-devices-also-apply-to-matching-devices-already-installed-is-true, cis_category:Administrative Templates, cis_subcategory:System, cis_safeguard_ids:CIS4.1, benchmark_section:4.10.9.1.2
 ---
 apiVersion: v1
 kind: policy
@@ -99,10 +90,7 @@ spec:
     set the following Settings Catalog path to Enabled. Administrative Templates\Windows
     Components\BitLocker Drive Encryption\Fixed Data Drives\Choose how BitLocker-protected
     fixed drives can be recovered
-  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker,
-    requirement:standard, critical:false, control:choose-how-bitlocker-protected-fixed-drives-can-be-recovered-is-enabled,
-    cis_safeguard_ids:CIS4.11.7.1.1, cis_category:Administrative Templates, cis_subcategory:Windows Components
-
+  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker, requirement:standard, critical:false, control:choose-how-bitlocker-protected-fixed-drives-can-be-recovered-is-enabled, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS3.6, benchmark_section:4.11.7.1.1
 ---
 apiVersion: v1
 kind: policy
@@ -124,10 +112,7 @@ spec:
     Administrative Templates\Windows Components\BitLocker Drive Encryption\Fixed Data
     Drives\Choose how BitLocker-protected fixed drives can be recovered: Recovery
     Key'
-  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker,
-    requirement:standard, critical:false, control:choose-how-bitlocker-protected-fixed-drives-recovery-key-is-allow-256-bit,
-    cis_safeguard_ids:CIS4.11.7.1.2, cis_category:Administrative Templates, cis_subcategory:Windows Components
-
+  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker, requirement:standard, critical:false, control:choose-how-bitlocker-protected-fixed-drives-recovery-key-is-allow-256-bit, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS3.6, benchmark_section:4.11.7.1.2
 ---
 apiVersion: v1
 kind: policy
@@ -149,10 +134,7 @@ spec:
     Administrative Templates\Windows Components\BitLocker Drive Encryption\Fixed Data
     Drives\Choose how BitLocker-protected fixed drives can be recovered: Recovery
     Password'
-  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker,
-    requirement:standard, critical:false, control:choose-how-bitlocker-protected-fixed-drives-recovery-password-is-allow-48-digit,
-    cis_safeguard_ids:CIS4.11.7.1.3, cis_category:Administrative Templates, cis_subcategory:Windows Components
-
+  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker, requirement:standard, critical:false, control:choose-how-bitlocker-protected-fixed-drives-recovery-password-is-allow-48-digit, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS3.6, benchmark_section:4.11.7.1.3
 ---
 apiVersion: v1
 kind: policy
@@ -174,10 +156,7 @@ spec:
     set the following Settings Catalog path to Enabled: True. Administrative Templates\Windows
     Components\BitLocker Drive Encryption\Fixed Data Drives\Choose how BitLocker-protected
     fixed drives can be recovered: Allow data recovery agent'
-  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker,
-    requirement:standard, critical:false, control:choose-how-bitlocker-protected-fixed-drives-allow-data-recovery-agent-is-true,
-    cis_safeguard_ids:CIS4.11.7.1.4, cis_category:Administrative Templates, cis_subcategory:Windows Components
-
+  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker, requirement:standard, critical:false, control:choose-how-bitlocker-protected-fixed-drives-allow-data-recovery-agent-is-true, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS3.6, benchmark_section:4.11.7.1.4
 ---
 apiVersion: v1
 kind: policy
@@ -200,10 +179,7 @@ spec:
     and key packages. Administrative Templates\Windows Components\BitLocker Drive
     Encryption\Fixed Data Drives\Choose how BitLocker-protected fixed drives can be
     recovered: Configure storage of BitLocker recovery information to AD DS:'
-  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker,
-    requirement:standard, critical:false, control:choose-how-bitlocker-protected-fixed-drives-configure-storage-to-ad-ds-is-backup-passwords-and-key-packages,
-    cis_safeguard_ids:CIS4.11.7.1.5, cis_category:Administrative Templates, cis_subcategory:Windows Components
-
+  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker, requirement:standard, critical:false, control:choose-how-bitlocker-protected-fixed-drives-configure-storage-to-ad-ds-is-backup-passwords-and-key-packages, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS3.6, benchmark_section:4.11.7.1.5
 ---
 apiVersion: v1
 kind: policy
@@ -225,10 +201,7 @@ spec:
     Components\BitLocker Drive Encryption\Fixed Data Drives\Choose how BitLocker-protected
     fixed drives can be recovered: Do not enable BitLocker until recovery information
     is stored to AD DS for fixed data drives'
-  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker,
-    requirement:standard, critical:false, control:choose-how-bitlocker-protected-fixed-drives-do-not-enable-until-recovery-stored-to-ad-ds-is-false,
-    cis_safeguard_ids:CIS4.11.7.1.6, cis_category:Administrative Templates, cis_subcategory:Windows Components
-
+  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker, requirement:standard, critical:false, control:choose-how-bitlocker-protected-fixed-drives-do-not-enable-until-recovery-stored-to-ad-ds-is-false, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS3.6, benchmark_section:4.11.7.1.6
 ---
 apiVersion: v1
 kind: policy
@@ -249,10 +222,7 @@ spec:
     Components\BitLocker Drive Encryption\Fixed Data Drives\Choose how BitLocker-protected
     fixed drives can be recovered: Omit recovery options from the BitLocker setup
     wizard'
-  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker,
-    requirement:standard, critical:false, control:choose-how-bitlocker-protected-fixed-drives-omit-recovery-options-from-wizard-is-true,
-    cis_safeguard_ids:CIS4.11.7.1.7, cis_category:Administrative Templates, cis_subcategory:Windows Components
-
+  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker, requirement:standard, critical:false, control:choose-how-bitlocker-protected-fixed-drives-omit-recovery-options-from-wizard-is-true, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS3.6, benchmark_section:4.11.7.1.7
 ---
 apiVersion: v1
 kind: policy
@@ -273,10 +243,7 @@ spec:
     Components\BitLocker Drive Encryption\Fixed Data Drives\Choose how BitLocker-protected
     fixed drives can be recovered: Save BitLocker recovery information to AD DS for
     fixed data drives'
-  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker,
-    requirement:standard, critical:false, control:choose-how-bitlocker-protected-fixed-drives-save-recovery-info-to-ad-ds-is-false,
-    cis_safeguard_ids:CIS4.11.7.1.8, cis_category:Administrative Templates, cis_subcategory:Windows Components
-
+  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker, requirement:standard, critical:false, control:choose-how-bitlocker-protected-fixed-drives-save-recovery-info-to-ad-ds-is-false, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS3.6, benchmark_section:4.11.7.1.8
 ---
 apiVersion: v1
 kind: policy
@@ -294,10 +261,7 @@ spec:
     set the following Settings Catalog path to Enabled. Administrative Templates\Windows
     Components\BitLocker Drive Encryption\Operating System Drives\Choose how BitLocker-protected
     operating system drives can be recovered
-  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker,
-    requirement:standard, critical:false, control:choose-how-bitlocker-protected-os-drives-can-be-recovered-is-enabled,
-    cis_safeguard_ids:CIS4.11.7.2.1, cis_category:Administrative Templates, cis_subcategory:Windows Components
-
+  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker, requirement:standard, critical:false, control:choose-how-bitlocker-protected-os-drives-can-be-recovered-is-enabled, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS3.6, benchmark_section:4.11.7.2.1
 ---
 apiVersion: v1
 kind: policy
@@ -319,10 +283,7 @@ spec:
     key. Administrative Templates\Windows Components\BitLocker Drive Encryption\Operating
     System Drives\Choose how BitLocker-protected operating system drives can be recovered:
     Recovery Key'
-  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker,
-    requirement:standard, critical:false, control:choose-how-bitlocker-protected-os-drives-recovery-key-is-do-not-allow-256-bit,
-    cis_safeguard_ids:CIS4.11.7.2.2, cis_category:Administrative Templates, cis_subcategory:Windows Components
-
+  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker, requirement:standard, critical:false, control:choose-how-bitlocker-protected-os-drives-recovery-key-is-do-not-allow-256-bit, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS3.6, benchmark_section:4.11.7.2.2
 ---
 apiVersion: v1
 kind: policy
@@ -344,10 +305,7 @@ spec:
     password. Administrative Templates\Windows Components\BitLocker Drive Encryption\Operating
     System Drives\Choose how BitLocker-protected operating system drives can be recovered:
     Recovery Password'
-  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker,
-    requirement:standard, critical:false, control:choose-how-bitlocker-protected-os-drives-recovery-password-is-require-48-digit,
-    cis_safeguard_ids:CIS4.11.7.2.3, cis_category:Administrative Templates, cis_subcategory:Windows Components
-
+  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker, requirement:standard, critical:false, control:choose-how-bitlocker-protected-os-drives-recovery-password-is-require-48-digit, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS3.6, benchmark_section:4.11.7.2.3
 ---
 apiVersion: v1
 kind: policy
@@ -367,10 +325,7 @@ spec:
     set the following Settings Catalog path to Enabled: False. Administrative Templates\Windows
     Components\BitLocker Drive Encryption\Operating System Drives\Choose how BitLocker-protected
     operating system drives can be recovered: Allow data recovery agent'
-  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker,
-    requirement:standard, critical:false, control:choose-how-bitlocker-protected-os-drives-allow-data-recovery-agent-is-false,
-    cis_safeguard_ids:CIS4.11.7.2.4, cis_category:Administrative Templates, cis_subcategory:Windows Components
-
+  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker, requirement:standard, critical:false, control:choose-how-bitlocker-protected-os-drives-allow-data-recovery-agent-is-false, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS3.6, benchmark_section:4.11.7.2.4
 ---
 apiVersion: v1
 kind: policy
@@ -392,10 +347,7 @@ spec:
     key packages. Administrative Templates\Windows Components\BitLocker Drive Encryption\Operating
     System Drives\Choose how BitLocker-protected operating system drives can be recovered:
     Configure storage of BitLocker recovery information to AD DS:'
-  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker,
-    requirement:standard, critical:false, control:choose-how-bitlocker-protected-os-drives-configure-storage-to-ad-ds-is-store-passwords-and-key-packages,
-    cis_safeguard_ids:CIS4.11.7.2.5, cis_category:Administrative Templates, cis_subcategory:Windows Components
-
+  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker, requirement:standard, critical:false, control:choose-how-bitlocker-protected-os-drives-configure-storage-to-ad-ds-is-store-passwords-and-key-packages, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS3.6, benchmark_section:4.11.7.2.5
 ---
 apiVersion: v1
 kind: policy
@@ -418,10 +370,7 @@ spec:
     Components\BitLocker Drive Encryption\Operating System Drives\Choose how BitLocker-protected
     operating system drives can be recovered: Do not enable BitLocker until recovery
     information is stored to AD DS for operating system drives'
-  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker,
-    requirement:standard, critical:false, control:choose-how-bitlocker-protected-os-drives-do-not-enable-until-recovery-stored-to-ad-ds-is-true,
-    cis_safeguard_ids:CIS4.11.7.2.6, cis_category:Administrative Templates, cis_subcategory:Windows Components
-
+  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker, requirement:standard, critical:false, control:choose-how-bitlocker-protected-os-drives-do-not-enable-until-recovery-stored-to-ad-ds-is-true, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS3.6, benchmark_section:4.11.7.2.6
 ---
 apiVersion: v1
 kind: policy
@@ -442,10 +391,7 @@ spec:
     Components\BitLocker Drive Encryption\Operating System Drives\Choose how BitLocker-protected
     operating system drives can be recovered: Omit recovery options from the BitLocker
     setup wizard'
-  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker,
-    requirement:standard, critical:false, control:choose-how-bitlocker-protected-os-drives-omit-recovery-options-from-wizard-is-true,
-    cis_safeguard_ids:CIS4.11.7.2.7, cis_category:Administrative Templates, cis_subcategory:Windows Components
-
+  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker, requirement:standard, critical:false, control:choose-how-bitlocker-protected-os-drives-omit-recovery-options-from-wizard-is-true, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS3.6, benchmark_section:4.11.7.2.7
 ---
 apiVersion: v1
 kind: policy
@@ -466,10 +412,7 @@ spec:
     Components\BitLocker Drive Encryption\Operating System Drives\Choose how BitLocker-protected
     operating system drives can be recovered: Save BitLocker recovery information
     to AD DS for operating system drives'
-  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker,
-    requirement:standard, critical:false, control:choose-how-bitlocker-protected-os-drives-save-recovery-info-to-ad-ds-is-true,
-    cis_safeguard_ids:CIS4.11.7.2.8, cis_category:Administrative Templates, cis_subcategory:Windows Components
-
+  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker, requirement:standard, critical:false, control:choose-how-bitlocker-protected-os-drives-save-recovery-info-to-ad-ds-is-true, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS3.6, benchmark_section:4.11.7.2.8
 ---
 apiVersion: v1
 kind: policy
@@ -489,10 +432,7 @@ spec:
     PIN with TPM. Administrative Templates\Windows Components\BitLocker Drive Encryption\Operating
     System Drives\Require additional authentication at startup: Configure TPM startup
     key and PIN:'
-  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker,
-    requirement:standard, critical:false, control:require-additional-authentication-configure-tpm-startup-key-and-pin-is-do-not-allow,
-    cis_safeguard_ids:CIS4.11.7.2.10, cis_category:Administrative Templates, cis_subcategory:Windows Components
-
+  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker, requirement:standard, critical:false, control:require-additional-authentication-configure-tpm-startup-key-and-pin-is-do-not-allow, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS4.1, benchmark_section:4.11.7.2.10
 ---
 apiVersion: v1
 kind: policy
@@ -512,10 +452,7 @@ spec:
     TPM. Administrative Templates\Windows Components\BitLocker Drive Encryption\Operating
     System Drives\Require additional authentication at startup: Configure TPM startup
     key:'
-  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker,
-    requirement:standard, critical:false, control:require-additional-authentication-configure-tpm-startup-key-is-do-not-allow,
-    cis_safeguard_ids:CIS4.11.7.2.11, cis_category:Administrative Templates, cis_subcategory:Windows Components
-
+  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker, requirement:standard, critical:false, control:require-additional-authentication-configure-tpm-startup-key-is-do-not-allow, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS4.1, benchmark_section:4.11.7.2.11
 ---
 apiVersion: v1
 kind: policy
@@ -537,10 +474,7 @@ spec:
     Administrative Templates\Windows Components\BitLocker Drive Encryption\Operating
     System Drives\Require additional authentication at startup: Configure TPM startup
     PIN:'
-  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker,
-    requirement:standard, critical:false, control:require-additional-authentication-configure-tpm-startup-pin-is-require,
-    cis_safeguard_ids:CIS4.11.7.2.12, cis_category:Administrative Templates, cis_subcategory:Windows Components
-
+  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker, requirement:standard, critical:false, control:require-additional-authentication-configure-tpm-startup-pin-is-require, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS4.1, benchmark_section:4.11.7.2.12
 ---
 apiVersion: v1
 kind: policy
@@ -561,10 +495,7 @@ spec:
     set the following Settings Catalog path to Enabled: Do not allow TPM. Administrative
     Templates\Windows Components\BitLocker Drive Encryption\Operating System Drives\Require
     additional authentication at startup: Configure TPM startup:'
-  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker,
-    requirement:standard, critical:false, control:require-additional-authentication-configure-tpm-startup-is-do-not-allow-tpm,
-    cis_safeguard_ids:CIS4.11.7.2.13, cis_category:Administrative Templates, cis_subcategory:Windows Components
-
+  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker, requirement:standard, critical:false, control:require-additional-authentication-configure-tpm-startup-is-do-not-allow-tpm, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS4.1, benchmark_section:4.11.7.2.13
 ---
 apiVersion: v1
 kind: policy
@@ -584,10 +515,7 @@ spec:
     encryption Administrative Templates\Windows Components\BitLocker Drive Encryption\Operating
     System Drives\Enforce drive encryption type on operating system drives: Select
     the encryption type: (Device)'
-  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker,
-    requirement:standard, critical:false, control:enforce-drive-encryption-type-on-os-drives-is-used-space-only-or-full,
-    cis_safeguard_ids:CIS4.11.7.2.14, cis_category:Administrative Templates, cis_subcategory:Windows Components
-
+  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker, requirement:standard, critical:false, control:enforce-drive-encryption-type-on-os-drives-is-used-space-only-or-full, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS3.6, benchmark_section:4.11.7.2.14
 ---
 apiVersion: v1
 kind: policy
@@ -606,10 +534,7 @@ spec:
     set the following Settings Catalog path to Enabled. Administrative Templates\Windows
     Components\BitLocker Drive Encryption\Removable Data Drives\Deny write access
     to removable drives not protected by BitLocker
-  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker,
-    requirement:standard, critical:false, control:deny-write-access-to-removable-drives-not-protected-by-bitlocker-is-enabled,
-    cis_safeguard_ids:CIS4.11.7.3.1, cis_category:Administrative Templates, cis_subcategory:Windows Components
-
+  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker, requirement:standard, critical:false, control:deny-write-access-to-removable-drives-not-protected-by-bitlocker-is-enabled, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS3.6, benchmark_section:4.11.7.3.1
 ---
 apiVersion: v1
 kind: policy
@@ -627,10 +552,7 @@ spec:
     Components\BitLocker Drive Encryption\Removable Data Drives\Deny write access
     to removable drives not protected by BitLocker: Do not allow write access to devices
     configured in another organization'
-  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker,
-    requirement:standard, critical:false, control:deny-write-access-to-removable-drives-do-not-allow-write-access-to-devices-in-another-org-is-false,
-    cis_safeguard_ids:CIS4.11.7.3.2, cis_category:Administrative Templates, cis_subcategory:Windows Components
-
+  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker, requirement:standard, critical:false, control:deny-write-access-to-removable-drives-do-not-allow-write-access-to-devices-in-another-org-is-false, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS3.6, benchmark_section:4.11.7.3.2
 ---
 apiVersion: v1
 kind: policy
@@ -648,10 +570,7 @@ spec:
     256-bit. Administrative Templates\Windows Components\BitLocker Drive Encryption\Choose
     drive encryption method and cipher strength (Windows 10 [Version 1511] and later)\Select
     the encryption method for fixed data drives
-  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker,
-    requirement:standard, critical:false, control:choose-drive-encryption-method-fixed-data-drives-is-xts-aes-128-or-256,
-    cis_safeguard_ids:CIS4.11.7.4, cis_category:Administrative Templates, cis_subcategory:Windows Components
-
+  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker, requirement:standard, critical:false, control:choose-drive-encryption-method-fixed-data-drives-is-xts-aes-128-or-256, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS3.6, benchmark_section:4.11.7.4
 ---
 apiVersion: v1
 kind: policy
@@ -669,10 +588,7 @@ spec:
     256-bit. Administrative Templates\Windows Components\BitLocker Drive Encryption\Choose
     drive encryption method and cipher strength (Windows 10 [Version 1511] and later)\Select
     the encryption method for operating system drives:'
-  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker,
-    requirement:standard, critical:false, control:choose-drive-encryption-method-os-drives-is-xts-aes-128-or-256,
-    cis_safeguard_ids:CIS4.11.7.5, cis_category:Administrative Templates, cis_subcategory:Windows Components
-
+  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker, requirement:standard, critical:false, control:choose-drive-encryption-method-os-drives-is-xts-aes-128-or-256, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS3.6, benchmark_section:4.11.7.5
 ---
 apiVersion: v1
 kind: policy
@@ -690,10 +606,7 @@ spec:
     Administrative Templates\Windows Components\BitLocker Drive Encryption\Choose
     drive encryption method and cipher strength (Windows 10 [Version 1511] and later)\Select
     the encryption method for removable data drives'
-  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker,
-    requirement:standard, critical:false, control:choose-drive-encryption-method-removable-data-drives-is-xts-aes-128-or-higher,
-    cis_safeguard_ids:CIS4.11.7.6, cis_category:Administrative Templates, cis_subcategory:Windows Components
-
+  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker, requirement:standard, critical:false, control:choose-drive-encryption-method-removable-data-drives-is-xts-aes-128-or-higher, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS3.6, benchmark_section:4.11.7.6
 ---
 apiVersion: v1
 kind: policy
@@ -713,10 +626,7 @@ spec:
   resolution: 'To establish the recommended configuration via configuration profiles,
     set the following Settings Catalog path to Enabled: Bitlocker\Allow Standard User
     Encryption'
-  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker,
-    requirement:standard, critical:false, control:allow-standard-user-encryption-is-enabled,
-    cis_safeguard_ids:CIS8.3, cis_category:BitLocker, cis_subcategory:BitLocker
-
+  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker, requirement:standard, critical:false, control:allow-standard-user-encryption-is-enabled, cis_category:BitLocker, cis_subcategory:BitLocker, cis_safeguard_ids:CIS8.3, benchmark_section:8.3
 ---
 apiVersion: v1
 kind: policy
@@ -736,10 +646,7 @@ spec:
     set the following Settings Catalog path to Enabled. Administrative Templates\Windows
     Components\BitLocker Drive Encryption\Operating System Drives\Require additional
     authentication at startup
-  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker,
-    requirement:standard, critical:false, control:require-additional-authentication-at-startup-is-enabled,
-    cis_safeguard_ids:CIS4.11.7.2.9, cis_category:Administrative Templates, cis_subcategory:Windows Components
-
+  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker, requirement:standard, critical:false, control:require-additional-authentication-at-startup-is-enabled, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS4.1, benchmark_section:4.11.7.2.9
 ---
 apiVersion: v1
 kind: policy
@@ -756,10 +663,7 @@ spec:
   query: SELECT 1 FROM bitlocker_info WHERE protection_status = 1;
   resolution: 'To establish the recommended configuration via configuration profiles,
     set the following Settings Catalog path to Enabled: Bitlocker\Require Device Encryption'
-  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker,
-    requirement:standard, critical:false, control:require-device-encryption-is-enabled,
-    cis_safeguard_ids:CIS8.1, cis_category:BitLocker, cis_subcategory:BitLocker
-
+  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker, requirement:standard, critical:false, control:require-device-encryption-is-enabled, cis_category:BitLocker, cis_subcategory:BitLocker, cis_safeguard_ids:CIS8.1, benchmark_section:8.1
 ---
 apiVersion: v1
 kind: policy
@@ -780,10 +684,7 @@ spec:
   resolution: 'To establish the recommended configuration via configuration profiles,
     set the following Settings Catalog path to Disabled: Bitlocker\Allow Warning For
     Other Disk Encryption'
-  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker,
-    requirement:standard, critical:false, control:allow-warning-for-other-disk-encryption-is-disabled,
-    cis_safeguard_ids:CIS8.2, cis_category:BitLocker, cis_subcategory:BitLocker
-
+  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:bitlocker, requirement:standard, critical:false, control:allow-warning-for-other-disk-encryption-is-disabled, cis_category:BitLocker, cis_subcategory:BitLocker, cis_safeguard_ids:CIS8.2, benchmark_section:8.2
 ---
 apiVersion: v1
 kind: policy
@@ -813,6 +714,4 @@ spec:
     and {6bdd1fc1-810f-11d0-bec7-08002be2092f} to the device setup classes list. Administrative
     Templates\System\Device Installation\Device Installation Restrictions\Prevent
     installation of devices using drivers that match these device setup classes
-  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:device-installation,
-    requirement:standard, critical:false, control:prevent-installation-of-devices-ieee-1394-device-setup-classes,
-    cis_safeguard_ids:CIS4.10.9.1.3, cis_category:Administrative Templates, cis_subcategory:System
+  tags: framework:CISv8.1, benchmark:win11, level:BL, platform:windows, category:device-installation, requirement:standard, critical:false, control:prevent-installation-of-devices-ieee-1394-device-setup-classes, cis_category:Administrative Templates, cis_subcategory:System, cis_safeguard_ids:CIS4.1, benchmark_section:4.10.9.1.3
