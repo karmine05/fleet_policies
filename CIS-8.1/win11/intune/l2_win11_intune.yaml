@@ -33,7 +33,7 @@ spec:
     set the following Settings Catalog path to Enabled: 300,000 or 5 minutes (recommended).
     Administrative Templates\MSS (Legacy)\MSS: (KeepAliveTime) How often keepalive
     packets are sent in milliseconds'
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:MSS (Legacy), cis_safeguard_ids:CIS4.1, benchmark_section:4.5.6
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:MSS (Legacy), cis_safeguard_ids:CIS4.8, benchmark_section:4.5.6
 ---
 apiVersion: v1
 kind: policy
@@ -109,7 +109,7 @@ spec:
   resolution: To establish the recommended configuration via configuration profiles,
     set the following Settings Catalog path to Disabled. Administrative Templates\Network\Link-Layer
     Topology Discovery\Turn on Mapper I/O (LLTDIO) driver
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:Network, cis_safeguard_ids:CIS4.1, benchmark_section:4.6.8.1
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:Network, cis_safeguard_ids:CIS4.8, benchmark_section:4.6.8.1
 ---
 apiVersion: v1
 kind: policy
@@ -128,7 +128,7 @@ spec:
   resolution: To establish the recommended configuration via configuration profiles,
     set the following Settings Catalog path to Disabled. Administrative Templates\Network\Link-Layer
     Topology Discovery\Turn on Responder
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:Network, cis_safeguard_ids:CIS4.1, benchmark_section:4.6.8.2
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:Network, cis_safeguard_ids:CIS4.8, benchmark_section:4.6.8.2
 ---
 apiVersion: v1
 kind: policy
@@ -147,7 +147,7 @@ spec:
   resolution: To establish the recommended configuration via configuration profiles,
     set the following Settings Catalog path to Disabled. Administrative Templates\Network\Windows
     Connect Now\Configuration of wireless settings using Windows Connect Now
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:Network, cis_safeguard_ids:CIS4.1, benchmark_section:4.6.17.1
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:Network, cis_safeguard_ids:CIS4.8, benchmark_section:4.6.17.1
 ---
 apiVersion: v1
 kind: policy
@@ -162,7 +162,7 @@ spec:
   resolution: To establish the recommended configuration via configuration profiles,
     set the following Settings Catalog path to Enabled. Administrative Templates\Network\Windows
     Connect Now\Prohibit access of the Windows Connect Now wizards
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:Network, cis_safeguard_ids:CIS4.1, benchmark_section:4.6.17.2
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:Network, cis_safeguard_ids:CIS4.8, benchmark_section:4.6.17.2
 ---
 apiVersion: v1
 kind: policy
@@ -182,7 +182,7 @@ spec:
     set the following Settings Catalog path to Enabled. Administrative Templates\System\Internet
     Communication Management\Internet Communication settings\Turn off access to the
     Store
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:System, cis_safeguard_ids:CIS4.1, benchmark_section:4.10.20.1.1
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:System, cis_safeguard_ids:CIS4.8, benchmark_section:4.10.20.1.1
 ---
 apiVersion: v1
 kind: policy
@@ -200,7 +200,7 @@ spec:
     set the following Settings Catalog path to Enabled. Administrative Templates\System\Internet
     Communication Management\Internet Communication Settings\Turn off Help Experience
     Improvement Program
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:System, cis_safeguard_ids:CIS4.1, benchmark_section:4.10.20.1.3
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:System, cis_safeguard_ids:CIS4.8, benchmark_section:4.10.20.1.3
 ---
 apiVersion: v1
 kind: policy
@@ -217,7 +217,7 @@ spec:
     set the following Settings Catalog path to Enabled. Administrative Templates\System\Internet
     Communication Management\Internet Communication settings\Turn off Internet Connection
     Wizard if URL connection is referring to Microsoft.com
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:System, cis_safeguard_ids:CIS4.1, benchmark_section:4.10.20.1.4
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:System, cis_safeguard_ids:CIS4.8, benchmark_section:4.10.20.1.4
 ---
 apiVersion: v1
 kind: policy
@@ -235,7 +235,7 @@ spec:
     set the following Settings Catalog path to Enabled. Administrative Templates\System\Internet
     Communication Management\Internet Communication settings\Turn off printing over
     HTTP
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:System, cis_safeguard_ids:CIS4.1, benchmark_section:4.10.20.1.6
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:System, cis_safeguard_ids:CIS4.8, benchmark_section:4.10.20.1.6
 ---
 apiVersion: v1
 kind: policy
@@ -252,7 +252,7 @@ spec:
     set the following Settings Catalog path to Enabled. Administrative Templates\System\Internet
     Communication Management\Internet Communication settings\Turn off Registration
     if URL connection is referring to Microsoft.com
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:System, cis_safeguard_ids:CIS4.1, benchmark_section:4.10.20.1.7
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:System, cis_safeguard_ids:CIS4.8, benchmark_section:4.10.20.1.7
 ---
 apiVersion: v1
 kind: policy
@@ -269,7 +269,7 @@ spec:
     set the following Settings Catalog path to Enabled. Administrative Templates\System\Internet
     Communication Management\Internet Communication settings\Turn off Search Companion
     content file updates
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:System, cis_safeguard_ids:CIS4.1, benchmark_section:4.10.20.1.8
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:System, cis_safeguard_ids:CIS4.8, benchmark_section:4.10.20.1.8
 ---
 apiVersion: v1
 kind: policy
@@ -287,7 +287,7 @@ spec:
     set the following Settings Catalog path to Enabled. Administrative Templates\System\Internet
     Communication Management\Internet Communication settings\Turn off the "Order Prints"
     picture task
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:System, cis_safeguard_ids:CIS4.1, benchmark_section:4.10.20.1.9
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:System, cis_safeguard_ids:CIS4.8, benchmark_section:4.10.20.1.9
 ---
 apiVersion: v1
 kind: policy
@@ -306,7 +306,7 @@ spec:
     set the following Settings Catalog path to Enabled. Administrative Templates\System\Internet
     Communication Management\Internet Communication settings\Turn off the "Publish
     to Web" task for files and folders
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:System, cis_safeguard_ids:CIS4.1, benchmark_section:4.10.20.1.10
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:System, cis_safeguard_ids:CIS4.8, benchmark_section:4.10.20.1.10
 ---
 apiVersion: v1
 kind: policy
@@ -327,7 +327,7 @@ spec:
     set the following Settings Catalog path to Enabled. Administrative Templates\System\Internet
     Communication Management\Internet Communication settings\Turn off the Windows
     Messenger Customer Experience Improvement Program
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:System, cis_safeguard_ids:CIS4.1, benchmark_section:4.10.20.1.11
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:System, cis_safeguard_ids:CIS4.8, benchmark_section:4.10.20.1.11
 ---
 apiVersion: v1
 kind: policy
@@ -347,7 +347,7 @@ spec:
     set the following Settings Catalog path to Enabled. Administrative Templates\System\Internet
     Communication Management\Internet Communication settings\Turn off Windows Customer
     Experience Improvement Program
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:System, cis_safeguard_ids:CIS4.1, benchmark_section:4.10.20.1.12
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:System, cis_safeguard_ids:CIS4.8, benchmark_section:4.10.20.1.12
 ---
 apiVersion: v1
 kind: policy
@@ -365,7 +365,7 @@ spec:
     set the following Settings Catalog path to Enabled. Administrative Templates\System\Internet
     Communication Management\Internet Communication settings\Turn off Windows Error
     Reporting
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:System, cis_safeguard_ids:CIS4.1, benchmark_section:4.10.20.1.13
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:System, cis_safeguard_ids:CIS4.8, benchmark_section:4.10.20.1.13
 ---
 apiVersion: v1
 kind: policy
@@ -383,7 +383,7 @@ spec:
   resolution: 'To establish the recommended configuration via configuration profiles,
     set the following Settings Catalog path to Enabled: Automatic. Administrative
     Templates\System\Kerberos\Support device authentication using certificate'
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:System, cis_safeguard_ids:CIS4.1, benchmark_section:4.10.23.1
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:System, cis_safeguard_ids:CIS4.8, benchmark_section:4.10.23.1
 ---
 apiVersion: v1
 kind: policy
@@ -400,7 +400,7 @@ spec:
   resolution: To establish the recommended configuration via configuration profiles,
     set the following Settings Catalog path to Enabled. Administrative Templates\System\Locale
     Services\Disallow copying of user input methods to the system account for sign-in
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:System, cis_safeguard_ids:CIS4.1, benchmark_section:4.10.25.1
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:System, cis_safeguard_ids:CIS4.8, benchmark_section:4.10.25.1
 ---
 apiVersion: v1
 kind: policy
@@ -418,7 +418,7 @@ spec:
     set the following Settings Catalog path to Disabled. Administrative Templates\System\Troubleshooting
     and Diagnostics\Microsoft Support Diagnostic Tool\Microsoft Support Diagnostic
     Tool: Turn on MSDT interactive communication with support provider'
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:System, cis_safeguard_ids:CIS4.1, benchmark_section:4.10.40.5.1
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:System, cis_safeguard_ids:CIS4.8, benchmark_section:4.10.40.5.1
 ---
 apiVersion: v1
 kind: policy
@@ -436,7 +436,7 @@ spec:
     Components\App runtime\Block launching Universal Windows apps with Windows Runtime
     API access from hosted content. Note: A reboot may be required after the setting
     is applied.'
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS4.1, benchmark_section:4.11.3.2
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS4.8, benchmark_section:4.11.3.2
 ---
 apiVersion: v1
 kind: policy
@@ -469,7 +469,7 @@ spec:
   resolution: To establish the recommended configuration via configuration profiles,
     set the following Settings Catalog path to Disabled. Administrative Templates\Windows
     Components\Microsoft Defender Antivirus\MAPS\Join Microsoft MAPS
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS4.1, benchmark_section:4.11.28.3.2
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS4.8, benchmark_section:4.11.28.3.2
 ---
 apiVersion: v1
 kind: policy
@@ -484,7 +484,7 @@ spec:
   resolution: To establish the recommended configuration via configuration profiles,
     set the following Settings Catalog path to Disabled. Administrative Templates\Windows
     Components\Microsoft Defender Antivirus\Reporting\Configure Watson events
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS4.1, benchmark_section:4.11.28.10.1
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS4.8, benchmark_section:4.11.28.10.1
 ---
 apiVersion: v1
 kind: policy
@@ -500,7 +500,7 @@ spec:
   resolution: To establish the recommended configuration via configuration profiles,
     set the following Settings Catalog path to Enabled. Administrative Templates\Windows
     Components\Push to Install\Turn off Push To Install service
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS4.1, benchmark_section:4.11.35.1
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS4.8, benchmark_section:4.11.35.1
 ---
 apiVersion: v1
 kind: policy
@@ -533,7 +533,7 @@ spec:
     set the following Settings Catalog path to Enabled. Administrative Templates\Windows
     Components\Remote Desktop Services\Remote Desktop Session Host\Device and Resource
     Redirection\Do not allow COM port redirection
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS4.1, benchmark_section:4.11.36.4.3.1
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS4.8, benchmark_section:4.11.36.4.3.1
 ---
 apiVersion: v1
 kind: policy
@@ -550,7 +550,7 @@ spec:
     set the following Settings Catalog path to Enabled. Administrative Templates\Windows
     Components\Remote Desktop Services\Remote Desktop Session Host\Device and Resource
     Redirection\Do not allow LPT port redirection
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS4.1, benchmark_section:4.11.36.4.3.3
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS4.8, benchmark_section:4.11.36.4.3.3
 ---
 apiVersion: v1
 kind: policy
@@ -568,7 +568,7 @@ spec:
     set the following Settings Catalog path to Enabled. Administrative Templates\Windows
     Components\Remote Desktop Services\Remote Desktop Session Host\Device and Resource
     Redirection\Do not allow supported Plug and Play device redirection
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS4.1, benchmark_section:4.11.36.4.3.4
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS4.8, benchmark_section:4.11.36.4.3.4
 ---
 apiVersion: v1
 kind: policy
@@ -586,7 +586,7 @@ spec:
     from server to client. Administrative Templates\Windows Components\Remote Desktop
     Session Host\Device and Resource Redirection\Restrict clipboard transfer from
     server to client'
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS4.1, benchmark_section:4.11.36.4.3.5
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS4.8, benchmark_section:4.11.36.4.3.5
 ---
 apiVersion: v1
 kind: policy
@@ -624,7 +624,7 @@ spec:
     set the following Settings Catalog path to Enabled: 1 minute. Administrative Templates\Windows
     Components\Remote Desktop Services\Remote Desktop Session Host\Session Time Limits\Set
     time limit for disconnected sessions'
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS4.1, benchmark_section:4.11.36.4.10.2
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS4.8, benchmark_section:4.11.36.4.10.2
 ---
 apiVersion: v1
 kind: policy
@@ -675,7 +675,7 @@ spec:
   resolution: To establish the recommended configuration via configuration profiles,
     set the following Settings Catalog path to Enabled. Administrative Templates\Windows
     Components\Windows Media Player\Playback\Prevent Codec Download (User)
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS4.1, benchmark_section:4.11.52.2.1
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS4.8, benchmark_section:4.11.52.2.1
 ---
 apiVersion: v1
 kind: policy
@@ -734,7 +734,7 @@ spec:
     set the following Settings Catalog path to Disabled. Administrative Templates\Windows
     Components\Windows Remote Management (WinRM)\WinRM Service\Allow remote server
     management through WinRM
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS4.1, benchmark_section:4.11.55.2.2
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS4.8, benchmark_section:4.11.55.2.2
 ---
 apiVersion: v1
 kind: policy
@@ -754,7 +754,7 @@ spec:
   resolution: To establish the recommended configuration via configuration profiles,
     set the following Settings Catalog path to Disabled. Administrative Templates\Windows
     Components\Windows Remote Shell\Allow Remote Shell Access
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS4.1, benchmark_section:4.11.56.1
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Administrative Templates, cis_subcategory:Windows Components, cis_safeguard_ids:CIS4.8, benchmark_section:4.11.56.1
 ---
 apiVersion: v1
 kind: policy
@@ -844,7 +844,7 @@ spec:
   resolution: 'To establish the recommended configuration via configuration profiles,
     set the following Settings Catalog path to Block: Experience\Allow Windows Spotlight
     (User)'
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Experience, cis_subcategory:Experience, cis_safeguard_ids:CIS4.1, benchmark_section:34.3
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Experience, cis_subcategory:Experience, cis_safeguard_ids:CIS4.8, benchmark_section:34.3
 ---
 apiVersion: v1
 kind: policy
@@ -864,7 +864,7 @@ spec:
   resolution: 'To establish the recommended configuration via configuration profiles,
     set the following Settings Catalog path to Allow: Licensing\Disallow KMS Client
     Online AVS Validation'
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Licensing, cis_subcategory:Licensing, cis_safeguard_ids:CIS4.1, benchmark_section:47.1
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Licensing, cis_subcategory:Licensing, cis_safeguard_ids:CIS4.8, benchmark_section:47.1
 ---
 apiVersion: v1
 kind: policy
@@ -882,7 +882,7 @@ spec:
   resolution: 'To establish the recommended configuration via configuration profiles,
     set the following Settings Catalog path to Enable: Local Policies Security Options\Devices:
     Prevent users from installing printer drivers when connecting to shared printers'
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Local Policies Security Options, cis_subcategory:Local Policies Security Options, cis_safeguard_ids:CIS4.1, benchmark_section:49.5
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Local Policies Security Options, cis_subcategory:Local Policies Security Options, cis_safeguard_ids:CIS4.8, benchmark_section:49.5
 ---
 apiVersion: v1
 kind: policy
@@ -898,7 +898,7 @@ spec:
   resolution: 'To establish the recommended configuration via configuration profiles,
     set the following Settings Catalog path to message sync is not allowed and cannot
     be changed by the user.: Messaging\Allow Message Sync'
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Messaging, cis_subcategory:Messaging, cis_safeguard_ids:CIS4.1, benchmark_section:54.1
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Messaging, cis_subcategory:Messaging, cis_safeguard_ids:CIS4.8, benchmark_section:54.1
 ---
 apiVersion: v1
 kind: policy
@@ -915,7 +915,7 @@ spec:
   resolution: To establish the recommended configuration via configuration profiles,
     set the following Settings Catalog path to Block. Microsoft App Store\Allow Shared
     User App Data
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Microsoft App Store, cis_subcategory:Microsoft App Store, cis_safeguard_ids:CIS4.1, benchmark_section:55.3
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Microsoft App Store, cis_subcategory:Microsoft App Store, cis_safeguard_ids:CIS4.8, benchmark_section:55.3
 ---
 apiVersion: v1
 kind: policy
@@ -932,7 +932,7 @@ spec:
   resolution: 'To establish the recommended configuration via configuration profiles,
     set the following Settings Catalog path to Enabled: Microsoft App Store\Disable
     Store Originated Apps'
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Microsoft App Store, cis_subcategory:Microsoft App Store, cis_safeguard_ids:CIS4.1, benchmark_section:55.5
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Microsoft App Store, cis_subcategory:Microsoft App Store, cis_safeguard_ids:CIS4.8, benchmark_section:55.5
 ---
 apiVersion: v1
 kind: policy
@@ -951,7 +951,7 @@ spec:
   resolution: To establish the recommended configuration via configuration profiles,
     set the following Settings Catalog path to Allow. Notifications\Disallow Cloud
     Notification
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Notifications, cis_subcategory:Notifications, cis_safeguard_ids:CIS4.1, benchmark_section:61.1
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Notifications, cis_subcategory:Notifications, cis_safeguard_ids:CIS4.8, benchmark_section:61.1
 ---
 apiVersion: v1
 kind: policy
@@ -965,7 +965,7 @@ spec:
     AND mdm_command_output = '0';
   resolution: 'To establish the recommended configuration via configuration profiles,
     set the following Settings Catalog path to Block: Privacy\Allow Cross Device Clipboard'
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Privacy, cis_subcategory:Privacy, cis_safeguard_ids:CIS4.1, benchmark_section:68.1
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Privacy, cis_subcategory:Privacy, cis_safeguard_ids:CIS4.8, benchmark_section:68.1
 ---
 apiVersion: v1
 kind: policy
@@ -981,7 +981,7 @@ spec:
   resolution: 'To establish the recommended configuration via configuration profiles,
     set the following Settings Catalog path to Enabled: Privacy\Disable Advertising
     ID'
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Privacy, cis_subcategory:Privacy, cis_safeguard_ids:CIS4.1, benchmark_section:68.3
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Privacy, cis_subcategory:Privacy, cis_safeguard_ids:CIS4.8, benchmark_section:68.3
 ---
 apiVersion: v1
 kind: policy
@@ -995,7 +995,7 @@ spec:
     AND mdm_command_output = '0';
   resolution: 'To establish the recommended configuration via configuration profiles,
     set the following Settings Catalog path to Disabled: Privacy\Upload User Activities'
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Privacy, cis_subcategory:Privacy, cis_safeguard_ids:CIS4.1, benchmark_section:68.5
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Privacy, cis_subcategory:Privacy, cis_safeguard_ids:CIS4.8, benchmark_section:68.5
 ---
 apiVersion: v1
 kind: policy
@@ -1009,7 +1009,7 @@ spec:
     AND mdm_command_output = '0';
   resolution: 'To establish the recommended configuration via configuration profiles,
     set the following Settings Catalog path to Not allowed: Search\Allow Cloud Search'
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Search, cis_subcategory:Search, cis_safeguard_ids:CIS4.1, benchmark_section:72.1
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Search, cis_subcategory:Search, cis_safeguard_ids:CIS4.8, benchmark_section:72.1
 ---
 apiVersion: v1
 kind: policy
@@ -1025,7 +1025,7 @@ spec:
     Search\EnableDynamicContentInWSB' AND data = '0';
   resolution: 'To establish the recommended configuration via configuration profiles,
     set the following Settings Catalog path to 0: Search\Allow search highlights'
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Search, cis_subcategory:Search, cis_safeguard_ids:CIS4.1, benchmark_section:72.4
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Search, cis_subcategory:Search, cis_safeguard_ids:CIS4.8, benchmark_section:72.4
 ---
 apiVersion: v1
 kind: policy
@@ -1039,7 +1039,7 @@ spec:
     AND mdm_command_output = '0';
   resolution: To establish the recommended configuration via configuration profiles,
     set the following Settings Catalog path to Block. Settings\Allow Online Tips
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Settings, cis_subcategory:Settings, cis_safeguard_ids:CIS4.1, benchmark_section:74.1
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Settings, cis_subcategory:Settings, cis_safeguard_ids:CIS4.8, benchmark_section:74.1
 ---
 apiVersion: v1
 kind: policy
@@ -1054,7 +1054,7 @@ spec:
     AND mdm_command_output = '0';
   resolution: 'To establish the recommended configuration via configuration profiles,
     set the following Settings Catalog path to Not allowed: System\Allow Font Providers'
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:System, cis_subcategory:System, cis_safeguard_ids:CIS4.1, benchmark_section:80.1
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:System, cis_subcategory:System, cis_safeguard_ids:CIS4.8, benchmark_section:80.1
 ---
 apiVersion: v1
 kind: policy
@@ -1072,7 +1072,7 @@ spec:
   resolution: To establish the recommended configuration via configuration profiles,
     set the following Settings Catalog path to Force Location Off.... System\Allow
     Location
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:System, cis_subcategory:System, cis_safeguard_ids:CIS4.1, benchmark_section:80.2
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:System, cis_subcategory:System, cis_safeguard_ids:CIS4.8, benchmark_section:80.2
 ---
 apiVersion: v1
 kind: policy
@@ -1088,7 +1088,7 @@ spec:
   resolution: To establish the recommended configuration via configuration profiles,
     set the following Settings Catalog path to Enable. System\Disable Enterprise Auth
     Proxy
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:System, cis_subcategory:System, cis_safeguard_ids:CIS4.1, benchmark_section:80.4
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:System, cis_subcategory:System, cis_safeguard_ids:CIS4.8, benchmark_section:80.4
 ---
 apiVersion: v1
 kind: policy
@@ -1104,7 +1104,7 @@ spec:
   resolution: 'To establish the recommended configuration via configuration profiles,
     set the following Settings Catalog path to Sync Disabled: System\Disable One Drive
     File Sync'
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:System, cis_subcategory:System, cis_safeguard_ids:CIS4.1, benchmark_section:80.5
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:System, cis_subcategory:System, cis_safeguard_ids:CIS4.8, benchmark_section:80.5
 ---
 apiVersion: v1
 kind: policy
@@ -1545,4 +1545,4 @@ spec:
   resolution: To establish the recommended configuration via configuration profiles,
     set the following Settings Catalog path to Block. Windows Ink Workspace\Allow
     suggested apps in Windows Ink Workspace
-  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Windows Ink Workspace, cis_subcategory:Windows Ink Workspace, cis_safeguard_ids:CIS4.1, benchmark_section:98.1
+  tags: framework:CISv8.1, benchmark:win11, level:2, platform:windows, category:unknown, requirement:standard, critical:false, cis_category:Windows Ink Workspace, cis_subcategory:Windows Ink Workspace, cis_safeguard_ids:CIS4.8, benchmark_section:98.1

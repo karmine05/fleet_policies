@@ -771,7 +771,7 @@ spec:
       AND NOT EXISTS (SELECT 1 FROM managed_policies WHERE domain='com.apple.mDNSResponder' AND name='NoMulticastAdvertisements' AND (value!=1 AND value!='true'))
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:network, requirement:mdm, critical:false, control:bonjour-advertising-disabled, cis_category:Network Configurations, cis_subcategory:Ensure Bonjour Advertising Services Is Disabled, cis_safeguard_ids:CIS4.1, benchmark_section:4.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:network, requirement:mdm, critical:false, control:bonjour-advertising-disabled, cis_category:Network Configurations, cis_subcategory:Ensure Bonjour Advertising Services Is Disabled, cis_safeguard_ids:CIS4.8, benchmark_section:4.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -944,7 +944,7 @@ spec:
       SELECT 1 FROM location_services WHERE enabled = 0
     );
   purpose: Optional
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:privacy-location, requirement:standard, critical:false, control:location-services-disabled-all, cis_category:System Settings, cis_subcategory:Privacy & Security, cis_safeguard_ids:CIS4.1, benchmark_section:2.6.1.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:privacy-location, requirement:standard, critical:false, control:location-services-disabled-all, cis_category:System Settings, cis_subcategory:Privacy & Security, cis_safeguard_ids:CIS4.8, benchmark_section:2.6.1.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -972,7 +972,7 @@ spec:
       )
     );
   purpose: Optional
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:privacy-location, requirement:standard, critical:false, control:location-services-allowlist, cis_category:System Settings, cis_subcategory:Privacy & Security, cis_safeguard_ids:CIS4.1, benchmark_section:2.6.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:privacy-location, requirement:standard, critical:false, control:location-services-allowlist, cis_category:System Settings, cis_subcategory:Privacy & Security, cis_safeguard_ids:CIS4.8, benchmark_section:2.6.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -990,7 +990,7 @@ spec:
       AND NOT EXISTS (SELECT 1 FROM managed_policies WHERE domain='com.apple.applicationaccess' AND name='allowApplePersonalizedAdvertising' AND (value!=0 AND value!='false'))
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:privacy-advertising, requirement:mdm, critical:false, control:limit-ad-tracking-enabled, cis_category:System Settings, cis_subcategory:Privacy & Security, cis_safeguard_ids:CIS4.1, benchmark_section:2.6.4
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:privacy-advertising, requirement:mdm, critical:false, control:limit-ad-tracking-enabled, cis_category:System Settings, cis_subcategory:Privacy & Security, cis_safeguard_ids:CIS4.8, benchmark_section:2.6.4
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1222,7 +1222,7 @@ spec:
       AND EXISTS (SELECT 1 FROM managed_policies WHERE domain='com.apple.applicationaccess' AND name='Siri Data Sharing Opt-In Status' AND value=2)
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:privacy-telemetry, requirement:mdm, critical:false, control:diagnostics-disabled, cis_category:System Settings, cis_subcategory:Privacy & Security, cis_safeguard_ids:CIS4.1, benchmark_section:2.6.3.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:privacy-telemetry, requirement:mdm, critical:false, control:diagnostics-disabled, cis_category:System Settings, cis_subcategory:Privacy & Security, cis_safeguard_ids:CIS4.8, benchmark_section:2.6.3.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1398,7 +1398,7 @@ spec:
       AND NOT EXISTS (SELECT 1 FROM managed_policies WHERE domain='com.apple.applicationaccess' AND name='forceOnDeviceOnlyDictation' AND (value != 1 AND value != 'true'))
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:privacy, requirement:mdm, critical:false, control:on-device-dictation-enabled, cis_category:System Settings, cis_subcategory:Keyboard, cis_safeguard_ids:CIS4.1, benchmark_section:2.18.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:privacy, requirement:mdm, critical:false, control:on-device-dictation-enabled, cis_category:System Settings, cis_subcategory:Keyboard, cis_safeguard_ids:CIS4.8, benchmark_section:2.18.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1662,7 +1662,7 @@ spec:
   query: |
     SELECT 1 WHERE EXISTS (SELECT 1 FROM location_services WHERE enabled=1);
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:privacy-location, requirement:standard, critical:false, control:location-services-enabled, cis_category:System Settings, cis_subcategory:Privacy & Security, cis_safeguard_ids:CIS4.1, benchmark_section:2.6.1.1
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:privacy-location, requirement:standard, critical:false, control:location-services-enabled, cis_category:System Settings, cis_subcategory:Privacy & Security, cis_safeguard_ids:CIS4.8, benchmark_section:2.6.1.1
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1679,7 +1679,7 @@ spec:
       SELECT 1 FROM plist WHERE path='/Library/Preferences/com.apple.locationmenu.plist' AND key='ShowSystemServices' AND value=1
     );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:privacy-location, requirement:standard, critical:false, control:show-location-icon, cis_category:System Settings, cis_subcategory:Privacy & Security, cis_safeguard_ids:CIS4.1, benchmark_section:2.6.1.2
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:2, platform:darwin, category:privacy-location, requirement:standard, critical:false, control:show-location-icon, cis_category:System Settings, cis_subcategory:Privacy & Security, cis_safeguard_ids:CIS4.8, benchmark_section:2.6.1.2
   contributors: karmine05
 ---
 apiVersion: v1
@@ -2647,7 +2647,7 @@ spec:
             value != 0
         );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:privacy-telemetry, requirement:mdm, critical:false, control:improve-siri-dictation-disabled, cis_category:System Settings, cis_subcategory:Privacy & Security, cis_safeguard_ids:CIS4.1, benchmark_section:2.6.3.2
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:privacy-telemetry, requirement:mdm, critical:false, control:improve-siri-dictation-disabled, cis_category:System Settings, cis_subcategory:Privacy & Security, cis_safeguard_ids:CIS4.8, benchmark_section:2.6.3.2
   contributors: augment-agent
 ---
 apiVersion: v1
@@ -2679,7 +2679,7 @@ spec:
             (value != 0 AND value != 'false')
         );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:privacy-telemetry, requirement:mdm, critical:false, control:improve-assistive-voice-disabled, cis_category:System Settings, cis_subcategory:Privacy & Security, cis_safeguard_ids:CIS4.1, benchmark_section:2.6.3.3
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:privacy-telemetry, requirement:mdm, critical:false, control:improve-assistive-voice-disabled, cis_category:System Settings, cis_subcategory:Privacy & Security, cis_safeguard_ids:CIS4.8, benchmark_section:2.6.3.3
   contributors: augment-agent
 ---
 apiVersion: v1
@@ -2711,7 +2711,7 @@ spec:
             (value != 0 AND value != 'false')
         );
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:privacy-telemetry, requirement:mdm, critical:false, control:share-with-app-developers-disabled, cis_category:System Settings, cis_subcategory:Privacy & Security, cis_safeguard_ids:CIS4.1, benchmark_section:2.6.3.4
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:privacy-telemetry, requirement:mdm, critical:false, control:share-with-app-developers-disabled, cis_category:System Settings, cis_subcategory:Privacy & Security, cis_safeguard_ids:CIS4.8, benchmark_section:2.6.3.4
   contributors: augment-agent
 ---
 apiVersion: v1
@@ -2738,7 +2738,7 @@ spec:
       )
     );
   purpose: Informational
-  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:privacy-telemetry, requirement:manual, critical:false, control:share-icloud-analytics-disabled, cis_category:System Settings, cis_subcategory:Privacy & Security, cis_safeguard_ids:CIS4.1, benchmark_section:2.6.3.5
+  tags: framework:CISv8.1, benchmark:macosTahoe, level:1, platform:darwin, category:privacy-telemetry, requirement:manual, critical:false, control:share-icloud-analytics-disabled, cis_category:System Settings, cis_subcategory:Privacy & Security, cis_safeguard_ids:CIS4.8, benchmark_section:2.6.3.5
   contributors: augment-agent
 ---
 apiVersion: v1

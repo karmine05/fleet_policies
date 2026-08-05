@@ -91,7 +91,7 @@ spec:
   resolution: "The cron file for AIDE is fairly complex as it creates the report. This file is installed with\n            the \"aide-common\" package, and the default can be restored by copying it from the\n            package:\n            Download the original package to the /tmp dir:\n            $ cd /tmp; apt download aide-common\n            Extract the aide script to its original place:\n            $ dpkg-deb --fsys-tarfile /tmp/aide-common_*.deb | sudo tar -x --wildcards\n            ./usr/share/aide/config/cron.daily/dailyaidecheck* -C /\n            Copy it to the cron.daily directory:\n            $ sudo cp -f /usr/share/aide/config/cron.daily/aide\n            /etc/cron.daily/dailyaidecheck*"
   query: SELECT 1 WHERE EXISTS (SELECT 1 FROM file_lines WHERE path LIKE '/etc/cron%' AND line LIKE '%aide%' AND line NOT LIKE '#%');
   purpose: Optional
-  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_100120, cis_category:Secure Configuration, cis_subcategory:Establish and Maintain a Secure Configuration Process, cis_safeguard_ids:CIS4.1, benchmark_section:1.8
+  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_100120, cis_category:Secure Configuration, cis_subcategory:Establish and Maintain a Secure Configuration Process, cis_safeguard_ids:CIS4.8, benchmark_section:1.8
   contributors: karmine05
 ---
 apiVersion: v1
@@ -223,7 +223,7 @@ spec:
   resolution: "Install the sssd.service and the required pam packages with the following commands:\n            $ sudo apt install -y sssd\n            $ sudo apt install -y libpam-sss\n            $ sudo apt install -y libnss-sss\n\n\n\n\n                                                                                                Page 64\n\nInternal Only - General"
   query: SELECT 1 WHERE EXISTS (SELECT 1 FROM deb_packages WHERE name='sssd');
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_100650, cis_category:General Information, cis_subcategory:General, cis_safeguard_ids:CIS4.1, benchmark_section:1.19
+  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_100650, cis_category:General Information, cis_subcategory:General, cis_safeguard_ids:CIS4.8, benchmark_section:1.19
   contributors: karmine05
 ---
 apiVersion: v1
@@ -235,7 +235,7 @@ spec:
   resolution: "Enable the \"sssd.service to start automatically on reboot with the following command:\n            $ sudo systemctl enable sssd.service\n            ensure the \"sssd\" service is running\n            $ sudo systemctl start sssd.service"
   query: SELECT 1 WHERE EXISTS (SELECT 1 FROM systemd_units WHERE id='sssd.service' AND active_state='active');
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_100660, cis_category:General Information, cis_subcategory:General, cis_safeguard_ids:CIS4.1, benchmark_section:1.20
+  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_100660, cis_category:General Information, cis_subcategory:General, cis_safeguard_ids:CIS4.8, benchmark_section:1.20
   contributors: karmine05
 ---
 apiVersion: v1
@@ -403,7 +403,7 @@ spec:
   resolution: "Configure the operating system to limit the number of concurrent sessions to 10 for all\n            accounts and/or account types.\n            Add or modify the following line at the top of the \"/etc/security/limits.conf\" file or in a\n            \".conf\" file defined in /etc/security/limits.d/:\n            * hard maxlogins 10\n\n\n\n\n                                                                                                  Page 98\n\nInternal Only - General"
   query: SELECT 1 WHERE EXISTS (SELECT 1 FROM file_lines WHERE path LIKE '/etc/security/limits.conf' AND line LIKE '%maxlogins%' AND line NOT LIKE '#%');
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:3, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_200000, cis_category:Secure Configuration, cis_subcategory:Establish and Maintain a Secure Configuration Process, cis_safeguard_ids:CIS4.1, benchmark_section:1.34
+  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:3, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_200000, cis_category:Secure Configuration, cis_subcategory:Establish and Maintain a Secure Configuration Process, cis_safeguard_ids:CIS4.8, benchmark_section:1.34
   contributors: karmine05
 ---
 apiVersion: v1
@@ -415,7 +415,7 @@ spec:
   resolution: "Configure the operating system to lock the current graphical user interface session after\n            10 minutes of inactivity.\n            Set the following settings to allow graphical user interface session lock to initiate after\n            10 minutes of inactivity:\n            $ gsettings set org.gnome.desktop.screensaver lock-enabled true\n            $ gsettings set org.gnome.desktop.screensaver lock-delay 0\n            $ gsettings set org.gnome.desktop.session idle-delay 600"
   query: SELECT 1 WHERE EXISTS (SELECT 1 FROM file_lines WHERE path LIKE '/etc/dconf/db/local.d/%' AND line LIKE '%idle-delay%' AND line NOT LIKE '#%');
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_200020, cis_category:Secure Configuration, cis_subcategory:Establish and Maintain a Secure Configuration Process, cis_safeguard_ids:CIS4.1, benchmark_section:1.35
+  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_200020, cis_category:Secure Configuration, cis_subcategory:Establish and Maintain a Secure Configuration Process, cis_safeguard_ids:CIS4.8, benchmark_section:1.35
   contributors: karmine05
 ---
 apiVersion: v1
@@ -427,7 +427,7 @@ spec:
   resolution: "Configure the operating system to allow a user to lock the current graphical user\n            interface session.\n            Set the \"lock-enabled\" setting to allow graphical user interface session locks with the\n            following command:\n            $ gsettings set org.gnome.desktop.screensaver lock-enabled true\n\n\n\n\n                                                                                                  Page 102\n\nInternal Only - General"
   query: SELECT 1 WHERE EXISTS (SELECT 1 FROM file_lines WHERE path LIKE '/etc/dconf/db/local.d/%' AND line LIKE '%lock-enabled%' AND line LIKE '%true%' AND line NOT LIKE '#%');
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_200040, cis_category:Secure Configuration, cis_subcategory:Establish and Maintain a Secure Configuration Process, cis_safeguard_ids:CIS4.1, benchmark_section:1.36
+  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_200040, cis_category:Secure Configuration, cis_subcategory:Establish and Maintain a Secure Configuration Process, cis_safeguard_ids:CIS4.8, benchmark_section:1.36
   contributors: karmine05
 ---
 apiVersion: v1
@@ -451,7 +451,7 @@ spec:
   resolution: "Configure the operating system to monitor all remote access methods.\n            Add or modify the following line in the \"/etc/rsyslog.d/50-default.conf\" file:\n            auth.*,authpriv.* /var/log/secure\n            daemon.* /var/log/messages\n            Restart \"rsyslog.service\" for the changes to take effect by using the following command:\n            $ sudo systemctl restart rsyslog.service"
   query: SELECT 1 WHERE EXISTS (SELECT 1 FROM file_lines WHERE (path LIKE '/etc/rsyslog.d/%' OR path='/etc/rsyslog.conf') AND line LIKE '%auth.*%' AND line NOT LIKE '#%');
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_200090, cis_category:Secure Configuration, cis_subcategory:Establish and Maintain a Secure Configuration Process, cis_safeguard_ids:CIS4.1, benchmark_section:1.38
+  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_200090, cis_category:Secure Configuration, cis_subcategory:Establish and Maintain a Secure Configuration Process, cis_safeguard_ids:CIS4.8, benchmark_section:1.38
   contributors: karmine05
 ---
 apiVersion: v1
@@ -463,7 +463,7 @@ spec:
   resolution: "Configure the operating system to expire temporary accounts after 72 hours by using\n            the following command:\n            $ sudo chage -E $(date -d +3days +%Y-%m-%d) <temporary_account_name>"
   query: SELECT 1 WHERE EXISTS (SELECT 1 FROM file_lines WHERE path='/etc/login.defs' AND line LIKE 'PASS_MAX_DAYS%' AND line NOT LIKE '#%');
   purpose: Optional
-  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_200250, cis_category:Secure Configuration, cis_subcategory:Establish and Maintain a Secure Configuration Process, cis_safeguard_ids:CIS4.1, benchmark_section:1.39
+  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_200250, cis_category:Secure Configuration, cis_subcategory:Establish and Maintain a Secure Configuration Process, cis_safeguard_ids:CIS4.8, benchmark_section:1.39
   contributors: karmine05
 ---
 apiVersion: v1
@@ -573,7 +573,7 @@ spec:
     \ or clergy, and their assistants.\n            Such communications and work product are private and confidential. See User\n            Agreement for details.\"\n            Restart the SSH daemon for the changes to take effect and then signal the SSH server\n            to reload the configuration file:\n            $ sudo systemctl -s SIGHUP kill sshd"
   query: SELECT 1 WHERE EXISTS (SELECT 1 FROM file_lines WHERE path LIKE '/etc/ssh/sshd_config%' AND (line LIKE 'Banner %' OR line LIKE ' Banner %') AND line NOT LIKE '#%');
   purpose: Optional
-  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_200640, cis_category:Secure Configuration, cis_subcategory:Establish and Maintain a Secure Configuration Process, cis_safeguard_ids:CIS4.1, benchmark_section:1.48
+  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_200640, cis_category:Secure Configuration, cis_subcategory:Establish and Maintain a Secure Configuration Process, cis_safeguard_ids:CIS4.8, benchmark_section:1.48
   contributors: karmine05
 ---
 apiVersion: v1
@@ -585,7 +585,7 @@ spec:
   resolution: "Configure the operating system to display the Standard Mandatory DOD Notice and\n            Consent Banner before granting access to the operating system via a graphical user\n            logon.\n            Add or modify the following line in the \"/etc/gdm3/greeter.dconf-defaults\" file:\n            [org/gnome/login-screen]\n            banner-message-enable=true\n            Update GDM with the new configuration by using the following commands:\n            $ sudo dconf update\n            $ sudo systemctl restart gdm3"
   query: SELECT 1 WHERE EXISTS (SELECT 1 FROM file_lines WHERE path='/etc/gdm3/greeter.dconf-defaults' AND line LIKE 'banner-message-enable=true%' AND line NOT LIKE '#%');
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_200650, cis_category:Secure Configuration, cis_subcategory:Establish and Maintain a Secure Configuration Process, cis_safeguard_ids:CIS4.1, benchmark_section:1.49
+  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_200650, cis_category:Secure Configuration, cis_subcategory:Establish and Maintain a Secure Configuration Process, cis_safeguard_ids:CIS4.8, benchmark_section:1.49
   contributors: karmine05
 ---
 apiVersion: v1
@@ -599,7 +599,7 @@ spec:
     \ the GDM with the new configuration:\n            $ sudo dconf update\n            $ sudo systemctl restart gdm3"
   query: SELECT 1 WHERE EXISTS (SELECT 1 FROM file_lines WHERE path='/etc/gdm3/greeter.dconf-defaults' AND line LIKE 'banner-message-text=%' AND line NOT LIKE '#%');
   purpose: Optional
-  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_200660, cis_category:General Information, cis_subcategory:General, cis_safeguard_ids:CIS4.1, benchmark_section:1.50
+  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_200660, cis_category:General Information, cis_subcategory:General, cis_safeguard_ids:CIS4.8, benchmark_section:1.50
   contributors: karmine05
 ---
 apiVersion: v1
@@ -613,7 +613,7 @@ spec:
     \ yn\n                            case $yn in\n                                     [Yy]* ) break ;;\n                                     [Nn]* ) exit 1 ;;\n                            esac\n                    done\n            fi\n            Note: The \"ssh_confirm.sh\" script is provided as a supplemental file to this document.\n\n\n\n\n                                                                                            Page 145\n\nInternal Only - General"
   query: SELECT 1 WHERE EXISTS (SELECT 1 FROM file_lines WHERE path LIKE '/etc/profile.d/ssh_confirm.sh');
   purpose: Optional
-  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_200680, cis_category:General Information, cis_subcategory:General, cis_safeguard_ids:CIS4.1, benchmark_section:1.51
+  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_200680, cis_category:General Information, cis_subcategory:General, cis_safeguard_ids:CIS4.8, benchmark_section:1.51
   contributors: karmine05
 ---
 apiVersion: v1
@@ -757,7 +757,7 @@ spec:
   resolution: "Configure the operating system to enforce a delay of at least four seconds between\n            logon prompts following a failed logon attempt.\n            Add or modify the following line in the \"/etc/pam.d/common-auth\" file:\n            auth          required    pam_faildelay.so         delay=4000000"
   query: SELECT 1 WHERE EXISTS (SELECT 1 FROM file_lines WHERE path LIKE '/etc/pam.d/common-auth' AND line LIKE '%pam_faildelay%' AND line NOT LIKE '#%');
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:3, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_300017, cis_category:Secure Configuration, cis_subcategory:Establish and Maintain a Secure Configuration Process, cis_safeguard_ids:CIS4.1, benchmark_section:1.63
+  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:3, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_300017, cis_category:Secure Configuration, cis_subcategory:Establish and Maintain a Secure Configuration Process, cis_safeguard_ids:CIS4.8, benchmark_section:1.63
   contributors: karmine05
 ---
 apiVersion: v1
@@ -805,7 +805,7 @@ spec:
   resolution: "Configure Ubuntu 24.04 LTS to provide users with feedback on when account accesses\n            last occurred by setting the required configuration options in \"/etc/pam.d/login\".\n            Add the following line to the top of \"/etc/pam.d/login\":\n            session        required         pam_lastlog.so showfailed"
   query: SELECT 1 WHERE EXISTS (SELECT 1 FROM file_lines WHERE path LIKE '/etc/pam.d/login' AND line LIKE '%pam_lastlog%' AND line NOT LIKE '#%');
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:3, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_300024, cis_category:General Information, cis_subcategory:General, cis_safeguard_ids:CIS4.1, benchmark_section:1.67
+  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:3, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_300024, cis_category:General Information, cis_subcategory:General, cis_safeguard_ids:CIS4.8, benchmark_section:1.67
   contributors: karmine05
 ---
 apiVersion: v1
@@ -817,7 +817,7 @@ spec:
   resolution: "Configure the operating system to disable the Ctrl-Alt-Delete sequence when using a\n            graphical user interface:\n            $ gsettings set org.gnome.settings-daemon.plugins.media-keys logout []\n            Update the dconf settings:\n            $ sudo dconf update\n\n\n\n\n                                                                                                Page 178\n\nInternal Only - General"
   query: SELECT 1 WHERE EXISTS (SELECT 1 FROM file_lines WHERE path LIKE '/etc/dconf/db/local.d/%' AND line LIKE '%logout%' AND line NOT LIKE '#%');
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:1, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_300025, cis_category:Secure Configuration, cis_subcategory:Establish and Maintain a Secure Configuration Process, cis_safeguard_ids:CIS4.1, benchmark_section:1.68
+  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:1, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_300025, cis_category:Secure Configuration, cis_subcategory:Establish and Maintain a Secure Configuration Process, cis_safeguard_ids:CIS4.8, benchmark_section:1.68
   contributors: karmine05
 ---
 apiVersion: v1
@@ -829,7 +829,7 @@ spec:
   resolution: "Configure the system to disable the Ctrl-Alt-Delete sequence for the command line with\n            the following commands:\n            $ sudo systemctl disable ctrl-alt-del.target\n            [...]\n\n            $ sudo systemctl mask ctrl-alt-del.target\n            Created symlink /etc/systemd/system/ctrl-alt-del.target ? /dev/null.\n            Reload the daemon to take effect:\n            $ sudo systemctl daemon-reload\n\n\n\n\n                                                                                               Page 180\n\nInternal Only - General"
   query: SELECT 1 WHERE EXISTS (SELECT 1 FROM systemd_units WHERE id='ctrl-alt-del.service' AND (active_state='inactive' OR unit_file_state='masked' OR unit_file_state='disabled'));
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:1, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_300026, cis_category:Secure Configuration, cis_subcategory:Establish and Maintain a Secure Configuration Process, cis_safeguard_ids:CIS4.1, benchmark_section:1.69
+  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:1, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_300026, cis_category:Secure Configuration, cis_subcategory:Establish and Maintain a Secure Configuration Process, cis_safeguard_ids:CIS4.8, benchmark_section:1.69
   contributors: karmine05
 ---
 apiVersion: v1
@@ -937,7 +937,7 @@ spec:
   resolution: "Configure Ubuntu 24.04 LTS to use multifactor authentication for access to accounts.\n            Add or update \"pam_pkcs11.so\" in \"/etc/pam.d/common-auth\" to match the following\n            line:\n            auth          [success=2 default=ignore] pam_pkcs11.so"
   query: SELECT 1 WHERE EXISTS (SELECT 1 FROM file_lines WHERE path LIKE '/etc/pam.d/common-auth' AND line LIKE '%pam_pkcs11.so%' AND line NOT LIKE '#%');
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_400020, cis_category:General Information, cis_subcategory:General, cis_safeguard_ids:CIS4.1, benchmark_section:1.78
+  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_400020, cis_category:General Information, cis_subcategory:General, cis_safeguard_ids:CIS4.8, benchmark_section:1.78
   contributors: karmine05
 ---
 apiVersion: v1
@@ -973,7 +973,7 @@ spec:
   resolution: "Configure the operating system to prevent direct logins to the root account by using the\n            following command:\n            $ sudo passwd -l root"
   query: SELECT 1 WHERE EXISTS (SELECT 1 FROM file_lines WHERE path='/etc/shadow' AND line LIKE 'root:!%');
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_400110, cis_category:Secure Configuration, cis_subcategory:Establish and Maintain a Secure Configuration Process, cis_safeguard_ids:CIS4.1, benchmark_section:1.81
+  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_400110, cis_category:Secure Configuration, cis_subcategory:Establish and Maintain a Secure Configuration Process, cis_safeguard_ids:CIS4.8, benchmark_section:1.81
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1093,7 +1093,7 @@ spec:
   resolution: "Configure PAM to prohibit the use of cached authentications after one day.\n            Add or modify the following line in the \"/etc/sssd/sssd.conf\" file, just below the line\n            \"[pam]\":\n            offline_credentials_expiration = 1\n            Note: It is valid for this configuration to be in a file with a name that ends with \".conf\"\n            and does not begin with a \".\" in the \"/etc/sssd/conf.d/\" directory instead of the\n            \"/etc/sssd/sssd.conf\" file."
   query: SELECT 1 WHERE EXISTS (SELECT 1 FROM file_lines WHERE path LIKE '/etc/sssd/sssd.conf' AND (line LIKE 'offline_credentials_expiration = 1%' OR line LIKE ' offline_credentials_expiration = 1%') AND line NOT LIKE '#%');
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:3, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_400340, cis_category:Secure Configuration, cis_subcategory:Establish and Maintain a Secure Configuration Process, cis_safeguard_ids:CIS4.1, benchmark_section:1.91
+  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:3, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_400340, cis_category:Secure Configuration, cis_subcategory:Establish and Maintain a Secure Configuration Process, cis_safeguard_ids:CIS4.8, benchmark_section:1.91
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1105,7 +1105,7 @@ spec:
   resolution: "Configure Ubuntu 24.04 LTS, for PKI-based authentication, to validate certificates by\n            constructing a certification path to an accepted trust anchor.\n            Add or update the /etc/sssd/sssd.conf so that the following entries are in the correct\n            sections of the file:\n            $ sudo vi /etc/sssd/sssd.conf\n            [sssd]\n            services = nss,pam,ssh\n            config_file_version = 2\n\n            [pam]\n            pam_cert_auth = True\n\n            [domain/example.com]\n            ldap_user_certificate = usercertificate;binary\n            certificate_verification = ca_cert,ocsp\n            ca_cert = /etc/ssl/certs/ca-certificates.crt\n\n\n\n\n                                                                                                    Page 228\n\nInternal Only - General"
   query: SELECT 1 WHERE EXISTS (SELECT 1 FROM file_lines WHERE path LIKE '/etc/sssd/sssd.conf' AND line LIKE '%certificate_verification%' AND line NOT LIKE '#%');
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_400360, cis_category:General Information, cis_subcategory:General, cis_safeguard_ids:CIS4.1, benchmark_section:1.92
+  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_400360, cis_category:General Information, cis_subcategory:General, cis_safeguard_ids:CIS4.8, benchmark_section:1.92
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1189,7 +1189,7 @@ spec:
   resolution: "Configure the SSH server to terminate a user session automatically after the SSH client\n            has become unresponsive.\n            Note: This setting must be applied in conjunction with UBTU-22-255040 to function\n            correctly.\n            Add or modify the following line in the \"/etc/ssh/sshd_config\" file:\n            ClientAliveCountMax 1\n            Restart the SSH daemon for the changes to take effect:\n            $ sudo systemctl restart sshd.service"
   query: SELECT 1 WHERE EXISTS (SELECT 1 FROM file_lines WHERE path LIKE '/etc/ssh/sshd_config%' AND (line LIKE 'ClientAliveCountMax 1%' OR line LIKE ' ClientAliveCountMax 1%') AND line NOT LIKE '#%');
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_600000, cis_category:General Information, cis_subcategory:General, cis_safeguard_ids:CIS4.1, benchmark_section:1.99
+  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_600000, cis_category:General Information, cis_subcategory:General, cis_safeguard_ids:CIS4.8, benchmark_section:1.99
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1201,7 +1201,7 @@ spec:
   resolution: "Configure the SSH server to terminate a user session automatically after the SSH client\n            has been unresponsive for 10 minutes.\n            Note: This setting must be applied in conjunction with UBTU-22-255040 to function\n            correctly.\n            Add or modify the following line in the \"/etc/ssh/sshd_config\" file:\n            ClientAliveInterval 600\n            Restart the SSH daemon for the changes to take effect:\n            $ sudo systemctl restart sshd.service"
   query: SELECT 1 WHERE EXISTS (SELECT 1 FROM file_lines WHERE path LIKE '/etc/ssh/sshd_config%' AND (line LIKE 'ClientAliveInterval %' OR line LIKE 'clientaliveinterval %') AND line NOT LIKE '#%');
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_600010, cis_category:General Information, cis_subcategory:General, cis_safeguard_ids:CIS4.1, benchmark_section:1.100
+  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_600010, cis_category:General Information, cis_subcategory:General, cis_safeguard_ids:CIS4.8, benchmark_section:1.100
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1225,7 +1225,7 @@ spec:
   resolution: "Configure the operating system to use of DOD PKI-established certificate authorities for\n            verification of the establishment of protected sessions.\n            Edit the \"/etc/ca-certificates.conf\" file, adding the character \"!\" to the beginning of all\n            uncommented lines that do not start with the \"!\" character with the following command:\n            $ sudo sed -i -E 's/^([^!#]+)/!\\1/' /etc/ca-certificates.conf\n            Add at least one CA to the \"/usr/local/share/ca-certificates\" directory in the PEM format.\n            Update the \"/etc/ssl/certs\" directory with the following command:\n            $ sudo update-ca-certificates\n\n\n\n\n                                                                                                   Page 250\n\nInternal Only - General"
   query: SELECT 1 WHERE EXISTS (SELECT 1 FROM file WHERE path LIKE '/usr/local/share/ca-certificates/%');
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_600060, cis_category:Secure Configuration, cis_subcategory:Establish and Maintain a Secure Configuration Process, cis_safeguard_ids:CIS4.1, benchmark_section:1.102
+  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_600060, cis_category:Secure Configuration, cis_subcategory:Establish and Maintain a Secure Configuration Process, cis_safeguard_ids:CIS4.8, benchmark_section:1.102
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1285,7 +1285,7 @@ spec:
   resolution: "Configure all public directories to have the sticky bit set to prevent unauthorized and\n            unintended information transferred via shared system resources.\n            Set the sticky bit on all public directories using the following command, replacing\n            \"<public_directory_name>\" with any directory path missing the sticky bit:\n            $ sudo chmod +t     <public_directory_name>\n\n\n\n\n                                                                                                  Page 261\n\nInternal Only - General"
   query: SELECT 1 WHERE NOT EXISTS (SELECT 1 FROM file WHERE path IN ('/tmp', '/var/tmp') AND type='directory' AND mode NOT LIKE '1%');
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_600150, cis_category:Secure Configuration, cis_subcategory:Establish and Maintain a Secure Configuration Process, cis_safeguard_ids:CIS4.1, benchmark_section:1.107
+  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_600150, cis_category:Secure Configuration, cis_subcategory:Establish and Maintain a Secure Configuration Process, cis_safeguard_ids:CIS4.8, benchmark_section:1.107
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1549,7 +1549,7 @@ spec:
   resolution: "Configure APT to remove all software components after updated versions have been\n            installed.\n            Add or modify the following lines in the \"/etc/apt/apt.conf.d/50unattended-upgrades\" file:\n            Unattended-Upgrade::Remove-Unused-Kernel-Packages \"true\";\n            Unattended-Upgrade::Remove-Unused-Dependencies \"true\";"
   query: SELECT 1 WHERE EXISTS (SELECT 1 FROM file_lines WHERE path LIKE '/etc/apt/apt.conf.d/50unattended-upgrades' AND line LIKE '%remove-unused%' AND line NOT LIKE '#%');
   purpose: Enforcement
-  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_700320, cis_category:General Information, cis_subcategory:General, cis_safeguard_ids:CIS4.1, benchmark_section:1.130
+  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_700320, cis_category:General Information, cis_subcategory:General, cis_safeguard_ids:CIS4.8, benchmark_section:1.130
   contributors: karmine05
 ---
 apiVersion: v1
@@ -1561,7 +1561,7 @@ spec:
   resolution: Upgrade to a supported version of Ubuntu 24.04 LTS.
   query: SELECT 1 WHERE EXISTS (SELECT 1 FROM file_lines WHERE path LIKE '/etc/lsb-release' AND line LIKE '%DISTRIB_DESCRIPTION%' AND line NOT LIKE '#%');
   purpose: Optional
-  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_700400, cis_category:General Information, cis_subcategory:General, cis_safeguard_ids:CIS4.1, benchmark_section:1.131
+  tags: framework:CISv8.1, benchmark:ubuntu24.04, level:2, platform:linux, category:os, requirement:standard, critical:false, control:ubtu_24_700400, cis_category:General Information, cis_subcategory:General, cis_safeguard_ids:CIS4.8, benchmark_section:1.131
   contributors: karmine05
 ---
 apiVersion: v1
